@@ -1,0 +1,41 @@
+.card {
+    width: 80px;
+}
+
+.table {
+    background-color: green;
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+}
+
+/*Players*/
+.player1, .player2,
+.player3, .player4,
+.trump {
+    position: relative;
+}
+
+
+.player1 {
+    bottom: 100px;
+}
+
+.player2 {
+    left: 275px;
+    transform: rotate(-90deg);
+}
+
+.player3 {
+    top: 135px;
+}
+
+.player4 {
+    bottom: 300px;
+    right: 275px;
+    transform: rotate(90deg);
+}
+
+.trump {
+    bottom: 450px;
+}
