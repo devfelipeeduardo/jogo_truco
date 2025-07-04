@@ -1,0 +1,153 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\felipe\\source\\repos\\trucoapi\\trucoapi\\services\\jogoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\services\\jogoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\felipe\\source\\repos\\trucoapi\\trucoapi\\controllers\\jogocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\controllers\\jogocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\felipe\\source\\repos\\trucoapi\\trucoapi\\models\\partida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\partida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\felipe\\source\\repos\\trucoapi\\trucoapi\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\felipe\\source\\repos\\trucoapi\\trucoapi\\services\\deckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\services\\deckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\felipe\\source\\repos\\trucoapi\\trucoapi\\models\\jogador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\jogador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\felipe\\source\\repos\\trucoapi\\trucoapi\\models\\deckresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\deckresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\felipe\\source\\repos\\trucoapi\\trucoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 325,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DeckResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Models\\DeckResponse.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\DeckResponse.cs",
+              "ToolTip": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Models\\DeckResponse.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\DeckResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T22:29:07.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Jogador.cs",
+              "DocumentMoniker": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Models\\Jogador.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Jogador.cs",
+              "ToolTip": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Models\\Jogador.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Jogador.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T22:30:47.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Partida.cs",
+              "DocumentMoniker": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Models\\Partida.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Partida.cs",
+              "ToolTip": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Models\\Partida.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Partida.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAYwB0AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T22:56:17.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Card.cs",
+              "DocumentMoniker": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Models\\Card.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Card.cs",
+              "ToolTip": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Models\\Card.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Card.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T21:44:10.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JogoController.cs",
+              "DocumentMoniker": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Controllers\\JogoController.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Controllers\\JogoController.cs",
+              "ToolTip": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Controllers\\JogoController.cs",
+              "RelativeToolTip": "TrucoAPI\\Controllers\\JogoController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABYAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T22:38:54.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JogoService.cs",
+              "DocumentMoniker": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Services\\JogoService.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Services\\JogoService.cs",
+              "ToolTip": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Services\\JogoService.cs",
+              "RelativeToolTip": "TrucoAPI\\Services\\JogoService.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAawCkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T20:38:41.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DeckService.cs",
+              "DocumentMoniker": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Services\\DeckService.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Services\\DeckService.cs",
+              "ToolTip": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Services\\DeckService.cs",
+              "RelativeToolTip": "TrucoAPI\\Services\\DeckService.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBwAAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T22:29:14.94Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Program.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\Program.cs",
+              "RelativeToolTip": "TrucoAPI\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T23:05:31.927Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+@TrucoAPI_HostAddress = http://localhost:5150
+
+GET {{TrucoAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
