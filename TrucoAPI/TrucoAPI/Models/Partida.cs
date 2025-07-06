@@ -1,23 +1,25 @@
-﻿namespace TrucoAPI.Models
+﻿using System.Runtime.CompilerServices;
+
+namespace TrucoAPI.Models
 {
     public class Partida
     {
-        public string DeckId { get; set; }  = string.Empty;
+        public string DeckId { get; set; } = string.Empty;
         public List<Jogador> Jogadores { get; set; } = new();
         public Card Manilha { get; set; }
         public int RodadaAtual { get; set; } = 1;
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
-            {"3S", 13},{"2S", 12},{"1S", 11},
-            {"KS", 10},{"JS", 09},{"QS", 08},
-            {"0S", 07},{"9S", 06},{"8S", 05},
-            {"7S", 04},{"6S", 03},{"5S", 02},
-            {"4S", 01},
             {"3D", 13},{"2D", 12},{"1D", 11},
             {"KD", 10},{"JD", 09},{"QD", 08},
             {"0D", 07},{"9D", 06},{"8D", 05},
             {"7D", 04},{"6D", 03},{"5D", 02},
             {"4D", 01},
+            {"3S", 13},{"2S", 12},{"1S", 11},
+            {"KS", 10},{"JS", 09},{"QS", 08},
+            {"0S", 07},{"9S", 06},{"8S", 05},
+            {"7S", 04},{"6S", 03},{"5S", 02},
+            {"4S", 01},
             {"3H", 13},{"2H", 12},{"1H", 11},
             {"KH", 10},{"JH", 09},{"QH", 08},
             {"0H", 07},{"9H", 06},{"8H", 05},
@@ -29,5 +31,43 @@
             {"7C", 04},{"6C", 03},{"5C", 02},
             {"4C", 01}
         };
+
+        public void ReturnCardValue(Card card, Card manilha)
+        {
+
+
+            foreach (var carta in CardsValue)
+            {
+
+                if (carta.Key == manilha.Code)
+                {
+                    manilha.CardValue = carta.Value;
+                }
+
+                char suit = card.Code[1];
+
+                if (carta.Key == card.Code)
+                {
+                    card.CardValue = carta.Value;
+                }
+
+                if (card.CardValue == manilha.CardValue && suit == 'D')
+                {
+                    card.CardValue = 21;
+                }
+                else if (carta.Value == manilha.CardValue && suit == 'S')
+                {
+                    card.CardValue = 22;
+                }
+                else if (carta.Value == manilha.CardValue && suit == 'H')
+                {
+                    card.CardValue = 23;
+                }
+                else if (carta.Value == manilha.CardValue && suit == 'C')
+                {
+                    card.CardValue = 24;
+                }
+            }
+        }
     }
 }

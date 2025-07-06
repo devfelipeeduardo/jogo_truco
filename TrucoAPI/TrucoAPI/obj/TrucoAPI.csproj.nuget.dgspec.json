@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj": {}
+    "D:\\Projetos\\React\\projeto_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj": {
+    "D:\\Projetos\\React\\projeto_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj",
+        "projectUniqueName": "D:\\Projetos\\React\\projeto_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj",
         "projectName": "TrucoAPI",
-        "projectPath": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj",
+        "projectPath": "D:\\Projetos\\React\\projeto_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj",
         "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Felipe\\source\\repos\\TrucoAPI\\TrucoAPI\\obj\\",
+        "outputPath": "D:\\Projetos\\React\\projeto_truco\\TrucoAPI\\TrucoAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
