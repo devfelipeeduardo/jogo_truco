@@ -1,4 +1,4 @@
-!["Logo Truco"](https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.steampowered.com%2Fapp%2F1808980%2FTruco%2F%3Fl%3Dportuguese&psig=AOvVaw317YrRsDjUHcv-gUrUBMX6&ust=1751985699002000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOiq87j9qo4DFQAAAAAdAAAAABAE)
+![Logo Truco](https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.steampowered.com%2Fapp%2F1808980%2FTruco%2F%3Fl%3Dportuguese&psig=AOvVaw317YrRsDjUHcv-gUrUBMX6&ust=1751985699002000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOiq87j9qo4DFQAAAAAdAAAAABAE)
 # Truco
 
 Welcome to **Truco**, a fun card game where you can play versus AI. This project is a non-commercial game, made for entertainment purposes only.
