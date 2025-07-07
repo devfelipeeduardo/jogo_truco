@@ -5,7 +5,7 @@ Welcome to **Truco**, a fun card game where you can play versus AI. This project
 
 ## Demonstration:
 
-You can test the game demot at: www.[Not deployed yet].com
+You can test the game demo at: www.[Not deployed yet].com
 
 ## Project Overview
 
@@ -27,3 +27,37 @@ You can test the game demot at: www.[Not deployed yet].com
 - **JavaScript**: Programming language used for DOM interactions.
 - **ASP.NET WEBAPI(C#)**: Framework for game logic and requisitons to API DeckOfCards.
 - **API DeckOfCards**: Api used to get cards from decks and shuffle: "https://www.deckofcardsapi.com/".
+
+## Project Structure
+
+The project structure is as follows:
+```
+Game/
+├──TrucoAPI
+│ └──.vs
+│ └── TrucoAPI.sln
+│ └── TrucoAPI
+│ │ └── Controllers
+│ │ │ └── JogoController.cs
+│ │ └── Models
+│ │ │ └── Card.cs
+│ │ │ └── DeckResponse.cs
+│ │ │ └── Jogador.cs
+│ │ │ └── Partida.cs
+│ │ └── Models
+│ │ │ └── DeckService.cs
+│ │ │ └── JogoService.cs
+│ │ └── Program.cs
+├──TrucoFrontEnd
+│ └── src
+│ │ └── components
+│ │ │ └── Jogadores.jsx
+│ │ │ └── Table.jsx
+│ │ └── styles
+│ │ │ └── App.css
+│ │ │ └── Table.css
+│ │ │ └── index.css
+│ │ └── App.jsx
+│ │ └── Main.jsx
+└── README.md
+```
