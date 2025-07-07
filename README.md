@@ -24,6 +24,7 @@ You can test the game demo at: Demo: 🚧 Not deployed yet – coming soon!
 
 - **HTML**: Markup language used for structuring the game interface.
 - **CSS**: Styling language used for designing the game interface.
+- **React**: A JS framework for componentization.
 - **JavaScript**: Programming language used for DOM interactions.
 - **ASP.NET WEBAPI(C#)**: Framework for game logic and requisitons to API DeckOfCards.
 - **API DeckOfCards**: Api used to get cards from decks and shuffle: "https://www.deckofcardsapi.com/".
