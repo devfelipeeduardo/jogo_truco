@@ -2,12 +2,12 @@
 
 namespace TrucoAPI.Models
 {
-    public class Partida
+    public class Match
     {
         public string DeckId { get; set; } = string.Empty;
-        public List<Jogador> Jogadores { get; set; } = new();
-        public Card Manilha { get; set; }
-        public int RodadaAtual { get; set; } = 1;
+        public List<Player> Players { get; set; } = new();
+        public Card Trump { get; set; }
+        public int Round { get; set; } = 1;
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
             {"3D", 13},{"2D", 12},{"AD", 11},
@@ -32,13 +32,13 @@ namespace TrucoAPI.Models
             {"4C", 01}
         };
 
-        public void SetCardValue(Card card, Card manilha)
+        public void SetCardValue(Card card, Card trump)
         {
-            char manilhaNumber = manilha.Code[0];
+            char trumpNumber = trump.Code[0];
 
-            if (CardsValue.TryGetValue(manilha.Code, out int manilhaValues))
+            if (CardsValue.TryGetValue(trump.Code, out int trumpValues))
             {
-                manilha.CardValue = manilhaNumber == '3' ? 0 : manilhaValues;
+                trump.CardValue = trumpNumber == '3' ? 0 : trumpValues;
 
             }
 
@@ -47,7 +47,7 @@ namespace TrucoAPI.Models
                 card.CardValue = cardValue;
             }
 
-            if (card.CardValue == manilha.CardValue + 1)
+            if (card.CardValue == trump.CardValue + 1)
             {
                 char suit = card.Code[1];
                 switch (suit)

@@ -10,9 +10,6 @@ namespace TrucoAPI.Models
         [JsonPropertyName("deck_id")]
         public string DeckId { get; set; } = string.Empty;
 
-        //[JsonPropertyName("shuffled")]
-        //public bool? Shuffled { get; set; }
-
         [JsonPropertyName("remaining")]
         public int Remaining { get; set; }
         [JsonPropertyName("cards")]
