@@ -32,7 +32,7 @@ namespace TrucoAPI.Services
                 var cartas = await _deckService.DrawCardsAsync(deck.DeckId, 3);
 
                 for (int i=0; i < cartas.Count; i++) {
-                        _partida.ReturnCardValue(cartas[i], _partida.Manilha);
+                        _partida.SetCardValue(cartas[i], _partida.Manilha);
                         Console.WriteLine(cartas[i].Value);
                 }
                 jogador.Mao = cartas;
