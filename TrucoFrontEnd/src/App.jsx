@@ -1,15 +1,13 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Table from './components/Table';
+import Scoreboard from './components/Scoreboard';
 import '/src/styles/App.css'
 
 function App() {
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Table/>} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Table />
+      <Scoreboard />
+    </>
   )
 }
 
