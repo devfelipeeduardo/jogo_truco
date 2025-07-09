@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\i3-7Ger\\Source\\Repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj": {}
+    "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\i3-7Ger\\Source\\Repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj": {
+    "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\i3-7Ger\\Source\\Repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj",
+        "projectUniqueName": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj",
         "projectName": "TrucoAPI",
-        "projectPath": "C:\\Users\\i3-7Ger\\Source\\Repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj",
-        "packagesPath": "C:\\Users\\i3-7Ger\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\i3-7Ger\\Source\\Repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\obj\\",
+        "projectPath": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\TrucoAPI.csproj",
+        "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+        "outputPath": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\i3-7Ger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

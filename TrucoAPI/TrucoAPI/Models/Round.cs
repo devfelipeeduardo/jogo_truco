@@ -2,12 +2,14 @@
 
 namespace TrucoAPI.Models
 {
-    public class Match
+    public class Round
     {
         public string DeckId { get; set; } = string.Empty;
         public List<Player> Players { get; set; } = new();
         public Card Trump { get; set; }
-        public int Round { get; set; } = 1;
+        public int RoundNumber { get; set; } = 1;
+
+        public Player playerWithCardWithHighestValue = new();
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
             {"3D", 13},{"2D", 12},{"AD", 11},
@@ -39,7 +41,6 @@ namespace TrucoAPI.Models
             if (CardsValue.TryGetValue(trump.Code, out int trumpValues))
             {
                 trump.CardValue = trumpNumber == '3' ? 0 : trumpValues;
-
             }
 
             if (CardsValue.TryGetValue(card.Code, out int cardValue))

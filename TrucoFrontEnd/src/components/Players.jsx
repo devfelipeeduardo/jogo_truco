@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Jogadores() {
+function Players() {
   const [game, setGame] = useState(null);
 
   useEffect(() => {
@@ -55,4 +55,4 @@ function Jogadores() {
   );
 }
 
-export default Jogadores;
+export default Players;
