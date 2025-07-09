@@ -1,10 +1,10 @@
-import Jogadores from './Jogadores';
+import Players from './Players';
 import '../styles/Table.css'
 
 function Table() {
     return (
         <div className="table">
-            <Jogadores />
+            <Players />
         </div>
     )
 }
