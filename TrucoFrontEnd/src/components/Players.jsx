@@ -21,7 +21,7 @@ function Players() {
   }, []);
 
   function decideVencedor(cardsSelectedPlayer1, cardsSelectedPlayer2, cardsSelectedPlayer3, cardsSelectedPlayer4) {
-    fetch('http://localhost:5150/api/jogo/decideVencedor', {
+    fetch('http://localhost:5150/api/jogo/decidirVencedor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,19 +34,29 @@ function Players() {
         setGame(data);
       })
       .catch(error => console.error("Deu erro:", error));
+
+    return data;
   }
 
   function getPlayer(playerName) {
     return data.players.find(j => j.name.toLowerCase() === playerName);
+
+  }
+  function chooseCard(playerIndex, card) {
+        setCardOnList(card, playerIndex);
   }
 
-  function setCardOnList(card) {
+  function setCardOnList(card, i) {
     setCardsSelected(prevLista =>
       prevLista.map((item, index) =>
-        index === 0 ? card : item)
+        index === i ? card : item)
     )
     console.log("card: ", card)
   }
+
+  useEffect(() => {
+    console.log("Cards Atualizados", cardsSelected);
+  }, [cardsSelected]);
 
   if (!data) return <p>Carregando...</p>;
 
@@ -55,50 +65,33 @@ function Players() {
   const player3 = getPlayer("jonathan")
   const player4 = getPlayer("gabriel")
 
-  function chooseCard(player, card) {
-    switch (player) {
-      case player1:
-        setCardOnList(card);
-        break;
-      case player2:
-        setCardOnList(card);
-        break;
-      case player3:
-        setCardOnList(card);
-        break;
-      case player4:
-        setCardOnList(card);
-        break;
-    }
-  }
-
   return (
     <>
       <div className="player1">
         {player1.hand.map((card, index) => (
-          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(player1, card)} />
+          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(0, card)} />
         ))}
       </div>
       <div className="player2">
         {player2.hand.map((card, index) => (
-          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(player2, card)} />
+          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(1, card)} />
         ))}
       </div>
       <div className="player3">
         {player3.hand.map((card, index) => (
-          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(player3, card)} />
+          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(2, card)} />
         ))}
       </div>
       <div className="player4">
         {player4.hand.map((card, index) => (
-          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(player4, card)} />
+          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(3, card)} />
         ))}
       </div>
       <div className="trump">
         <img key={5} src={data.trump.image} alt={`Carta: Manilha`} className="card" />
       </div>
       <div>
-        <button onClick={() => decideVencedor(cardsSelected[0],)}>
+        <button onClick={() => decideVencedor(...cardsSelected)}>
           play
         </button>
       </div>
