@@ -1,5 +1,6 @@
 .card {
     width: 80px;
+    margin: 2em;
 }
 
 .table {
@@ -39,3 +40,4 @@
 .trump {
     bottom: 450px;
 }
+
