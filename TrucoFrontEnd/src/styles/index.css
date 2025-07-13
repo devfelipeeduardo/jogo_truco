@@ -53,17 +53,6 @@ h5 {
   font-size: 1rem;
 }
 
-button {
- font-size: 5rem;
-}
-button:hover {
-  color: inherit;
-}
-
-button:focus,
-button:focus-visible {
-  outline: none;
-}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -72,8 +61,5 @@ button:focus-visible {
   }
   a:hover {
     color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }
