@@ -32,9 +32,9 @@ namespace TrucoAPI.Controllers
         }
 
         [HttpPost("decidirVencedor")]
-        public async Task<IActionResult> ReturnWinner([FromBody] List<string> players)
+        public IActionResult ReturnWinner([FromBody] List<(Player, Card)> players)
         { 
-            await _roundService.DecideWinnerAsync(players.ToArray());
+            _roundService.DecideWinner(players);
 
             return Ok(_roundService.GetRoundState());
 

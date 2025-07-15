@@ -1,4 +1,4 @@
-import { startTransition, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 
 function Players() {
   const [data, setData] = useState(null);
@@ -76,11 +76,11 @@ function Players() {
   }
 
   useEffect(() => {
-    const everyCardFilled = cardsSelected.every(card => card !== null);
+    const everyCardFilled = cardsSelected.every(pair => pair[0] !== null && pair[1] !== null);
     if (everyCardFilled) {
       getWinner();
     }
-  }, [cardsSelected]);
+  }, [cardsSelected, getWinner]);
 
   if (!data) return <p>Carregando...</p>;
   const player1 = getPlayer("felipe")

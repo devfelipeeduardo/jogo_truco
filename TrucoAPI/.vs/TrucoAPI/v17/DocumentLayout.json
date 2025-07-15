@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\round.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\round.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\controllers\\roundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\controllers\\roundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\services\\roundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\services\\roundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\round.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\round.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 325,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Player.cs",
               "RelativeDocumentMoniker": "TrucoAPI\\Models\\Player.cs",
@@ -63,13 +63,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "RoundService.cs",
               "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
               "RelativeDocumentMoniker": "TrucoAPI\\Services\\RoundService.cs",
               "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
               "RelativeToolTip": "TrucoAPI\\Services\\RoundService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAEwCYAAAAWAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAIwCQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-09T00:35:33.402Z",
               "EditorCaption": ""
@@ -88,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Round.cs",
               "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Round.cs",
               "RelativeDocumentMoniker": "TrucoAPI\\Models\\Round.cs",
@@ -96,8 +96,7 @@
               "RelativeToolTip": "TrucoAPI\\Models\\Round.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAhwCYAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T00:31:38.165Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T00:31:38.165Z"
             },
             {
               "$type": "Document",
@@ -125,13 +124,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "RoundController.cs",
               "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Controllers\\RoundController.cs",
               "RelativeDocumentMoniker": "TrucoAPI\\Controllers\\RoundController.cs",
               "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Controllers\\RoundController.cs",
               "RelativeToolTip": "TrucoAPI\\Controllers\\RoundController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAASwCQAAAAxAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAwwBYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-08T11:06:06.465Z",
               "EditorCaption": ""

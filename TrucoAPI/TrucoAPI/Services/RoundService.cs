@@ -36,25 +36,19 @@ namespace TrucoAPI.Services
                 player.Hand = cards;
             }
         }
-        public async Task DecideWinnerAsync(string[] players)
+        public void DecideWinner(List<(Player, Card)> playerCards)
         {
             _round = GetRoundState();
 
             Card highestCardValue = new Card { CardValue = 0};
 
-            foreach (var player in _round.Players)
+            foreach (var (player, card) in playerCards)
             {
-                foreach (var card in player.Hand)
+                if (card.CardValue > highestCardValue.CardValue)
                 {
-                    if (card.SelectedByPlayer == true)
-                    {
-                        if (card.CardValue > highestCardValue.CardValue)
-                        {
-                            highestCardValue = card;
-                            _round.playerWithCardWithHighestValue = player;
-                        }
-                    }
-                }        
+                    highestCardValue = card;
+                    _round.playerWithCardWithHighestValue = player;
+                }   
             }
         }
 
