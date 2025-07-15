@@ -36,18 +36,28 @@ namespace TrucoAPI.Services
                 player.Hand = cards;
             }
         }
-        public void DecideWinner(List<(Player, Card)> playerCards)
+        public void DecideWinner(List<Card> cards)
         {
             _round = GetRoundState();
 
             Card highestCardValue = new Card { CardValue = 0};
 
-            foreach (var (player, card) in playerCards)
+            foreach (var card in cards)
             {
                 if (card.CardValue > highestCardValue.CardValue)
                 {
                     highestCardValue = card;
-                    _round.playerWithCardWithHighestValue = player;
+
+                    foreach (var player in _round.Players) { 
+                    
+                        foreach(var cardPlayer in player.Hand)
+                        {
+                            if (cardPlayer.CardValue == highestCardValue.CardValue)
+                            {
+                                _round.PlayerWithCardWithHighestValue = player;
+                            }
+                        }
+                    }
                 }   
             }
         }

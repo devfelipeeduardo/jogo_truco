@@ -32,12 +32,10 @@ namespace TrucoAPI.Controllers
         }
 
         [HttpPost("decidirVencedor")]
-        public IActionResult ReturnWinner([FromBody] List<(Player, Card)> players)
+        public IActionResult ReturnWinner([FromBody] List<Card> cards)
         { 
-            _roundService.DecideWinner(players);
-
+            _roundService.DecideWinner(cards);
             return Ok(_roundService.GetRoundState());
-
         }
 
     }

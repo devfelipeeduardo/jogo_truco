@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\TrucoAPI",
+    "\\TrucoAPI\\Controllers",
     "\\TrucoAPI\\Services"
   ],
-  "SelectedNode": "\\TrucoAPI",
+  "SelectedNode": "\\TrucoAPI\\Controllers\\RoundController.cs",
   "PreviewInSolutionExplorer": false
 }

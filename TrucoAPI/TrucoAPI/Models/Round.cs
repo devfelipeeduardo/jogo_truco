@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace TrucoAPI.Models
 {
@@ -6,10 +7,11 @@ namespace TrucoAPI.Models
     {
         public string DeckId { get; set; } = string.Empty;
         public List<Player> Players { get; set; } = new();
-        public Card Trump { get; set; }
+        public Card? Trump { get; set; }
         public int RoundNumber { get; set; } = 1;
 
-        public Player playerWithCardWithHighestValue = new();
+        [JsonPropertyName("playerWithCardWithHighestValue")]
+        public Player PlayerWithCardWithHighestValue { get; set; } = new();
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
             {"3D", 13},{"2D", 12},{"AD", 11},
