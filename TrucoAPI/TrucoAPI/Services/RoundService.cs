@@ -30,7 +30,8 @@ namespace TrucoAPI.Services
             {
                 var cards = await _deckService.DrawCardsAsync(deck.DeckId, 3);
 
-                foreach (var card in cards) {
+                foreach (var card in cards)
+                {
                     _round.SetCardValue(card, _round.Trump);
                 }
                 player.Hand = cards;
@@ -40,26 +41,13 @@ namespace TrucoAPI.Services
         {
             _round = GetRoundState();
 
-            Card highestCardValue = new Card { CardValue = 0};
+            var highestCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
 
-            foreach (var card in cards)
-            {
-                if (card.CardValue > highestCardValue.CardValue)
-                {
-                    highestCardValue = card;
+            if (highestCard == null)
+                return;
 
-                    foreach (var player in _round.Players) { 
-                    
-                        foreach(var cardPlayer in player.Hand)
-                        {
-                            if (cardPlayer.CardValue == highestCardValue.CardValue)
-                            {
-                                _round.PlayerWithCardWithHighestValue = player;
-                            }
-                        }
-                    }
-                }   
-            }
+            var winningPlayer = _round.Players.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == highestCard.CardValue));
+
         }
 
         public Round GetRoundState() => _round;
