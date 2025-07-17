@@ -36,37 +36,38 @@ namespace TrucoAPI.Models
             {"4C", 01}
         };
 
-        public void SetCardValue(Card card, Card trump)
+        public void SetTrumpValue()
         {
-            char trumpNumber = trump.Code[0];
+            if (Trump == null)
+                return;
 
-            if (CardsValue.TryGetValue(trump.Code, out int trumpValues))
+            char trumpNumber = Trump.Code[0];
+
+            if (CardsValue.TryGetValue(Trump.Code, out int trumpValues))
             {
-                trump.CardValue = trumpNumber == '3' ? 0 : trumpValues;
+                Trump.CardValue = trumpNumber == '3' ? 0 : trumpValues;
             }
+        }
 
-            if (CardsValue.TryGetValue(card.Code, out int cardValue))
-            {
-                card.CardValue = cardValue;
-            }
+        public void SetCardValueTest(Card card)
+        {
+            if (!CardsValue.TryGetValue(card.Code, out int cardValue))
+                return;
 
-            if (card.CardValue == trump.CardValue + 1)
+            card.CardValue = cardValue;
+
+            if (Trump == null)
+                return;
+
+            if (card.CardValue == Trump.CardValue + 1)
             {
                 char suit = card.Code[1];
                 switch (suit)
                 {
-                    case 'D':
-                        card.CardValue = 21;
-                        break;
-                    case 'S':
-                        card.CardValue = 22;
-                        break;
-                    case 'H':
-                        card.CardValue = 23;
-                        break;
-                    case 'C':
-                        card.CardValue = 24;
-                        break;
+                    case 'D': card.CardValue = 21; break;
+                    case 'S': card.CardValue = 22; break;
+                    case 'H': card.CardValue = 23; break;
+                    case 'C': card.CardValue = 24; break;
                 }
                 
             }

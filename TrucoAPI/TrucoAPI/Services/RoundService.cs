@@ -25,14 +25,13 @@ namespace TrucoAPI.Services
             var trump = await _deckService.DrawCardsAsync(deck.DeckId, 1);
             _round.Trump = trump[0];
 
-            int trumpCardValue = _round.Trump.CardValue;
             foreach (var player in _round.Players)
             {
                 var cards = await _deckService.DrawCardsAsync(deck.DeckId, 3);
 
                 foreach (var card in cards)
                 {
-                    _round.SetCardValue(card, _round.Trump);
+                    _round.SetCardValueTest(card);
                 }
                 player.Hand = cards;
             }
