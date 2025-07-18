@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 325,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,6 +47,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoundService.cs",
+              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Services\\RoundService.cs",
+              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
+              "RelativeToolTip": "TrucoAPI\\Services\\RoundService.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAYwBoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T00:35:33.402Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -62,19 +75,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RoundService.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Services\\RoundService.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
-              "RelativeToolTip": "TrucoAPI\\Services\\RoundService.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAYwCQAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T00:35:33.402Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "DeckService.cs",
               "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\DeckService.cs",
@@ -83,8 +83,7 @@
               "RelativeToolTip": "TrucoAPI\\Services\\DeckService.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAUwBYAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T00:35:34.041Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T00:35:34.041Z"
             },
             {
               "$type": "Document",
@@ -94,7 +93,7 @@
               "RelativeDocumentMoniker": "TrucoAPI\\Models\\Round.cs",
               "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Round.cs",
               "RelativeToolTip": "TrucoAPI\\Models\\Round.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAQwCcAAAAJAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAAAYwCcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-09T00:31:38.165Z",
               "EditorCaption": ""
@@ -133,8 +132,7 @@
               "RelativeToolTip": "TrucoAPI\\Controllers\\RoundController.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAIA4wBcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T11:06:06.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T11:06:06.465Z"
             }
           ]
         }

@@ -49,7 +49,7 @@ namespace TrucoAPI.Models
             }
         }
 
-        public void SetCardValueTest(Card card)
+        public void SetCardValue(Card card)
         {
             if (!CardsValue.TryGetValue(card.Code, out int cardValue))
                 return;
