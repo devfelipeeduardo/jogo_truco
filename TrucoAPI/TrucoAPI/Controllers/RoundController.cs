@@ -9,9 +9,9 @@ namespace TrucoAPI.Controllers
     [Route("api/jogo")]
     public class RoundController : Controller
     {
-        private readonly RoundService _roundService;
+        private readonly TurnService _roundService;
 
-        public RoundController(RoundService gameService) { 
+        public RoundController(TurnService gameService) { 
             _roundService = gameService;
         }
 

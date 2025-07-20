@@ -3,11 +3,11 @@ using TrucoAPI.Models;
 
 namespace TrucoAPI.Services
 {
-    public class RoundService
+    public class TurnService
     {
         private readonly DeckService _deckService;
 
-        public RoundService(DeckService deckService)
+        public TurnService(DeckService deckService)
         {
             _deckService = deckService;
         }
@@ -15,6 +15,8 @@ namespace TrucoAPI.Services
         private Round _round = new Round();
         public async Task StartRoundAsync(string[] players)
         {
+
+            // Seleciona os jogadores pelos nomes.
             var deck = await _deckService.CreateDeckAsync();
             _round = new Round
             {
@@ -25,21 +27,28 @@ namespace TrucoAPI.Services
             var trump = await _deckService.DrawCardsAsync(deck.DeckId, 1);
             _round.Trump = trump[0];
 
+            //Para descobrir a quantidade das cartas, decidi multiplicar a quantidade dos jogadores por 3.
+            //Assim crio apenas uma requisição com await, melhoro e melhoro o desempenho
             int totalCards = _round.Players.Count * 3;
             var allCards = await _deckService.DrawCardsAsync(deck.DeckId, totalCards);
-
             for (int i=0; i < _round.Players.Count; i++)
             {
-                var playerCard = allCards.GetRange(i * 3, 3);
+                //Interessante notar que, utilizando GetRange, consigo mudar o ponto de partida de escolha das cartas de um jgoador apartir da soma do contador.
+                //Assim eu distribuo 3 cartas para cada jogador, pulando de 3 índices em 3 índices.
+                var playerCards = allCards.GetRange(i * 3, 3);
 
-                foreach (var card in playerCard) {_round.SetCardValue(card);}
-                _round.Players[i].Hand = playerCard;
+                //Pensei em utilizar outros metodos, como: foreach (var card in playerCard) {_round.SetCardValue(card);}
+                //Entretanto, buscando um foreach mais limpo, utilizei o método abaixo:
+                playerCards.ForEach(_round.SetCardValue);
+
+                _round.Players[i].Hand = playerCards;
             }
         }
         public void DecideWinner(List<Card> cards)
         {
             _round = GetRoundState();
-
+            //Ordena descendente e pega o 1°. Ótimo para pegar o objeto inteiro apartir de uma condição.
+            //Outro método que é parecido é o Max(). Entretanto, o max retorna um valor, e não o objeto inteiro.
             var highestCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
 
             if (highestCard == null)
