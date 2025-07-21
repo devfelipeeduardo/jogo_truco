@@ -46,7 +46,7 @@ namespace TrucoAPI.Services
         }
         public void DecideWinner(List<Card> cards)
         {
-            _round = GetRoundState();
+            _round = GetTurnState();
             //Ordena descendente e pega o 1°. Ótimo para pegar o objeto inteiro apartir de uma condição.
             //Outro método que é parecido é o Max(). Entretanto, o max retorna um valor, e não o objeto inteiro.
             var highestCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
@@ -58,6 +58,6 @@ namespace TrucoAPI.Services
 
         }
 
-        public Round GetRoundState() => _round;
+        public Round GetTurnState() => _round;
     }
 }

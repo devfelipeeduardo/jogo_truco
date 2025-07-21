@@ -8,7 +8,6 @@ namespace TrucoAPI.Models
         public string DeckId { get; set; } = string.Empty;
         public List<Player> Players { get; set; } = new();
         public Card? Trump { get; set; }
-        public int RoundNumber { get; set; } = 1;
 
         [JsonPropertyName("playerWithCardWithHighestValue")]
         public Player PlayerWithCardWithHighestValue { get; set; } = new();
