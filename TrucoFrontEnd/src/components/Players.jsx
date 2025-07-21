@@ -39,7 +39,7 @@ function Players() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5150/api/jogo/iniciar', {
+    fetch('http://localhost:5150/api/turno/iniciar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ function Players() {
   }, [])
 
   function getWinner() {
-    fetch('http://localhost:5150/api/jogo/decidirVencedor', {
+    fetch('http://localhost:5150/api/turno/decidirVencedor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
