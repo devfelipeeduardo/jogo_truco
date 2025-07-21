@@ -7,35 +7,35 @@ namespace TrucoAPI.Controllers
 {
     [ApiController]
     [Route("api/jogo")]
-    public class RoundController : Controller
+    public class TurnController : Controller
     {
-        private readonly TurnService _roundService;
+        private readonly TurnService _turnService;
 
-        public RoundController(TurnService gameService) { 
-            _roundService = gameService;
+        public TurnController(TurnService gameService) { 
+            _turnService = gameService;
         }
 
         [HttpPost("iniciar")]
-        public async Task<IActionResult> StartRound([FromBody] List<string> players)
+        public async Task<IActionResult> StartTurn([FromBody] List<string> players)
         {
             if (players.Count != 2 && players.Count != 4)
                 return BadRequest("O jogo precisa de 2 ou 4 jogadores!");
 
-            await _roundService.StartRoundAsync(players.ToArray());
-            return Ok(_roundService.GetRoundState());
+            await _turnService.StartRoundAsync(players.ToArray());
+            return Ok(_turnService.GetTurnState());
         }
 
         [HttpGet]
         public IActionResult GetPartidaState()
         {
-            return Ok(_roundService.GetRoundState());
+            return Ok(_turnService.GetTurnState());
         }
 
         [HttpPost("decidirVencedor")]
         public IActionResult ReturnWinner([FromBody] List<Card> cards)
         { 
-            _roundService.DecideWinner(cards);
-            return Ok(_roundService.GetRoundState());
+            _turnService.DecideWinner(cards);
+            return Ok(_turnService.GetTurnState());
         }
 
     }
