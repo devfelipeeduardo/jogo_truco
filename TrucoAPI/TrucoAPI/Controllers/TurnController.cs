@@ -21,7 +21,7 @@ namespace TrucoAPI.Controllers
             if (players.Count != 2 && players.Count != 4)
                 return BadRequest("O jogo precisa de 2 ou 4 jogadores!");
 
-            await _turnService.StartRoundAsync(players.ToArray());
+            await _turnService.StartTurnAsync(players.ToArray());
             return Ok(_turnService.GetTurnState());
         }
 
