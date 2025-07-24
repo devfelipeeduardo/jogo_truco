@@ -1,16 +1,17 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using TrucoAPI.Models.Entities;
 
-namespace TrucoAPI.Models
+namespace TrucoAPI.Models.Game
 {
     public class Turn
     {
         public string DeckId { get; set; } = string.Empty;
-        public List<Player> Players { get; set; } = new();
         public Card? Trump { get; set; }
+        public List<Player> Players { get; set; } = new List<Player>();
 
         [JsonPropertyName("playerWithCardWithHighestValue")]
-        public Player PlayerWithCardWithHighestValue { get; set; } = new();
+        public Player? PlayerWithCardWithHighestValue { get; set; } //Verificar futuramente!
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
             {"3D", 13},{"2D", 12},{"AD", 11},
@@ -68,7 +69,7 @@ namespace TrucoAPI.Models
                     case 'H': card.CardValue = 23; break;
                     case 'C': card.CardValue = 24; break;
                 }
-                
+
             }
         }
     }

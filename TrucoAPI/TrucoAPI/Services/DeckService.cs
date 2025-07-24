@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using TrucoAPI.Models;
+using TrucoAPI.Models.Entities;
 
 namespace TrucoAPI.Services
 {

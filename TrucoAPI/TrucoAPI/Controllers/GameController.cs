@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrucoAPI.Services;
-using TrucoAPI.Models;
+using TrucoAPI.Models.Game;
 
 
 namespace TrucoAPI.Controllers
@@ -22,7 +22,7 @@ namespace TrucoAPI.Controllers
             if (players.Count != 2 && players.Count != 4)
                 return BadRequest("O jogo precisa de 2 ou 4 jogadores!");
 
-            _game.setPlayers(players);
+            _game.SetTeams(players);
             return Ok("Jogadores adicionados com sucesso");
         }
 

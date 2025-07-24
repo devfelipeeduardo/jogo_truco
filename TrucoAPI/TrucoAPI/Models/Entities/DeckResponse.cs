@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace TrucoAPI.Models
+namespace TrucoAPI.Models.Entities
 {
     public class DeckResponse
     {

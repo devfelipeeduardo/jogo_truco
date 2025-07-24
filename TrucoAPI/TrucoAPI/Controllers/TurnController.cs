@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
-using TrucoAPI.Models;
+using TrucoAPI.Models.Entities;
 using TrucoAPI.Services;
 
 namespace TrucoAPI.Controllers
@@ -21,7 +21,8 @@ namespace TrucoAPI.Controllers
             if (players.Count != 2 && players.Count != 4)
                 return BadRequest("O jogo precisa de 2 ou 4 jogadores!");
 
-            await _turnService.StartTurnAsync(players.ToArray());
+            //await _turnService.StartTurn(players.ToArray());
+            //Primeiro estou fazendo a lógica, depois crio o endpoint.
             return Ok(_turnService.GetTurnState());
         }
 

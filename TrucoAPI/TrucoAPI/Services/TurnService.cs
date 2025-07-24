@@ -1,50 +1,65 @@
 ﻿using Microsoft.VisualBasic;
-using TrucoAPI.Models;
+using TrucoAPI.Models.Entities;
+using TrucoAPI.Models.Game;
 
 namespace TrucoAPI.Services
 {
     public class TurnService
     {
         private readonly DeckService _deckService;
+        private readonly Game _game;
 
-        public TurnService(DeckService deckService)
+        public TurnService(DeckService deckService, Game game)
         {
             _deckService = deckService;
+            _game = game;
         }
 
         private Turn _turn = new Turn();
-        public async Task StartTurnAsync(string[] players)
-        {
 
+        public async Task StartTurn()
+        {
             var deck = await _deckService.CreateDeckAsync();
             _turn = new Turn
             {
                 DeckId = deck.DeckId,
-                Players = players.Select(n => new Player { Name = n }).ToList()
             };
+
+            Team team1 = _game.Teams[0];
+            Team team2 = _game.Teams[1];
 
             var trump = await _deckService.DrawCardsAsync(deck.DeckId, 1);
             _turn.Trump = trump[0];
-            int totalCards = _turn.Players.Count * 3;
+
+            List<Player> todosJogadores = new List<Player>();
+            todosJogadores.AddRange(team1.Players);
+            todosJogadores.AddRange(team2.Players);
+
+            int totalCards = 3 * todosJogadores.Count;
             var allCards = await _deckService.DrawCardsAsync(deck.DeckId, totalCards);
-            for (int i=0; i < _turn.Players.Count; i++)
+
+            for (int i=0; i < todosJogadores.Count; i++)
             {
                 var playerCards = allCards.GetRange(i * 3, 3);
 
                 playerCards.ForEach(_turn.SetCardValue);
 
-                _turn.Players[i].Hand = playerCards;
+                todosJogadores[i].Hand = playerCards;
             }
+
+            _turn.Players = todosJogadores;
         }
-        public void DecideWinner(List<Card> cards)
+        public Player DecideWinner(List<Card> cards)
         {
             _turn = GetTurnState();
             var highestCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
 
             if (highestCard == null)
-                return;
+                return new Player(); //Corrigir futuramente!
 
             var winningPlayer = _turn.Players.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == highestCard.CardValue));
+
+            return winningPlayer;
         }
 
         public Turn GetTurnState() => _turn;

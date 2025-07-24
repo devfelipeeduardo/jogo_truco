@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace TrucoAPI.Models
+namespace TrucoAPI.Models.Entities
 {
     public class Card
     {
@@ -13,7 +13,7 @@ namespace TrucoAPI.Models
         [JsonPropertyName("image")]
         public string Image { get; set; } = string.Empty;
         public int CardValue { get; set; } = 0;
-        public bool SelectedByPlayer {  get; set; }
+        public bool SelectedByPlayer { get; set; }
 
     }
 
