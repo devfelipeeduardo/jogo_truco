@@ -13,9 +13,10 @@ namespace TrucoAPI.Services
         }
 
         private Round _round = new Round();
-        public async Task StartRoundAsync(List<string> players)
+        public async Task StartRoundAsync(string[] players)
         {
             await _turnService.StartTurnAsync(players.ToArray());
+            
         }
 
         public Round GetRoundState() => _round;
