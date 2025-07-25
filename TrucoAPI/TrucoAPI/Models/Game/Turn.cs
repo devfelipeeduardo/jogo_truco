@@ -72,5 +72,16 @@ namespace TrucoAPI.Models.Game
 
             }
         }
+
+        public Card getCardHighestValue(List<Card> cards)
+        {
+            var highestCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
+
+            if (highestCard == null)
+                return new Card(); //Corrigir futuramente!
+
+            return highestCard;
+        }
+
     }
 }
