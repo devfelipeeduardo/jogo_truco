@@ -8,7 +8,6 @@ namespace TrucoAPI.Services
     {
         private readonly DeckService _deckService;
         private readonly Game _game;
-        private List<Player> _todosOsJogadores = new List<Player>();
 
         public TurnService(DeckService deckService, Game game)
         {
@@ -22,38 +21,41 @@ namespace TrucoAPI.Services
         {
             Team team1 = _game.Teams[0];
             Team team2 = _game.Teams[1];
-            _todosOsJogadores.AddRange(team1.Players);
-            _todosOsJogadores.AddRange(team2.Players);
+            _turn.Players.AddRange(team1.Players);
+            _turn.Players.AddRange(team2.Players);
 
             DeckResponse deck = await _deckService.CreateDeckAsync();
+
             _turn = new Turn{ DeckId = deck.DeckId };
+
             Card trump = await GetTrump(deck);
 
             int totalCards = GetTotalCards();
-            var allCards = await getAllCards(deck, totalCards);
+            var allCards = await GetAllCardsAsync(deck, totalCards);
 
-            for (int i=0; i < _todosOsJogadores.Count; i++)
+            for (int i=0; i < _turn.Players.Count; i++)
             {
                 var playerCards = allCards.GetRange(i * 3, 3);
 
-                playerCards.ForEach(_turn.SetCardValue);
-
-                _todosOsJogadores[i].Hand = playerCards;
+                foreach (var card in playerCards)
+                {
+                    _turn.SetCardValue(card);
+                }
+                _turn.Players[i].Hand = playerCards;
             }
 
-            _turn.Players = _todosOsJogadores;
         }
 
-        public async Task<List<Card>> getAllCards(DeckResponse deck, int totalCards) {
+        public async Task<List<Card>> GetAllCardsAsync(DeckResponse deck, int totalCards) {
             return await _deckService.DrawCardsAsync(deck.DeckId, totalCards);
         }
 
-        public int GetTotalCards() => 3 * _todosOsJogadores.Count();
+        public int GetTotalCards() => 3 * _turn.Players.Count();
 
         public async Task<Card> GetTrump(DeckResponse deck)
         {
-            List<Card> trump = await _deckService.DrawCardsAsync(deck.DeckId, 1);
-            return trump[0];
+            List<Card> trumpCards = await _deckService.DrawCardsAsync(deck.DeckId, 1);
+            return trumpCards.FirstOrDefault() ?? throw new Exception("Não foi possível tirar a carta vira.");
         }
 
         public Player DecideWinner(List<Card> cards)
@@ -61,7 +63,6 @@ namespace TrucoAPI.Services
             _turn = GetTurnState();
 
             var highestCard = _turn.getCardHighestValue(cards);
-
             var winningPlayer = _turn.Players.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == highestCard.CardValue));
 
             return winningPlayer;
