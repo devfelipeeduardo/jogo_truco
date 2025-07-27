@@ -80,7 +80,7 @@
               "RelativeDocumentMoniker": "TrucoAPI\\Services\\TurnService.cs",
               "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\TurnService.cs",
               "RelativeToolTip": "TrucoAPI\\Services\\TurnService.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAYwCsAAAAoAAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAAgwEMAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-09T00:35:33.402Z",
               "EditorCaption": ""
@@ -107,8 +107,7 @@
               "RelativeToolTip": "TrucoAPI\\Models\\Game\\Turn.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEsAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-20T02:30:25.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-20T02:30:25.818Z"
             },
             {
               "$type": "Document",
@@ -216,8 +215,7 @@
               "RelativeToolTip": "TrucoAPI\\Services\\DeckService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T00:35:34.041Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T00:35:34.041Z"
             },
             {
               "$type": "Document",

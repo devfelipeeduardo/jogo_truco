@@ -65,6 +65,7 @@ namespace TrucoAPI.Services
             var highestCard = _turn.getCardHighestValue(cards);
             var winningPlayer = _turn.Players.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == highestCard.CardValue));
 
+            //Corrigir possivel nulo em WinningPlayer
             return winningPlayer;
         }
 
