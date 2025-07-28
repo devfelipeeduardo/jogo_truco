@@ -4,11 +4,18 @@
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public List<Card> Hand { get; set; } = new List<Card>();
+        public List<Card> Hand { get; private set; } = new List<Card>();
 
         public Player(int id, string name) {
             Id = id;
             Name = name;
         }
+
+        public void SetHand(List<Card> hand)
+        {
+            Hand = hand;
+        }
+
+        
     }
 }

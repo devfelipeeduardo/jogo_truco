@@ -25,13 +25,6 @@ namespace TrucoAPI.Models.Game
             Teams[1].AddPlayer(new Player(3, playersName[3]));
         }
 
-        public Team getWhoWin()
-        {
-
-            var winningPlayer = Game.Teams.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == highestCard.CardValue));
-
-        }
-
     //    List<Player> todosJogadores = new List<Player>();
     //    todosJogadores.AddRange(team1.Players);
     //    todosJogadores.AddRange(team2.Players);

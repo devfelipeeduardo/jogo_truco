@@ -10,8 +10,9 @@ namespace TrucoAPI.Models.Game
         public Card? Trump { get; set; }
         public List<Player> Players { get; set; } = new List<Player>();
 
-        [JsonPropertyName("playerWithCardWithHighestValue")]
-        public Player? PlayerWithCardWithHighestValue { get; set; } //Verificar futuramente!
+        //Trocar no FrontEnd
+        [JsonPropertyName("winner")]
+        public Player? Winner { get; set; }
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
             {"3D", 13},{"2D", 12},{"AD", 11},
