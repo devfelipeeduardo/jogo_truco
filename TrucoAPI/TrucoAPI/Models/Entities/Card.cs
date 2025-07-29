@@ -14,7 +14,6 @@ namespace TrucoAPI.Models.Entities
         public string Image { get; set; } = string.Empty;
         public int CardValue { get; set; } = 0;
         public bool SelectedByPlayer { get; set; }
-
     }
 
 }

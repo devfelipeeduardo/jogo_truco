@@ -2,14 +2,11 @@
 {
     public class Team
     {
-        public int TeamId { get; set; }
         private List<Player> Players { get; set; } = new List<Player>();
-        public int Score { get; set; }
+        private int TeamId { get; set; }
+        private int Score { get; set; }
 
-        public Team(List<Player> players)
-        {
-            Players = players;
-        }
+        public Team(){ }
         public void AddPlayer(Player player)
         {
             Players.Add(player);

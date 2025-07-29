@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
 using TrucoAPI.Models.Entities;
-using TrucoAPI.Services;
 
 namespace TrucoAPI.Models.Game
 {
@@ -11,36 +10,27 @@ namespace TrucoAPI.Models.Game
 
         //OBS: PlayerScore será passado via Team.Score
 
-        public Game() {;
-            Teams.Add(new Team());
-            Teams.Add(new Team());
-        }
+        public Game() {}
 
         public void SetTeams(List<string> playersName)
         {
-            Teams[0].AddPlayer(new Player(0, playersName[0]));
-            Teams[0].AddPlayer(new Player(1, playersName[1]));
 
-            Teams[1].AddPlayer(new Player(2, playersName[2]));
-            Teams[1].AddPlayer(new Player(3, playersName[3]));
+            if (playersName.Count != 4)
+                throw new ArgumentException("São necessários 4 jogadores para o jogo começar!");
+
+            Teams.Clear();
+            Teams.Add(new Team());
+            Teams.Add(new Team());
+
+            Teams[0].AddPlayer(new Player(playersName[0]));
+            Teams[0].AddPlayer(new Player(playersName[1]));
+
+            Teams[1].AddPlayer(new Player(playersName[2]));
+            Teams[1].AddPlayer(new Player(playersName[3]));
+
         }
-
-    //    List<Player> todosJogadores = new List<Player>();
-    //    todosJogadores.AddRange(team1.Players);
-    //    todosJogadores.AddRange(team2.Players);
-
-    //    int totalCards = 3 * todosJogadores.Count;
-    //    var allCards = await _deckService.DrawCardsAsync(deck.DeckId, totalCards);
-
-    //        for (int i=0; i<todosJogadores.Count; i++)
-    //        {
-    //        var playerCards = allCards.GetRange(i * 3, 3);
-
-    //    playerCards.ForEach(_turn.SetCardValue);
-
-    //            todosJogadores[i].Hand = playerCards;
-    //        }
-
-    //    _turn.Players = todosJogadores;
+        public List<Player> GetAllPlayers(){
+            return Teams.SelectMany(team => team.getPlayers()).ToList(); 
+        }
     }
 }

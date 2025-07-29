@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TrucoAPI.Models.Game;
+﻿using TrucoAPI.Models.Game;
 
 namespace TrucoAPI.Services
 {
@@ -13,7 +12,7 @@ namespace TrucoAPI.Services
         }
 
         private Round _round = new Round();
-        public async Task StartRound(string[] players)
+        public async Task StartRound()
         {
             await _turnService.StartTurn();
             

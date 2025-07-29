@@ -16,23 +16,13 @@ namespace TrucoAPI.Services
             _game = game;
         }
 
-
         public async Task StartTurn()
         {
             var deck = await _deckService.CreateDeckAsync();
             _turn = new Turn{ DeckId = deck.DeckId };
 
-            SetupPlayers();
             await SetTrumpCard(deck);
             await DistributePlayer(deck);
-        }
-
-        private void SetupPlayers()
-        {
-            if (_turn.Players == null) return;
-
-            _turn.Players.AddRange(_game.Teams[0].getPlayers());
-            _turn.Players.AddRange(_game.Teams[1].getPlayers());
         }
 
         public async Task<List<Card>> GetAllCardsAsync(DeckResponse deck, int totalCards) {
@@ -41,7 +31,6 @@ namespace TrucoAPI.Services
 
         public async Task SetTrumpCard(DeckResponse deck)
         {
-
             if (_turn == null) return;
 
             List<Card> trumpCards = await _deckService.DrawCardsAsync(deck.DeckId, 1);
@@ -53,11 +42,15 @@ namespace TrucoAPI.Services
 
         public async Task DistributePlayer(DeckResponse deck)
         {
-            if (_turn.Players == null) return;
-            int totalCards = 3 * _turn.Players.Count();
+            if (_game.Teams == null) return;
+            if (_turn == null) return;
+
+            var allPlayers = _game.GetAllPlayers();
+            int totalCards = 3 * allPlayers.Count;
+
             var allCards = await GetAllCardsAsync(deck, totalCards);
 
-            for (int i = 0; i < _turn.Players.Count; i++)
+            for (int i = 0; i < allPlayers.Count; i++)
             {
                 var playerCards = allCards.GetRange(i * 3, 3);
 
@@ -65,22 +58,18 @@ namespace TrucoAPI.Services
                 {
                     _turn.SetCardValue(card);
                 }
-                _turn.Players[i].SetHand(playerCards);
+                allPlayers[i].SetHand(playerCards);
             }
-
         }
         public void DecideWinner(List<Card> cards)
         {
-            if (_turn.Players == null) return;
+            if (_game.Teams == null) return;
+            if (_turn == null)
+                throw new InvalidOperationException("Turn não iniciado. Chame StartTurn() antes");
 
-            _turn = GetTurnState();
-
-            var highestCard = _turn.getCardHighestValue(cards);
-            var winningPlayer = _turn.Players.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == highestCard.CardValue));
-
-            _turn.Winner = winningPlayer;
+            var allPlayers = _game.GetAllPlayers();
+            _turn.SetCardHighestValue(cards);
+            _turn.SetTurnWinner(allPlayers);
         }
-
-        public Turn GetTurnState() => _turn;
     }
 }

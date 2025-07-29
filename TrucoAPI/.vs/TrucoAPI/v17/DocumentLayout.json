@@ -1,58 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\services\\turnservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\services\\turnservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\services\\turnservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\services\\roundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\services\\roundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\game\\round.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\game\\round.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\game\\turn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\game\\turn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\entities\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\entities\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\game\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\game\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\entities\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\models\\entities\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\entities\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\models\\entities\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\entities\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\services\\deckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\models\\game\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\game\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\services\\deckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\services\\deckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\entities\\deckresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\entities\\deckresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\services\\roundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\services\\roundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\models\\game\\round.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\game\\round.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\controllers\\turncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\controllers\\turncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\models\\game\\turn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\game\\turn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|d:\\projetos\\truco\\projeto_truco\\trucoapi\\trucoapi\\models\\entities\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\models\\entities\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\entities\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|c:\\users\\i3-7ger\\source\\repos\\jogo_truco\\trucoapi\\trucoapi\\models\\entities\\deckresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1333C454-DE7A-4276-BE03-EA5241C6AD7A}|TrucoAPI\\TrucoAPI.csproj|solutionrelative:trucoapi\\models\\entities\\deckresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,8 +50,77 @@
       "DocumentGroups": [
         {
           "DockedWidth": 325,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 13,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DeckService.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Services\\DeckService.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Services\\DeckService.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Services\\DeckService.cs",
+              "RelativeToolTip": "TrucoAPI\\Services\\DeckService.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwBcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T18:25:09.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DeckResponse.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\DeckResponse.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Entities\\DeckResponse.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\DeckResponse.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Entities\\DeckResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T18:09:27.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Card.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Card.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Entities\\Card.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Card.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Entities\\Card.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAswA8AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T17:10:10.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Team.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Team.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Entities\\Team.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Team.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Entities\\Team.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T16:50:22.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Player.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Entities\\Player.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Player.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Entities\\Player.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T16:50:09.589Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -73,164 +130,73 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TurnService.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\TurnService.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Services\\TurnService.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\TurnService.cs",
-              "RelativeToolTip": "TrucoAPI\\Services\\TurnService.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAADwv0cAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T00:35:33.402Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Game.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Game.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Game\\Game.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Game.cs",
-              "RelativeToolTip": "TrucoAPI\\Models\\Game\\Game.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-22T22:18:08.918Z"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Turn.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Turn.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Game\\Turn.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Turn.cs",
-              "RelativeToolTip": "TrucoAPI\\Models\\Game\\Turn.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAowBMAAAAtAAAA",
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Game.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Game\\Game.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Game.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Game\\Game.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAADwvwwAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-20T02:30:25.818Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Round.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Round.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Game\\Round.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Round.cs",
-              "RelativeToolTip": "TrucoAPI\\Models\\Game\\Round.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-22T22:18:32.28Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Team.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Team.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Entities\\Team.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Team.cs",
-              "RelativeToolTip": "TrucoAPI\\Models\\Entities\\Team.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T17:51:36.841Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Player.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Player.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Entities\\Player.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Player.cs",
-              "RelativeToolTip": "TrucoAPI\\Models\\Entities\\Player.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T13:57:23.972Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "TurnController.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Controllers\\TurnController.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Controllers\\TurnController.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Controllers\\TurnController.cs",
-              "RelativeToolTip": "TrucoAPI\\Controllers\\TurnController.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAAwBoAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T11:06:06.465Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GameController.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Controllers\\GameController.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Controllers\\GameController.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Controllers\\GameController.cs",
-              "RelativeToolTip": "TrucoAPI\\Controllers\\GameController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAuwBUAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-22T22:17:23.806Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DeckResponse.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\DeckResponse.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Entities\\DeckResponse.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\DeckResponse.cs",
-              "RelativeToolTip": "TrucoAPI\\Models\\Entities\\DeckResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T00:31:21.752Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RoundService.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Services\\RoundService.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
-              "RelativeToolTip": "TrucoAPI\\Services\\RoundService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-22T22:21:35.304Z",
+              "WhenOpened": "2025-07-29T16:45:52.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "TrucoAPI\\appsettings.json",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\appsettings.json",
-              "RelativeToolTip": "TrucoAPI\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-21T01:21:27.019Z"
+              "Title": "Turn.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Turn.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Game\\Turn.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Turn.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Game\\Turn.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAuwFkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T16:45:45.817Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DeckService.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\DeckService.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Services\\DeckService.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\DeckService.cs",
-              "RelativeToolTip": "TrucoAPI\\Services\\DeckService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAmAAAA",
+              "DocumentIndex": 5,
+              "Title": "RoundService.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Services\\RoundService.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Services\\RoundService.cs",
+              "RelativeToolTip": "TrucoAPI\\Services\\RoundService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T00:35:34.041Z"
+              "WhenOpened": "2025-07-29T16:45:17.897Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Card.cs",
-              "DocumentMoniker": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Card.cs",
-              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Entities\\Card.cs",
-              "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Entities\\Card.cs",
-              "RelativeToolTip": "TrucoAPI\\Models\\Entities\\Card.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAeAAAA",
+              "DocumentIndex": 6,
+              "Title": "Round.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Round.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Models\\Game\\Round.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Models\\Game\\Round.cs",
+              "RelativeToolTip": "TrucoAPI\\Models\\Game\\Round.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T00:31:19.202Z"
+              "WhenOpened": "2025-07-29T16:41:18.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TurnService.cs",
+              "DocumentMoniker": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Services\\TurnService.cs",
+              "RelativeDocumentMoniker": "TrucoAPI\\Services\\TurnService.cs",
+              "ToolTip": "C:\\Users\\i3-7Ger\\source\\repos\\jogo_truco\\TrucoAPI\\TrucoAPI\\Services\\TurnService.cs",
+              "RelativeToolTip": "TrucoAPI\\Services\\TurnService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T16:41:07.519Z",
+              "EditorCaption": ""
             }
           ]
         }

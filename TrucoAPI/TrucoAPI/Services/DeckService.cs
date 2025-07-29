@@ -21,7 +21,7 @@ namespace TrucoAPI.Services
         }
         
         public async Task<List<Card>> DrawCardsAsync(string deckId, int quantity)
-        {        
+        {
             var response = await _http.GetAsync($"https://www.deckofcardsapi.com/api/deck/{deckId}/draw/?count={quantity}");
             response.EnsureSuccessStatusCode();
 

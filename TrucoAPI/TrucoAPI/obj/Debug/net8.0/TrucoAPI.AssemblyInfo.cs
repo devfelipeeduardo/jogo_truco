@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrucoAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+224ea04a0a5977835d5f831b689bfa49cb3a27a9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25e4beb343e95e5f3b846bafe08840af4d40739c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrucoAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrucoAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8,11 +8,9 @@ namespace TrucoAPI.Models.Game
     {
         public string DeckId { get; set; } = string.Empty;
         public Card? Trump { get; set; }
-        public List<Player> Players { get; set; } = new List<Player>();
+        public Card? HighestValueCard { get; private set; }
 
-        //Trocar no FrontEnd
-        [JsonPropertyName("winner")]
-        public Player? Winner { get; set; }
+        public Player? TurnWinner { get; private set; }
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
             {"3D", 13},{"2D", 12},{"AD", 11},
@@ -43,10 +41,11 @@ namespace TrucoAPI.Models.Game
                 return;
 
             char trumpNumber = Trump.Code[0];
+            char numberBeforeCode4 = '3';
 
             if (CardsValue.TryGetValue(Trump.Code, out int trumpValues))
             {
-                Trump.CardValue = trumpNumber == '3' ? 0 : trumpValues;
+                Trump.CardValue = trumpNumber == numberBeforeCode4 ? 0 : trumpValues;
             }
         }
 
@@ -73,16 +72,19 @@ namespace TrucoAPI.Models.Game
 
             }
         }
-
-        public Card getCardHighestValue(List<Card> cards)
+        public void SetCardHighestValue(List<Card> cards)
         {
-            var highestCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
+            if (cards == null) return;
 
-            if (highestCard == null)
-                return new Card(); //Corrigir futuramente!
-
-            return highestCard;
+            HighestValueCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
         }
 
+        public void SetTurnWinner(List<Player> players)
+        {
+            if (players == null) return;
+            if (HighestValueCard == null) return;
+
+            TurnWinner = players.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == HighestValueCard.CardValue));
+        }
     }
 }
