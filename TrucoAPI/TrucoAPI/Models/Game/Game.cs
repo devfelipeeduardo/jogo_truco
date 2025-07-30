@@ -30,7 +30,7 @@ namespace TrucoAPI.Models.Game
 
         }
         public List<Player> GetAllPlayers(){
-            return Teams.SelectMany(team => team.getPlayers()).ToList(); 
+            return Teams.SelectMany(team => team.GetPlayers()).ToList(); 
         }
     }
 }

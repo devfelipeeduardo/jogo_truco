@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using System.Security.Principal;
 using TrucoAPI.Models.Entities;
 using TrucoAPI.Models.Game;
 
@@ -7,8 +8,8 @@ namespace TrucoAPI.Services
     public class TurnService
     {
         private readonly DeckService _deckService;
-        private Turn? _turn;
         private readonly Game _game;
+        private Turn? _turn;
 
         public TurnService(DeckService deckService, Game game)
         {
@@ -25,7 +26,8 @@ namespace TrucoAPI.Services
             await DistributePlayer(deck);
         }
 
-        public async Task<List<Card>> GetAllCardsAsync(DeckResponse deck, int totalCards) {
+        public async Task<List<Card>> GetAllCardsAsync(DeckResponse deck, int totalCards)
+        {
             return await _deckService.DrawCardsAsync(deck.DeckId, totalCards);
         }
 
@@ -71,5 +73,43 @@ namespace TrucoAPI.Services
             _turn.SetCardHighestValue(cards);
             _turn.SetTurnWinner(allPlayers);
         }
+
+        public void SetTurnWinnerTeam()
+        {
+            if (_turn.WinnerPlayer == null) return;
+
+            foreach (var team in _game.Teams)
+            {
+                if (team.GetPlayers().Contains(_turn.WinnerPlayer))
+                {
+                    team.SetTurnScore(1);
+                    break;
+                }
+            }
+
+            SetRoundWinner();
+        }
+
+        public void SetRoundWinner()
+        {
+            var winnerTeam = _game.Teams.FirstOrDefault(team => team.TurnScore == 2);
+            
+            if (winnerTeam != null)
+            {
+                winnerTeam.SetRoundScore(1);
+                StopTurn();
+            }
+
+        }
+
+        public void StopTurn()
+        {
+            foreach (var team in _game.Teams)
+            {
+                team.ResetTurnScore();
+            }
+        }
+
+        public Turn GetTurnState() => _turn;
     }
 }
