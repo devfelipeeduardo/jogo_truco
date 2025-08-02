@@ -16,7 +16,10 @@ namespace TrucoAPI.Services
         }
         public async Task StartRound()
         {
-            await _turnService.StartTurn();
+            for(int i = 0; i < _round.Turns.Count; i++)
+            {
+                await _turnService.StartTurn();
+            }
 
         }
 

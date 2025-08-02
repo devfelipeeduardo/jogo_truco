@@ -9,7 +9,6 @@ namespace TrucoAPI.Controllers
     [Route("api/jogoTrue")]
     public class GameController : Controller
     {
-
         private readonly Game _game;
 
         public GameController(Game game) {

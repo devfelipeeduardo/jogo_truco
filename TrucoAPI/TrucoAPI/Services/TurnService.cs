@@ -73,8 +73,18 @@ namespace TrucoAPI.Services
             _turn.SetCardHighestValue(cards);
             _turn.SetTurnWinner(allPlayers);
         }
+        public void SetRoundWinner()
+        {
+            var winnerTeam = _game.Teams.FirstOrDefault(team => team.TurnScore == 2);
+            
+            if (winnerTeam != null)
+            {
+                winnerTeam.SetRoundScore(1);
+                StopTurn();
+            }
+        }
 
-        public void SetTurnWinnerTeam()
+        public void SetTurnWinner()
         {
             if (_turn.WinnerPlayer == null) return;
 
@@ -90,23 +100,12 @@ namespace TrucoAPI.Services
             SetRoundWinner();
         }
 
-        public void SetRoundWinner()
-        {
-            var winnerTeam = _game.Teams.FirstOrDefault(team => team.TurnScore == 2);
-            
-            if (winnerTeam != null)
-            {
-                winnerTeam.SetRoundScore(1);
-                StopTurn();
-            }
-
-        }
-
         public void StopTurn()
         {
             foreach (var team in _game.Teams)
             {
                 team.ResetTurnScore();
+                team.ResetPlayersHand();
             }
         }
 

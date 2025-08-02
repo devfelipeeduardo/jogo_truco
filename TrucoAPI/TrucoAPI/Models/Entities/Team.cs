@@ -6,7 +6,6 @@
         public int RoundScore { get; private set; }
         public int TurnScore { get; private set; }
 
-
         public Team(){ }
         public void AddPlayer(Player player)
         {
@@ -18,6 +17,13 @@
             return Players;
         }
 
+        public void ResetPlayersHand()
+        {
+            foreach (var player in Players)
+            {
+                player.ResetHand();
+            }
+        }
         public void SetRoundScore(int pontuation)
         {
             RoundScore += pontuation;

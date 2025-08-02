@@ -15,6 +15,9 @@
             Hand = hand;
         }
 
-       
+        public void ResetHand()
+        {
+           Hand.Clear();
+        }
     }
 }
