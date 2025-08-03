@@ -29,7 +29,7 @@ You can test the game demo at: Demo: 🚧 Not deployed yet – coming soon!
 - **ASP.NET WEBAPI(C#)**: Framework for game logic and requisitons to API DeckOfCards.
 - **API DeckOfCards**: Api used to get cards from decks and shuffle: "https://www.deckofcardsapi.com/".
 
-## Project Structure
+## Project Structure - 🚧 OUTDATED
 
 The project structure is as follows:
 ```
