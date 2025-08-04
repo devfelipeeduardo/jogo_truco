@@ -1,7 +1,6 @@
-﻿using Microsoft.VisualBasic;
-using System.Security.Principal;
-using TrucoAPI.Models.Entities;
+﻿using TrucoAPI.Models.Entities;
 using TrucoAPI.Models.Game;
+using TrucoAPI.Models.Enums;
 
 namespace TrucoAPI.Services
 {
@@ -49,7 +48,6 @@ namespace TrucoAPI.Services
 
             var allPlayers = _game.GetAllPlayers();
             int totalCards = 3 * allPlayers.Count;
-
             var allCards = await GetAllCardsAsync(deck, totalCards);
 
             for (int i = 0; i < allPlayers.Count; i++)
@@ -84,9 +82,10 @@ namespace TrucoAPI.Services
             }
         }
 
-        public void SetTurnWinner()
+        public TurnResult SetTurnWinner()
         {
-            if (_turn.WinnerPlayer == null) return;
+            if (_turn.WinnerPlayer == null)
+                throw new InvalidOperationException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
 
             foreach (var team in _game.Teams)
             {
@@ -96,8 +95,7 @@ namespace TrucoAPI.Services
                     break;
                 }
             }
-
-            SetRoundWinner();
+            return TurnResult.WinnerSet;
         }
 
         public void StopTurn()
