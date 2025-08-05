@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<DeckService>();
 builder.Services.AddSingleton<TurnService>();
+builder.Services.AddSingleton<GameService>();
 
 builder.Services.AddCors(options =>
 {

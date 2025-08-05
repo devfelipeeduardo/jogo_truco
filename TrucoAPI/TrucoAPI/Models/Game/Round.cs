@@ -5,18 +5,18 @@ namespace TrucoAPI.Models.Game
 {
     public class Round
     {
-        private int _maxLength = 3;
+        private int _maxTurns = 3;
         public List<Turn> Turns { get; private set; }
         public int CurrentTurn => Turns.Count;
 
-        public void AddTurn(Turn turn)
+        public void AddTurnState(Turn turn)
         {
             Turns.Add(turn);
         }
 
-        public int GetMaxLength()
+        public int GetMaxTurns()
         {
-            return _maxLength;
+            return _maxTurns;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TrucoAPI.Models.Enums
 {
-    public enum TurnResult
+    public enum WinnerResult
     {
         WinnerSet,
         NoWinner

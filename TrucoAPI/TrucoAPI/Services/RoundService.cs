@@ -6,38 +6,49 @@ namespace TrucoAPI.Services
 {
     public class RoundService
     {
-        private readonly TurnService _turnService;
         private readonly Game _game;
-        public RoundService(TurnService turnService, Game game)
+        private readonly TurnService _turn;
+        public RoundService(Game game, TurnService turnService)
         {
-            _turnService = turnService;
             _game = game;
+            _turn = turnService;
         }
 
         private readonly Round _round = new Round();
 
-
         public async Task StartRound()
         {
-            for (int i = 0; i < _round.GetMaxLength(); i++)
+            for (int i = 0; i < _round.GetMaxTurns(); i++)
             {
-                await _turnService.StartTurn();
+                await _turn.StartTurn();
 
-                var result = _turnService.SetTurnWinner();
+                var result = _turn.SetTurnWinner();
 
-                if (result == TurnResult.WinnerSet)
+                if (result == WinnerResult.WinnerSet)
                 {
-                    if (_game.Teams.Any(t => t.TurnScore == 2))
-                        _turnService.SetRoundWinner();
+                    if (_game.Teams.FirstOrDefault(t => t.TurnScore == 2) is Team winnerTeam)
+                    {
+                        winnerTeam.AddRoundPoint(1);
+                        _game.ResetTeamsTurnAtributtes();
                         break;
+                    }
                 }
-
-                var turn = _turnService.GetTurnState();
-                _round.AddTurn(turn);
-                _turnService.StopTurn();
+                // Adicionei essas linhas, para caso futuramente seja necessário utilizar os states dos turnos.
+                var turn = _turn.GetTurnState();
+                _round.AddTurnState(turn);
             }
+        }
 
-
+        public WinnerResult GetRoundWinner()
+        {
+            foreach (var team in _game.Teams)
+            {
+                if (team.RoundScore == 12)
+                {
+                    return WinnerResult.WinnerSet;
+                }
+            }
+            return WinnerResult.NoWinner;
         }
 
         public Round GetRoundState() => _round;

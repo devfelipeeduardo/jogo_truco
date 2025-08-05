@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
+using System.Xml.Linq;
 using TrucoAPI.Models.Entities;
 
 namespace TrucoAPI.Models.Game
 {
     public class Game
     {
-        public List<Round> Rounds { get; set; } = new List<Round>();
+        private int _maxRounds = 23;
+        public List<Round> Rounds { get; private set; } = new List<Round>();
         public List<Team> Teams { get; private set; } = new List<Team>();
-
-        //OBS: PlayerScore será passado via Team.Score
 
         public Game() {}
 
@@ -29,8 +29,36 @@ namespace TrucoAPI.Models.Game
             Teams[1].AddPlayer(new Player(playersName[3]));
 
         }
+        public void AddRound(Round round)
+        {
+            Rounds.Add(round);
+        }
+
         public List<Player> GetAllPlayers(){
             return Teams.SelectMany(team => team.GetPlayers()).ToList(); 
         }
+
+        public void ResetTeamsTurnAtributtes()
+        {
+            foreach (var team in Teams)
+            {
+                team.ResetTurnScore();
+                team.ResetPlayersHand();
+            }
+        }
+
+        public void ResetTeamsRoundAtributtes()
+        {
+            foreach (var team in Teams)
+            {
+                team.ResetRoundScore();
+            }
+        }
+
+        public int GetMaxRounds()
+        {
+            return _maxRounds;
+        }
+
     }
 }

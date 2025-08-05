@@ -6,7 +6,7 @@ namespace TrucoAPI.Models.Game
 {
     public class Turn
     {
-        public string DeckId { get; set; } = string.Empty;
+        public string? DeckId { get; set; }
         public Card? Trump { get; set; }
         public Card? HighestValueCard { get; private set; }
         public Player? WinnerPlayer { get; private set; }
@@ -78,7 +78,7 @@ namespace TrucoAPI.Models.Game
             HighestValueCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
         }
 
-        public void SetTurnWinner(List<Player> players)
+        public void SetPlayerWinner(List<Player> players)
         {
             if (players == null) return;
             if (HighestValueCard == null) return;

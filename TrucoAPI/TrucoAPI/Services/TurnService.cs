@@ -6,20 +6,20 @@ namespace TrucoAPI.Services
 {
     public class TurnService
     {
-        private readonly DeckService _deckService;
+        private readonly DeckService _deck;
         private readonly Game _game;
-        private Turn? _turn;
+        private Turn _turn = new Turn();
 
         public TurnService(DeckService deckService, Game game)
         {
-            _deckService = deckService;
+            _deck = deckService;
             _game = game;
         }
 
         public async Task StartTurn()
         {
-            var deck = await _deckService.CreateDeckAsync();
-            _turn = new Turn{ DeckId = deck.DeckId };
+            var deck = await _deck.CreateDeckAsync();
+            _turn = new Turn { DeckId = deck.DeckId };
 
             await SetTrumpCard(deck);
             await DistributePlayer(deck);
@@ -27,14 +27,14 @@ namespace TrucoAPI.Services
 
         public async Task<List<Card>> GetAllCardsAsync(DeckResponse deck, int totalCards)
         {
-            return await _deckService.DrawCardsAsync(deck.DeckId, totalCards);
+            return await _deck.DrawCardsAsync(deck.DeckId, totalCards);
         }
 
         public async Task SetTrumpCard(DeckResponse deck)
         {
             if (_turn == null) return;
 
-            List<Card> trumpCards = await _deckService.DrawCardsAsync(deck.DeckId, 1);
+            List<Card> trumpCards = await _deck.DrawCardsAsync(deck.DeckId, 1);
             var trump = trumpCards.FirstOrDefault() ?? throw new Exception("Não foi possível tirar a carta vira.");
         
             _turn.Trump = trump;
@@ -69,20 +69,10 @@ namespace TrucoAPI.Services
 
             var allPlayers = _game.GetAllPlayers();
             _turn.SetCardHighestValue(cards);
-            _turn.SetTurnWinner(allPlayers);
-        }
-        public void SetRoundWinner()
-        {
-            var winnerTeam = _game.Teams.FirstOrDefault(team => team.TurnScore == 2);
-            
-            if (winnerTeam != null)
-            {
-                winnerTeam.SetRoundScore(1);
-                StopTurn();
-            }
+            _turn.SetPlayerWinner(allPlayers);
         }
 
-        public TurnResult SetTurnWinner()
+        public WinnerResult SetTurnWinner()
         {
             if (_turn.WinnerPlayer == null)
                 throw new InvalidOperationException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
@@ -91,20 +81,11 @@ namespace TrucoAPI.Services
             {
                 if (team.GetPlayers().Contains(_turn.WinnerPlayer))
                 {
-                    team.SetTurnScore(1);
+                    team.AddTurnPoint(1);
                     break;
                 }
             }
-            return TurnResult.WinnerSet;
-        }
-
-        public void StopTurn()
-        {
-            foreach (var team in _game.Teams)
-            {
-                team.ResetTurnScore();
-                team.ResetPlayersHand();
-            }
+            return WinnerResult.NoWinner;
         }
 
         public Turn GetTurnState() => _turn;

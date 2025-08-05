@@ -7,10 +7,7 @@ namespace TrucoAPI.Services
     {
         private readonly HttpClient _http;
 
-        public DeckService(HttpClient http)
-        {
-            _http = http;
-        }
+        public DeckService(HttpClient http) => _http = http;
 
         public async Task<DeckResponse> CreateDeckAsync()
         {

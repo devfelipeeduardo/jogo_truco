@@ -24,11 +24,11 @@
                 player.ResetHand();
             }
         }
-        public void SetRoundScore(int pontuation)
+        public void AddRoundPoint(int pontuation)
         {
             RoundScore += pontuation;
         }
-        public void SetTurnScore(int pontuation)
+        public void AddTurnPoint(int pontuation)
         {
             TurnScore += pontuation;
         }
@@ -41,5 +41,7 @@
         {
             RoundScore = 0;
         }
+
+
     }
 }
