@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace TrucoAPI.Models.Entities
+namespace TrucoAPI.Models.DTOs
 {
-    public class DeckResponse
+    public class DeckDto
     {
         [JsonPropertyName("success")]
         public bool Success { get; set; }
@@ -12,8 +12,9 @@ namespace TrucoAPI.Models.Entities
 
         [JsonPropertyName("remaining")]
         public int Remaining { get; set; }
+
         [JsonPropertyName("cards")]
-        public List<Card> Cards { get; set; } = new List<Card>();
+        public List<CardDto> Cards { get; set; } = new List<CardDto>();
     }
 }
 

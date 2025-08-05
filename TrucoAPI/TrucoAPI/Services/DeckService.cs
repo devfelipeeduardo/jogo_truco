@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using TrucoAPI.Models.Entities;
+using TrucoAPI.Models.DTOs;
 
 namespace TrucoAPI.Services
 {
@@ -9,21 +9,21 @@ namespace TrucoAPI.Services
 
         public DeckService(HttpClient http) => _http = http;
 
-        public async Task<DeckResponse> CreateDeckAsync()
+        public async Task<DeckDto> CreateDeckAsync()
         {
             var response = await _http.GetAsync("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<DeckResponse>(json);
+            return JsonSerializer.Deserialize<DeckDto>(json);
         }
         
-        public async Task<List<Card>> DrawCardsAsync(string deckId, int quantity)
+        public async Task<List<CardDto>> DrawCardsAsync(string deckId, int quantity)
         {
             var response = await _http.GetAsync($"https://www.deckofcardsapi.com/api/deck/{deckId}/draw/?count={quantity}");
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<DeckResponse>(json);
+            var result = JsonSerializer.Deserialize<DeckDto>(json);
 
             return result.Cards;
 

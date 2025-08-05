@@ -1,6 +1,6 @@
-﻿using TrucoAPI.Models.Entities;
-using TrucoAPI.Models.Game;
+﻿using TrucoAPI.Models.Game;
 using TrucoAPI.Models.Enums;
+using TrucoAPI.Models.DTOs;
 
 namespace TrucoAPI.Services
 {
@@ -11,7 +11,7 @@ namespace TrucoAPI.Services
         private Turn _turn = new Turn();
 
         public TurnService(DeckService deckService, Game game)
-        {
+        { 
             _deck = deckService;
             _game = game;
         }
@@ -24,24 +24,41 @@ namespace TrucoAPI.Services
             await SetTrumpCard(deck);
             await DistributePlayer(deck);
         }
+        public WinnerResult SetTurnWinner()
+        {
+            if (_turn.WinnerPlayer == null)
+                throw new InvalidOperationException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
 
-        public async Task<List<Card>> GetAllCardsAsync(DeckResponse deck, int totalCards)
+            foreach (var team in _game.Teams)
+            {
+                if (team.GetPlayers().Contains(_turn.WinnerPlayer))
+                {
+                    team.AddTurnPoint(1);
+                    break;
+                }
+            }
+            return WinnerResult.NoWinner;
+        }
+
+        public Turn GetTurnState() => _turn;
+
+        private async Task<List<CardDto>> GetAllCardsAsync(DeckDto deck, int totalCards)
         {
             return await _deck.DrawCardsAsync(deck.DeckId, totalCards);
         }
 
-        public async Task SetTrumpCard(DeckResponse deck)
+        private async Task SetTrumpCard(DeckDto deck)
         {
             if (_turn == null) return;
 
-            List<Card> trumpCards = await _deck.DrawCardsAsync(deck.DeckId, 1);
+            List<CardDto> trumpCards = await _deck.DrawCardsAsync(deck.DeckId, 1);
             var trump = trumpCards.FirstOrDefault() ?? throw new Exception("Não foi possível tirar a carta vira.");
         
             _turn.Trump = trump;
             _turn.SetTrumpValue();
         }
 
-        public async Task DistributePlayer(DeckResponse deck)
+        private async Task DistributePlayer(DeckDto deck)
         {
             if (_game.Teams == null) return;
             if (_turn == null) return;
@@ -61,7 +78,7 @@ namespace TrucoAPI.Services
                 allPlayers[i].SetHand(playerCards);
             }
         }
-        public void DecideWinner(List<Card> cards)
+        private void DecideWinner(List<CardDto> cards)
         {
             if (_game.Teams == null) return;
             if (_turn == null)
@@ -72,22 +89,6 @@ namespace TrucoAPI.Services
             _turn.SetPlayerWinner(allPlayers);
         }
 
-        public WinnerResult SetTurnWinner()
-        {
-            if (_turn.WinnerPlayer == null)
-                throw new InvalidOperationException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
 
-            foreach (var team in _game.Teams)
-            {
-                if (team.GetPlayers().Contains(_turn.WinnerPlayer))
-                {
-                    team.AddTurnPoint(1);
-                    break;
-                }
-            }
-            return WinnerResult.NoWinner;
-        }
-
-        public Turn GetTurnState() => _turn;
     }
 }

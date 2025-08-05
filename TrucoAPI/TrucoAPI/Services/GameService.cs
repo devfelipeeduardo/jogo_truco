@@ -15,7 +15,6 @@ namespace TrucoAPI.Services
             _game = game;
         }
 
-
         public async Task startGameAsync()
         {
             for (int i = 0; i < _game.GetMaxRounds(); i++)

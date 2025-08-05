@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using TrucoAPI.Models.DTOs;
 using TrucoAPI.Models.Entities;
 
 namespace TrucoAPI.Models.Game
@@ -7,8 +8,8 @@ namespace TrucoAPI.Models.Game
     public class Turn
     {
         public string? DeckId { get; set; }
-        public Card? Trump { get; set; }
-        public Card? HighestValueCard { get; private set; }
+        public CardDto? Trump { get; set; }
+        public CardDto? HighestValueCard { get; private set; }
         public Player? WinnerPlayer { get; private set; }
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
@@ -48,7 +49,7 @@ namespace TrucoAPI.Models.Game
             }
         }
 
-        public void SetCardValue(Card card)
+        public void SetCardValue(CardDto card)
         {
             if (!CardsValue.TryGetValue(card.Code, out int cardValue))
                 return;
@@ -71,7 +72,7 @@ namespace TrucoAPI.Models.Game
 
             }
         }
-        public void SetCardHighestValue(List<Card> cards)
+        public void SetCardHighestValue(List<CardDto> cards)
         {
             if (cards == null) return;
 
