@@ -10,7 +10,7 @@ namespace TrucoAPI.Models.Game
         public string? DeckId { get; set; }
         public CardDto? Trump { get; set; }
         public CardDto? HighestValueCard { get; private set; }
-        public Player? WinnerPlayer { get; private set; }
+        public Player? PlayerWinner { get; private set; }
 
         public Dictionary<string, int> CardsValue = new Dictionary<string, int>{
             {"3D", 13},{"2D", 12},{"AD", 11},
@@ -79,12 +79,9 @@ namespace TrucoAPI.Models.Game
             HighestValueCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
         }
 
-        public void SetPlayerWinner(List<Player> players)
+        public void SetWinnerPlayer(Player player)
         {
-            if (players == null) return;
-            if (HighestValueCard == null) return;
-
-            WinnerPlayer = players.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == HighestValueCard.CardValue));
+            PlayerWinner = player;
         }
     }
 }

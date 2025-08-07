@@ -24,7 +24,7 @@ namespace TrucoAPI.Services
 
                 var result = _turn.SetTurnWinner();
 
-                if (result == WinnerResult.WinnerSet)
+                if (result == TurnResult.HasWinner)
                 {
                     if (_game.Teams.FirstOrDefault(t => t.TurnScore == 2) is Team winnerTeam)
                     {
@@ -39,16 +39,16 @@ namespace TrucoAPI.Services
             }
         }
 
-        public WinnerResult GetRoundWinner()
+        public TurnResult GetRoundWinner()
         {
             foreach (var team in _game.Teams)
             {
                 if (team.RoundScore == 12)
                 {
-                    return WinnerResult.WinnerSet;
+                    return TurnResult.HasWinner;
                 }
             }
-            return WinnerResult.NoWinner;
+            return TurnResult.NoWinner;
         }
 
         public Round GetRoundState() => _round;

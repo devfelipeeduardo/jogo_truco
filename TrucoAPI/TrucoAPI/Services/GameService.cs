@@ -26,7 +26,7 @@ namespace TrucoAPI.Services
 
                 var result = _round.GetRoundWinner();
 
-                if (result == WinnerResult.WinnerSet)
+                if (result == TurnResult.HasWinner)
                 {
                     if (_game.Teams.FirstOrDefault(t => t.RoundScore == 12) is Team winnerTeam)
                     {

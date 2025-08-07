@@ -1,6 +1,7 @@
 ﻿using TrucoAPI.Models.Game;
 using TrucoAPI.Models.Enums;
 using TrucoAPI.Models.DTOs;
+using TrucoAPI.Models.Entities;
 
 namespace TrucoAPI.Services
 {
@@ -24,20 +25,20 @@ namespace TrucoAPI.Services
             await SetTrumpCard(deck);
             await DistributePlayer(deck);
         }
-        public WinnerResult SetTurnWinner()
+        public TurnResult SetTurnWinner()
         {
-            if (_turn.WinnerPlayer == null)
+            if (_turn.PlayerWinner == null)
                 throw new InvalidOperationException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
 
             foreach (var team in _game.Teams)
             {
-                if (team.GetPlayers().Contains(_turn.WinnerPlayer))
+                if (team.GetPlayers().Contains(_turn.PlayerWinner))
                 {
                     team.AddTurnPoint(1);
                     break;
                 }
             }
-            return WinnerResult.NoWinner;
+            return TurnResult.NoWinner;
         }
 
         public Turn GetTurnState() => _turn;
@@ -78,15 +79,20 @@ namespace TrucoAPI.Services
                 allPlayers[i].SetHand(playerCards);
             }
         }
-        private void DecideWinner(List<CardDto> cards)
-        {
-            if (_game.Teams == null) return;
-            if (_turn == null)
-                throw new InvalidOperationException("Turn não iniciado. Chame StartTurn() antes");
 
-            var allPlayers = _game.GetAllPlayers();
+
+        public void DecidePlayerWinner(List<CardDto> cards)
+        {
+            if (_turn.HighestValueCard == null)
+                throw new InvalidOperationException("Turn não iniciado ou carta de maior valor não definida. Chame DecideWinner() antes");
+
             _turn.SetCardHighestValue(cards);
-            _turn.SetPlayerWinner(allPlayers);
+            var allPlayers = _game.GetAllPlayers();
+
+            var winnerPlayer = allPlayers.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == _turn.HighestValueCard.CardValue))
+                ?? throw new Exception("Não foi possível determinar o jogador vencedor do turno.");
+
+            _turn.SetWinnerPlayer(winnerPlayer);
         }
 
 
