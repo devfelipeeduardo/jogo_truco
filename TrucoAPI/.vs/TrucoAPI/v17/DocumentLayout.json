@@ -34,8 +34,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 325,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -44,7 +48,7 @@
               "RelativeDocumentMoniker": "TrucoAPI\\Models\\Domains\\Turn.cs",
               "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Models\\Domains\\Turn.cs",
               "RelativeToolTip": "TrucoAPI\\Models\\Domains\\Turn.cs",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAswFMAAAAYAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAawFEAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T02:10:22.881Z",
               "EditorCaption": ""
@@ -59,8 +63,7 @@
               "RelativeToolTip": "TrucoAPI\\Models\\Enums\\TurnResult.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T02:02:19.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T02:02:19.95Z"
             },
             {
               "$type": "Document",
@@ -72,8 +75,7 @@
               "RelativeToolTip": "TrucoAPI\\Services\\DeckService.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAQwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T02:02:19.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T02:02:19.434Z"
             },
             {
               "$type": "Document",
@@ -85,8 +87,7 @@
               "RelativeToolTip": "TrucoAPI\\Services\\GameService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T02:02:18.788Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T02:02:18.788Z"
             },
             {
               "$type": "Document",
@@ -109,14 +110,10 @@
               "RelativeDocumentMoniker": "TrucoAPI\\Services\\TurnService.cs",
               "ToolTip": "D:\\Projetos\\Truco\\projeto_truco\\TrucoAPI\\TrucoAPI\\Services\\TurnService.cs",
               "RelativeToolTip": "TrucoAPI\\Services\\TurnService.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAawBwAAAAJAAAA",
+              "ViewState": "AQIAAEkAAAAAAAAAAAASwFIAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T02:02:16.736Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }

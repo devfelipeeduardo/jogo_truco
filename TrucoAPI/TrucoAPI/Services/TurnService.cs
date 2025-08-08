@@ -80,7 +80,7 @@ namespace TrucoAPI.Services
             }
         }
 
-
+        //Tem que ser repassado via API
         public void DecidePlayerWinner(List<CardDto> cards)
         {
             if (_turn.HighestValueCard == null)
@@ -94,7 +94,5 @@ namespace TrucoAPI.Services
 
             _turn.SetWinnerPlayer(winnerPlayer);
         }
-
-
     }
 }
