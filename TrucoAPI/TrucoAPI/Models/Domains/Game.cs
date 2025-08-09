@@ -51,6 +51,7 @@ namespace TrucoAPI.Models.Game
         {
             foreach (var team in Teams)
             {
+                //Caso haja mais atributos, resetar também!
                 team.ResetRoundScore();
             }
         }
