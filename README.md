@@ -13,14 +13,15 @@ You can test the game demo at: Demo: 🚧 Not deployed yet – coming soon!
 
 "Truco" is a traditional card game, played by 2 or 4 people, where players compete to win rounds by comparing cards values and bluffing to increase the current stakes.
 
-### Features
+### Features - 🚧 OUTDATED
+
 
 - **Scoreboard**: It counts the player's score and shows it.
 - **Player and Cards**: It shows the player's icon, and cards that are used to play.
 - **Table**: It shows the deck and trump.
 - **Sound Control**: Mute and unmute the game sounds. [Not Implemented Yet]
 
-### Stacks Used
+### Stacks Used - 🚧 OUTDATED
 
 - **HTML**: Markup language used for structuring the game interface.
 - **CSS**: Styling language used for designing the game interface.
