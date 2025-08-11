@@ -8,7 +8,7 @@ namespace TrucoAPI.Models.Game
     public class Turn
     {
         public string? DeckId { get; set; }
-        public CardDto? Trump { get; set; }
+        public CardDto? Trump { get; private set; }
         public CardDto? HighestValueCard { get; private set; }
         public Player? PlayerWinner { get; private set; }
 
@@ -34,6 +34,11 @@ namespace TrucoAPI.Models.Game
             {"7C", 04},{"6C", 03},{"5C", 02},
             {"4C", 01}
         };
+
+        public void SetTrump(CardDto trump)
+        {
+            Trump = trump;
+        }
 
         public void SetTrumpValue()
         {

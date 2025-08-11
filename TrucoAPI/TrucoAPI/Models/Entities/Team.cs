@@ -7,6 +7,7 @@
         public int TurnScore { get; private set; }
 
         public Team(){ }
+
         public void AddPlayer(Player player)
         {
             Players.Add(player);
@@ -24,10 +25,16 @@
                 player.ResetHand();
             }
         }
+
         public void AddRoundPoint(int pontuation)
         {
             RoundScore += pontuation;
         }
+        public void ResetRoundScore()
+        {
+            RoundScore = 0;
+        }
+
         public void AddTurnPoint(int pontuation)
         {
             TurnScore += pontuation;
@@ -36,10 +43,6 @@
         public void ResetTurnScore()
         {
             TurnScore = 0;
-        }
-        public void ResetRoundScore()
-        {
-            RoundScore = 0;
         }
 
 

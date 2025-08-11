@@ -9,7 +9,7 @@ namespace TrucoAPI.Services
     {
         private readonly DeckService _deck;
         private readonly Game _game;
-        private Turn _turn = new Turn();
+        private Turn _turn = new();
 
         public TurnService(DeckService deckService, Game game)
         { 
@@ -55,7 +55,7 @@ namespace TrucoAPI.Services
             List<CardDto> trumpCards = await _deck.DrawCardsAsync(deck.DeckId, 1);
             var trump = trumpCards.FirstOrDefault() ?? throw new Exception("Não foi possível tirar a carta vira.");
         
-            _turn.Trump = trump;
+            _turn.SetTrump(trump);
             _turn.SetTrumpValue();
         }
 

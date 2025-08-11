@@ -14,9 +14,6 @@ namespace TrucoAPI.Models.Game
             Turns.Add(turn);
         }
 
-        public int GetMaxTurns()
-        {
-            return _maxTurns;
-        }
+        public int GetMaxTurns() => _maxTurns;
     }
 }
