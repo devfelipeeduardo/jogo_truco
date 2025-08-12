@@ -7,24 +7,28 @@ namespace TrucoAPI.Services
     public class GameService
     {
         private readonly Game _game;
-        private readonly RoundService _round;
+        private readonly RoundService _roundService;
 
         public GameService(RoundService roundService, Game game)
         {
-            _round = roundService;
+            _roundService = roundService;
             _game = game;
         }
 
-        public async Task startGameAsync()
+        public Game GetCurrentGameState() => _game;
+
+        public async Task StartNewGameAsync(List<string> playersNames)
         {
+            _game.SetTeams(playersNames);
+
             for (int i = 0; i < _game.GetMaxRounds(); i++)
             {
-                await _round.StartRound();
+                await _roundService.StartRound();
 
-                var round = _round.GetRoundState();
+                var round = _roundService.GetRoundState();
                 _game.AddRound(round);
 
-                var result = _round.GetRoundWinner();
+                var result = _roundService.GetRoundWinner();
 
                 if (result == TurnResult.HasWinner)
                 {

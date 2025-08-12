@@ -7,11 +7,11 @@ namespace TrucoAPI.Services
     public class RoundService
     {
         private readonly Game _game;
-        private readonly TurnService _turn;
+        private readonly TurnService _turnService;
         public RoundService(Game game, TurnService turnService)
         {
             _game = game;
-            _turn = turnService;
+            _turnService = turnService;
         }
 
         private readonly Round _round = new Round();
@@ -20,9 +20,9 @@ namespace TrucoAPI.Services
         {
             for (int i = 0; i < _round.GetMaxTurns(); i++)
             {
-                await _turn.StartTurn();
+                await _turnService.StartTurn();
 
-                var result = _turn.SetTurnWinner();
+                var result = _turnService.SetTurnWinner();
 
                 if (result == TurnResult.HasWinner)
                 {
@@ -34,10 +34,11 @@ namespace TrucoAPI.Services
                     }
                 }
                 // Adicionei essas linhas, para caso futuramente seja necessário utilizar os states dos turnos.
-                var turn = _turn.GetTurnState();
+                var turn = _turnService.GetCurrentTurnState();
                 _round.AddTurnState(turn);
             }
         }
+        public Round GetCurrentRoundState() => _round;
 
         public TurnResult GetRoundWinner()
         {

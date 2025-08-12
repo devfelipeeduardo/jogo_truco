@@ -1,38 +1,70 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TrucoAPI.Models.DTOs;
 using TrucoAPI.Services;
-using TrucoAPI.Models.Game;
 
-
-namespace TrucoAPI.Controllers
+namespace Truco.API.Controllers
 {
     [ApiController]
-    [Route("api/jogoTrue")]
-    public class GameController : Controller
+    [Route("api/[controller]")]
+    public class GameController : ControllerBase
     {
-        private readonly Game _game;
+        private readonly GameService _gameService;
+        private readonly RoundService _roundService;
+        private readonly TurnService _turnService;
 
-        public GameController(Game game) {
-            _game = game;
-        }
-
-        [HttpPost("postPlayers")]
-        public async Task<IActionResult> StartGame([FromBody] List<string> players)
+        public GameController(GameService gameService, RoundService roundService, TurnService turnService)
         {
-            if (players.Count != 2 && players.Count != 4)
-                return BadRequest("O jogo precisa de 2 ou 4 jogadores!");
-
-            _game.SetTeams(players);
-            return Ok("Jogadores adicionados com sucesso");
+            _gameService = gameService;
+            _roundService = roundService;
+            _turnService = turnService;
         }
 
-        [HttpPost("iniciarRound")]
-        public async Task<IActionResult> StartRound(Game _game)
-        {;
-            return Ok();
-        }
-        public IActionResult Index()
+        //Game
+        [HttpPost("start")]
+        public IActionResult StartGame([FromBody] List<string> playerNames)
         {
-            return View();
+            _gameService.StartNewGameAsync(playerNames);
+            return Ok(new { message = "Jogo iniciado!", game = _gameService.GetCurrentGameState() });
+        }
+
+        [HttpGet("state")]
+        public IActionResult GetGameState()
+        {
+            var state = _gameService.GetCurrentGameState();
+            if (state == null) return NotFound("Nenhum jogo em andamento");
+            return Ok(state);
+        }
+
+        //Round
+        [HttpPost("round/start")]
+        public IActionResult StartRound()
+        {
+            _roundService.StartRound();
+            return Ok(new { message = "Rodada iniciada!", round = _roundService.GetCurrentRoundState() });
+        }
+
+        [HttpGet("round/state")]
+        public IActionResult GetRoundState()
+        {
+            var state = _roundService.GetCurrentRoundState();
+            if (state == null) return NotFound("Nenhuma rodada em andamento");
+            return Ok(state);
+        }
+
+        //Turn
+        [HttpPost("turn/decide-winner")]
+        public IActionResult DecideTurnWinner([FromBody] List<CardDto> cards)
+        {
+            _turnService.DecidePlayerWinner(cards);
+            return Ok(new { message = "Vencedor do turno definido!", turn = _turnService.GetCurrentTurnState() });
+        }
+
+        [HttpGet("turn/state")]
+        public IActionResult GetTurnState()
+        {
+            var state = _turnService.GetCurrentTurnState();
+            if (state == null) return NotFound("Nenhum turno em andamento");
+            return Ok(state);
         }
     }
 }

@@ -74,7 +74,6 @@ namespace TrucoAPI.Models.Game
                     case 'H': card.CardValue = 23; break;
                     case 'C': card.CardValue = 24; break;
                 }
-
             }
         }
         public void SetCardHighestValue(List<CardDto> cards)

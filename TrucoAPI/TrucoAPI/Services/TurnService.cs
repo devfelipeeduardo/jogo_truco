@@ -41,7 +41,7 @@ namespace TrucoAPI.Services
             return TurnResult.NoWinner;
         }
 
-        public Turn GetTurnState() => _turn;
+        public Turn GetCurrentTurnState() => _turn;
 
         private async Task<List<CardDto>> GetAllCardsAsync(DeckDto deck, int totalCards)
         {
