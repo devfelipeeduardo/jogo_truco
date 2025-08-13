@@ -1,25 +1,24 @@
-﻿using TrucoAPI.Models.Game;
-using TrucoAPI.Models.Enums;
+﻿using TrucoAPI.Models.Enums;
 using TrucoAPI.Models.DTOs;
-using TrucoAPI.Models.Entities;
+using TrucoAPI.Models.Game;
 
 namespace TrucoAPI.Services
 {
     public class TurnService
     {
-        private readonly DeckService _deck;
+        private readonly DeckService _deckService;
         private readonly Game _game;
         private Turn _turn = new();
 
         public TurnService(DeckService deckService, Game game)
         { 
-            _deck = deckService;
+            _deckService = deckService;
             _game = game;
         }
 
         public async Task StartTurn()
         {
-            var deck = await _deck.CreateDeckAsync();
+            var deck = await _deckService.CreateDeckAsync();
             _turn = new Turn { DeckId = deck.DeckId };
 
             await SetTrumpCard(deck);
@@ -45,14 +44,14 @@ namespace TrucoAPI.Services
 
         private async Task<List<CardDto>> GetAllCardsAsync(DeckDto deck, int totalCards)
         {
-            return await _deck.DrawCardsAsync(deck.DeckId, totalCards);
+            return await _deckService.DrawCardsAsync(deck.DeckId, totalCards);
         }
 
         private async Task SetTrumpCard(DeckDto deck)
         {
             if (_turn == null) return;
 
-            List<CardDto> trumpCards = await _deck.DrawCardsAsync(deck.DeckId, 1);
+            List<CardDto> trumpCards = await _deckService.DrawCardsAsync(deck.DeckId, 1);
             var trump = trumpCards.FirstOrDefault() ?? throw new Exception("Não foi possível tirar a carta vira.");
         
             _turn.SetTrump(trump);

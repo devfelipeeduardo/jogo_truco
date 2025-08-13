@@ -10,8 +10,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<DeckService>();
-builder.Services.AddSingleton<TurnService>();
 builder.Services.AddSingleton<GameService>();
+builder.Services.AddSingleton<RoundService>();
+builder.Services.AddSingleton<TurnService>();
 
 builder.Services.AddCors(options =>
 {
