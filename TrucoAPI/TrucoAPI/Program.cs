@@ -1,3 +1,4 @@
+using TrucoAPI.Models.Game;
 using TrucoAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,8 @@ builder.Services.AddHttpClient<DeckService>();
 builder.Services.AddSingleton<GameService>();
 builder.Services.AddSingleton<RoundService>();
 builder.Services.AddSingleton<TurnService>();
+builder.Services.AddSingleton<Game>();
+
 
 builder.Services.AddCors(options =>
 {

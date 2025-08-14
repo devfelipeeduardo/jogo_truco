@@ -7,7 +7,7 @@ namespace TrucoAPI.Models.Game
     {
         private int _maxTurns = 3;
         public List<Turn> Turns { get; private set; }
-        public int CurrentTurn => Turns.Count;
+        //public int? CurrentTurn => Turns.Count;
 
         public void AddTurnState(Turn turn)
         {
