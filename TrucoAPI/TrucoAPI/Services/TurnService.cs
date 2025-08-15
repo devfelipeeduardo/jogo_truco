@@ -82,9 +82,6 @@ namespace TrucoAPI.Services
         //Tem que ser repassado via API
         public void DecidePlayerWinner(List<CardDto> cards)
         {
-            if (_turn.HighestValueCard == null)
-                throw new InvalidOperationException("Turn não iniciado ou carta de maior valor não definida. Chame DecideWinner() antes");
-
             _turn.SetCardHighestValue(cards);
             var allPlayers = _game.GetAllPlayers();
 
