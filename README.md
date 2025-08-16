@@ -34,6 +34,8 @@ You can test the game demo at: Demo: 🚧 Not deployed yet – coming soon!
 
 The project structure is as follows:
 ```
+
+🚧 OUTDATED
 Game/
 ├──TrucoAPI
 │ └──.vs
