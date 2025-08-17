@@ -145,3 +145,5 @@ This project is licensed under the MIT License.
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
 Teste()+-()
+
+(Será feito sistema de login utilizando JWT)
