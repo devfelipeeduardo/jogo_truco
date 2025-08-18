@@ -8,15 +8,17 @@ namespace TrucoAPI.Services
     {
         private readonly DeckService _deckService;
         private readonly Game _game;
+        private Round _currentRound;
         private Turn _turn = new();
 
-        public TurnService(DeckService deckService, Game game)
+        public TurnService(DeckService deckService, Game game, Round round)
         { 
             _deckService = deckService;
             _game = game;
+            _currentRound = round;
         }
 
-        public async Task StartTurn()
+        public async Task StartTurnAsync()
         {
             var deck = await _deckService.CreateDeckAsync();
             _turn = new Turn { DeckId = deck.DeckId };

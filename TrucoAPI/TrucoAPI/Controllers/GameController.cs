@@ -20,10 +20,10 @@ namespace Truco.API.Controllers
         }
 
         //Game
-        [HttpPost("start")]
-        public IActionResult StartGame([FromBody] List<string> playerNames)
+        [HttpPost("startGame")]
+        public async Task<IActionResult> StartGame([FromBody] List<string> playerNames)
         {
-            _gameService.StartNewGameAsync(playerNames);
+            await _gameService.StartNewGameAsync(playerNames);
             return Ok(new { message = "Jogo iniciado!", game = _gameService.GetCurrentGameState() });
         }
 
@@ -37,9 +37,9 @@ namespace Truco.API.Controllers
 
         //Round
         [HttpPost("round/start")]
-        public IActionResult StartRound()
+        public async Task<IActionResult> StartRound()
         {
-            _roundService.StartRound();
+            await _roundService.StartRound();
             return Ok(new { message = "Rodada iniciada!", round = _roundService.GetCurrentRoundState() });
         }
 
@@ -52,6 +52,14 @@ namespace Truco.API.Controllers
         }
 
         //Turn
+
+        [HttpPost("turn/start")]
+        public async Task<IActionResult> StartTurn()
+        {
+            await _turnService.StartTurnAsync();
+            return Ok(new { message = "Turno iniciado!", turn = _turnService.GetCurrentTurnState() });
+        }
+
         [HttpPost("turn/decide-winner")]
         public IActionResult DecideTurnWinner([FromBody] List<CardDto> cards)
         {

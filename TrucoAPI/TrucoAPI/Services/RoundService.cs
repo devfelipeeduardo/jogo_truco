@@ -18,25 +18,21 @@ namespace TrucoAPI.Services
 
         public async Task StartRound()
         {
-            for (int i = 0; i < _round.GetMaxTurns(); i++)
+            await _turnService.StartTurnAsync();
+
+            var result = _turnService.SetTurnWinner();
+
+            if (result == TurnResult.HasWinner)
             {
-                await _turnService.StartTurn();
-
-                var result = _turnService.SetTurnWinner();
-
-                if (result == TurnResult.HasWinner)
+                if (_game.Teams.FirstOrDefault(t => t.TurnScore == 2) is Team winnerTeam)
                 {
-                    if (_game.Teams.FirstOrDefault(t => t.TurnScore == 2) is Team winnerTeam)
-                    {
-                        winnerTeam.AddRoundPoint(1);
-                        _game.ResetTeamsTurnAtributtes();
-                        break;
-                    }
+                    winnerTeam.AddRoundPoint(1);
+                    _game.ResetTeamsTurnAtributtes();
                 }
-                // Adicionei essas linhas, para caso futuramente seja necessário utilizar os states dos turnos.
-                var turn = _turnService.GetCurrentTurnState();
-                _round.AddTurnState(turn);
             }
+            // Adicionei essas linhas, para caso futuramente seja necessário utilizar os states dos turnos.
+            var turn = _turnService.GetCurrentTurnState();
+            _round.AddTurnState(turn);
         }
         public Round GetCurrentRoundState() => _round;
 

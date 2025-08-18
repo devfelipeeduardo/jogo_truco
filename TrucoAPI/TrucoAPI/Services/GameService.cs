@@ -17,31 +17,25 @@ namespace TrucoAPI.Services
 
         public Game GetCurrentGameState() => _game;
 
-        public async Task StartNewGameAsync(List<string> playersNames)
+        public void StartNewGameAsync(List<string> playersNames)
         {
             _game.SetTeams(playersNames);
+            _game.ResetTeamsRoundAtributtes();
+            var round = _roundService.GetRoundState();
 
-            for (int i = 0; i < _game.GetMaxRounds(); i++)
-            {
-                await _roundService.StartRound();
+            _game.AddRound(round);
 
-                var round = _roundService.GetRoundState();
-                _game.AddRound(round);
+            var result = _roundService.GetRoundWinner();
 
-                var result = _roundService.GetRoundWinner();
-
-                if (result == TurnResult.HasWinner)
-                {
-                    if (_game.Teams.FirstOrDefault(t => t.RoundScore == 12) is Team winnerTeam)
-                    {
-                        Console.WriteLine("A equipe: " + winnerTeam + " venceu o jogo!");
-                        _game.ResetTeamsRoundAtributtes();
-                    }
-                    //Melhora isso pelo amor de Deus!!!
-                    _game.ResetTeamsRoundAtributtes();
-                    break;
-                }
-            }
+            //if (result == TurnResult.HasWinner)
+            //{
+            //    if (_game.Teams.FirstOrDefault(t => t.RoundScore == 12) is Team winnerTeam)
+            //    {
+            //        Console.WriteLine("A equipe: " + winnerTeam + " venceu o jogo!");
+            //        _game.ResetTeamsRoundAtributtes();
+            //    }
+            //    //Melhora isso pelo amor de Deus!!!
+            //}
         }
 
     }
