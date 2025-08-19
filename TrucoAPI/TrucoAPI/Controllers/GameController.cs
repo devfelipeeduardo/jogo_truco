@@ -9,14 +9,10 @@ namespace Truco.API.Controllers
     public class GameController : ControllerBase
     {
         private readonly GameService _gameService;
-        private readonly RoundService _roundService;
-        private readonly TurnService _turnService;
 
-        public GameController(GameService gameService, RoundService roundService, TurnService turnService)
+        public GameController(GameService gameService)
         {
             _gameService = gameService;
-            _roundService = roundService;
-            _turnService = turnService;
         }
 
         //Game
@@ -39,14 +35,14 @@ namespace Truco.API.Controllers
         [HttpPost("round/start")]
         public async Task<IActionResult> StartRound()
         {
-            await _roundService.StartRound();
-            return Ok(new { message = "Rodada iniciada!", round = _roundService.GetCurrentRoundState() });
+            await _gameService.StartRound();
+            return Ok(new { message = "Rodada iniciada!", round = _gameService.GetCurrentRoundState() });
         }
 
         [HttpGet("round/state")]
         public IActionResult GetRoundState()
         {
-            var state = _roundService.GetCurrentRoundState();
+            var state = _gameService.GetCurrentRoundState();
             if (state == null) return NotFound("Nenhuma rodada em andamento");
             return Ok(state);
         }
@@ -56,21 +52,21 @@ namespace Truco.API.Controllers
         [HttpPost("turn/start")]
         public async Task<IActionResult> StartTurn()
         {
-            await _turnService.StartTurnAsync();
-            return Ok(new { message = "Turno iniciado!", turn = _turnService.GetCurrentTurnState() });
+            await _gameService.StartTurnAsync();
+            return Ok(new { message = "Turno iniciado!", turn = _gameService.GetCurrentTurnState() });
         }
 
         [HttpPost("turn/decide-winner")]
         public IActionResult DecideTurnWinner([FromBody] List<CardDto> cards)
         {
-            _turnService.DecidePlayerWinner(cards);
-            return Ok(new { message = "Vencedor do turno definido!", turn = _turnService.GetCurrentTurnState() });
+            _gameService.DecidePlayerWinner(cards);
+            return Ok(new { message = "Vencedor do turno definido!", turn = _gameService.GetCurrentTurnState() });
         }
 
         [HttpGet("turn/state")]
         public IActionResult GetTurnState()
         {
-            var state = _turnService.GetCurrentTurnState();
+            var state = _gameService.GetCurrentTurnState();
             if (state == null) return NotFound("Nenhum turno em andamento");
             return Ok(state);
         }
