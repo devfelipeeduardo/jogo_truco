@@ -15,14 +15,14 @@ namespace TrucoAPI.Services
 
 
         //Game
+        public Game? GetCurrentGameState() => _game;
         public GameService(DeckService deckService)
         {
             _deckService = deckService;
         }
 
-        public Game? GetCurrentGameState() => _game;
 
-        public async Task StartNewGameAsync(List<string> playersNames)
+        public void StartNewGame(List<string> playersNames)
         {
             _game = new Game();
             _game.SetTeams(playersNames);
@@ -31,7 +31,7 @@ namespace TrucoAPI.Services
 
         //Round
         public Round? GetCurrentRoundState() => _round;
-        public async Task StartRound()
+        public void StartRound()
         {
             _round = new Round();
         }
@@ -39,6 +39,9 @@ namespace TrucoAPI.Services
         //Vai rodar sempre que acabar um turno!
         public TurnResult GetGameWinner()
         {
+
+            if (_game == null) return TurnResult.TurnError;
+
             foreach (var team in _game.Teams)
             {
                 if (team.RoundScore == 12)
@@ -63,6 +66,8 @@ namespace TrucoAPI.Services
 
         public TurnResult GetTurnWinner()
         {
+            if (_game == null) return;
+            if (_turn == null) return TurnResult.NoWinner;
             if (_turn.PlayerWinner == null)
                 throw new InvalidOperationException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
 
@@ -102,6 +107,8 @@ namespace TrucoAPI.Services
 
         private async Task DistributePlayer(DeckDto deck)
         {
+            if (_game == null) return;
+
             if (_game.Teams == null) return;
             if (_turn == null) return;
 
@@ -124,6 +131,8 @@ namespace TrucoAPI.Services
         //Tem que ser repassado via API
         public void DecidePlayerWinner(List<CardDto> cards)
         {
+            if (_turn == null) return;
+
             _turn.SetCardHighestValue(cards);
             var allPlayers = _game.GetAllPlayers();
 

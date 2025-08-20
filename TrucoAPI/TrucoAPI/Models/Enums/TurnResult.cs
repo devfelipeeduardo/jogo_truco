@@ -4,6 +4,7 @@
     {
         HasWinner,
         NoWinner,
-        Draw
+        Draw,
+        TurnError
     }
 }
