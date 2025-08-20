@@ -1,4 +1,5 @@
-﻿using TrucoAPI.Models.DTOs;
+﻿using TrucoAPI.Models.Domains.Exceptions;
+using TrucoAPI.Models.DTOs;
 using TrucoAPI.Models.Entities;
 using TrucoAPI.Models.Enums;
 using TrucoAPI.Models.Game;
@@ -40,7 +41,7 @@ namespace TrucoAPI.Services
         public TurnResult GetGameWinner()
         {
 
-            if (_game == null) return TurnResult.TurnError;
+            if (_game == null) throw new GameNotInitialized("O jogo não foi iniciado!"); ;
 
             foreach (var team in _game.Teams)
             {
