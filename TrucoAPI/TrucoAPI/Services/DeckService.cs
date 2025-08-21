@@ -12,7 +12,8 @@ namespace TrucoAPI.Services
         public async Task<DeckDto> CreateDeckAsync()
         {
             var response = await _http.GetAsync("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
-            if (response == null) throw new HttpRequestException("Não foi possível criar o deck");
+            if (response == null)
+                throw new HttpRequestException("Não foi possível criar o deck");
 
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
@@ -24,7 +25,9 @@ namespace TrucoAPI.Services
         public async Task<List<CardDto>> DrawCardsAsync(string deckId, int quantity)
         {
             var response = await _http.GetAsync($"https://www.deckofcardsapi.com/api/deck/{deckId}/draw/?count={quantity}");
-            if (response == null) throw new HttpRequestException("Não foi possível comprar cartas");
+            if (response == null)
+                throw new HttpRequestException("Não foi possível comprar cartas");
+
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();

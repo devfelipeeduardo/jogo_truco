@@ -43,7 +43,7 @@ namespace TrucoAPI.Models.Game
         public void SetTrumpValue()
         {
             if (Trump == null)
-                return;
+                throw new NullReferenceException("Não existe manilha para atribuir um valor");
 
             char trumpNumber = Trump.Code[0];
             char numberBeforeCode4 = '3';
@@ -62,7 +62,7 @@ namespace TrucoAPI.Models.Game
             card.CardValue = cardValue;
 
             if (Trump == null)
-                return;
+                throw new NullReferenceException("Não existe manilha para comparar o valor e atribuir para as manilhas");
 
             if (card.CardValue == Trump.CardValue + 1)
             {
@@ -78,7 +78,8 @@ namespace TrucoAPI.Models.Game
         }
         public void SetCardHighestValue(List<CardDto> cards)
         {
-            if (cards == null) throw new ArgumentNullException(nameof(cards), "As cartas não foram repassadas");
+            if (cards == null)
+                throw new ArgumentNullException(nameof(cards), "As cartas não foram repassadas");
 
             HighestValueCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
         }
