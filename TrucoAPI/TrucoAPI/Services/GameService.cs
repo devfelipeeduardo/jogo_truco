@@ -36,12 +36,10 @@ namespace TrucoAPI.Services
         {
             _round = new Round();
         }
-
-        //Vai rodar sempre que acabar um turno!
         public TurnResult GetGameWinner()
         {
 
-            if (_game == null) throw new GameNotInitialized("O jogo não foi iniciado!"); ;
+            if (_game == null) throw new ArgumentNullException("O jogo não foi iniciado!");
 
             foreach (var team in _game.Teams)
             {
@@ -64,13 +62,45 @@ namespace TrucoAPI.Services
             await SetTrumpCard(deck);
             await DistributePlayer(deck);
         }
+        private async Task SetTrumpCard(DeckDto deck)
+        {
+            if (_turn == null) throw new ArgumentNullException("O turno não foi iniciado!");
+
+            List<CardDto> trumpCards = await _deckService.DrawCardsAsync(deck.DeckId, 1);
+            var trump = trumpCards.FirstOrDefault() ?? throw new Exception("Não foi possível tirar a carta vira.");
+
+            _turn.SetTrump(trump);
+            _turn.SetTrumpValue();
+        }
+        private async Task DistributePlayer(DeckDto deck)
+        {
+            if (_game == null) throw new ArgumentNullException("O jogo não foi iniciado!");
+            if (_turn == null) throw new ArgumentNullException("O turno não foi iniciado!");
+
+            if (_game.Teams == null) throw new ArgumentNullException("Os times não foram definidos não foi iniciado!");
+
+            var allPlayers = _game.GetAllPlayers();
+            int totalCards = 3 * allPlayers.Count;
+            var allCards = await GetAllCardsAsync(deck, totalCards);
+
+            for (int i = 0; i < allPlayers.Count; i++)
+            {
+                var playerCards = allCards.GetRange(i * 3, 3);
+
+                foreach (var card in playerCards)
+                {
+                    _turn.SetCardValue(card);
+                }
+                allPlayers[i].SetHand(playerCards);
+            }
+        }
 
         public TurnResult GetTurnWinner()
         {
-            if (_game == null) return;
+            if (_game == null) throw new ArgumentNullException("O jogo não foi iniciado!");
             if (_turn == null) return TurnResult.NoWinner;
             if (_turn.PlayerWinner == null)
-                throw new InvalidOperationException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
+                throw new ArgumentNullException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
 
             if (_game.Teams.FirstOrDefault(t => t.TurnScore == 2) is Team winnerTeam)
             {
@@ -90,49 +120,18 @@ namespace TrucoAPI.Services
         }
 
 
-        private async Task<List<CardDto>> GetAllCardsAsync(DeckDto deck, int totalCards)
+
+        private async Task<List<CardDto>> GetAllCardsAsync(DeckDto deck, int cardsQuantity)
         {
-            return await _deckService.DrawCardsAsync(deck.DeckId, totalCards);
+            return await _deckService.DrawCardsAsync(deck.DeckId, cardsQuantity);
         }
 
-        private async Task SetTrumpCard(DeckDto deck)
-        {
-            if (_turn == null) return;
-
-            List<CardDto> trumpCards = await _deckService.DrawCardsAsync(deck.DeckId, 1);
-            var trump = trumpCards.FirstOrDefault() ?? throw new Exception("Não foi possível tirar a carta vira.");
-
-            _turn.SetTrump(trump);
-            _turn.SetTrumpValue();
-        }
-
-        private async Task DistributePlayer(DeckDto deck)
-        {
-            if (_game == null) return;
-
-            if (_game.Teams == null) return;
-            if (_turn == null) return;
-
-            var allPlayers = _game.GetAllPlayers();
-            int totalCards = 3 * allPlayers.Count;
-            var allCards = await GetAllCardsAsync(deck, totalCards);
-
-            for (int i = 0; i < allPlayers.Count; i++)
-            {
-                var playerCards = allCards.GetRange(i * 3, 3);
-
-                foreach (var card in playerCards)
-                {
-                    _turn.SetCardValue(card);
-                }
-                allPlayers[i].SetHand(playerCards);
-            }
-        }
 
         //Tem que ser repassado via API
         public void DecidePlayerWinner(List<CardDto> cards)
         {
-            if (_turn == null) return;
+            if (_game == null) throw new ArgumentNullException("O jogo não foi iniciado!");
+            if (_turn == null) throw new ArgumentNullException("O turno não foi iniciado!");
 
             _turn.SetCardHighestValue(cards);
             var allPlayers = _game.GetAllPlayers();

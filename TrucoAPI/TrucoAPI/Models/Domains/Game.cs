@@ -15,6 +15,8 @@ namespace TrucoAPI.Models.Game
         public void SetTeams(List<string> playersName)
         {
 
+            if (playersName == null) throw new ArgumentNullException(nameof(playersName), "Os jogadores não foram repassados");
+
             if (playersName.Count != 4)
                 throw new ArgumentException("São necessários 4 jogadores para o jogo começar!");
 
@@ -51,7 +53,6 @@ namespace TrucoAPI.Models.Game
         {
             foreach (var team in Teams)
             {
-                //Caso haja mais atributos, resetar também!
                 team.ResetRoundScore();
             }
         }

@@ -78,7 +78,7 @@ namespace TrucoAPI.Models.Game
         }
         public void SetCardHighestValue(List<CardDto> cards)
         {
-            if (cards == null) return;
+            if (cards == null) throw new ArgumentNullException(nameof(cards), "As cartas não foram repassadas");
 
             HighestValueCard = cards.OrderByDescending(c => c.CardValue).FirstOrDefault();
         }
