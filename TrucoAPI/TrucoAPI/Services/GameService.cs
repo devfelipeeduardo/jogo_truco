@@ -59,7 +59,7 @@ namespace TrucoAPI.Services
             _turn = new Turn { DeckId = deck.DeckId };
 
             await SetTrumpCard(deck);
-            await DistributePlayer(deck);
+            await DistributeCardsByPlayer(deck);
         }
 
         private async Task SetTrumpCard(DeckDto deck)
@@ -75,7 +75,7 @@ namespace TrucoAPI.Services
             _turn.SetTrumpValue();
         }
 
-        private async Task DistributePlayer(DeckDto deck)
+        private async Task DistributeCardsByPlayer(DeckDto deck)
         {
             if (_game == null)
                 throw new ArgumentNullException(nameof(deck), "O jogo não foi iniciado!");
@@ -134,7 +134,7 @@ namespace TrucoAPI.Services
         }
 
         //Tem que ser repassado via API
-        public void DecidePlayerWinner(List<CardDto> cards)
+        public void DecidePlayerWinner(List<string> cards)
         {
             if (_game == null)
                 throw new ArgumentNullException("O jogo não foi iniciado!");

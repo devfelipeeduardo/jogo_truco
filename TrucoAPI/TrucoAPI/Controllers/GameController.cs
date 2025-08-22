@@ -23,21 +23,48 @@ namespace Truco.API.Controllers
             return Ok(new { message = "Jogo iniciado!", game = _gameService.GetCurrentGameState() });
         }
 
-        //[HttpGet("state")]
+        [HttpGet("gameState")]
+        public IActionResult GetGameState()
+        {
+            return Ok(new { message = "Estado do Jogo foi retornado", game = _gameService.GetCurrentGameState() });
+        }
 
 
-        ////Round
-        //[HttpPost("round/start")]
+        //Round
+        [HttpPost("round/start")]
+        public IActionResult StartRound()
+        {
+            _gameService.StartRound();
+            return Ok(new { message = "Round iniciado!" });
+        }
 
-        //[HttpGet("round/state")]
+        [HttpGet("round/state")]
+        public IActionResult GetRoundState()
+        {
+            return Ok(new { message = "Estado do Round foi retornado", game = _gameService.GetCurrentRoundState() });
+        }
 
-        ////Turn
 
-        //[HttpPost("turn/start")]
+        //Turn
+        [HttpPost("turn/start")]
+        public async Task<IActionResult> StartTurn() {
+            await _gameService.StartTurnAsync();
+            return Ok(new { message = "Turno iniciado!" });
+        }
 
-        //[HttpPost("turn/decide-winner")]
+        [HttpGet("turn/state")]
+        public IActionResult GetTurnState()
+        {
+            return Ok(new { message = "Estado do Turno foi retornado", game = _gameService.GetCurrentTurnState() });
+        }
 
-        //[HttpGet("turn/state")]
+        [HttpPost("turn/decide-winner")]
+        public IActionResult DecidePlayerWinner([FromBody] List<string> cardsCode)
+        {
+            _gameService.DecidePlayerWinner(cardsCode);
+            return Ok(new { message = "Retornado Jogador Vencedor" });
+        }
+        
 
     }
 }
