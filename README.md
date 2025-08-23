@@ -42,15 +42,15 @@ Game/
 │ └── TrucoAPI.sln
 │ └── TrucoAPI
 │ │ └── Controllers
-│ │ │ └── JogoController.cs
+│ │ │ └── GameController.cs
 │ │ └── Models
-│ │ │ └── Card.cs
+│ │ │ └── CardDto.cs
 │ │ │ └── DeckResponse.cs
 │ │ │ └── Jogador.cs
 │ │ │ └── Partida.cs
 │ │ └── Services
 │ │ │ └── DeckService.cs
-│ │ │ └── JogoService.cs
+│ │ │ └── GameService.cs
 │ │ └── Program.cs
 ├──TrucoFrontEnd
 │ └── src
