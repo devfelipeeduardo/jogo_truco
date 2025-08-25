@@ -45,7 +45,7 @@ Game/
 │ │ │ └── GameController.cs
 │ │ └── Models
 │ │ │ └── CardDto.cs
-│ │ │ └── DeckResponse.cs
+│ │ │ └── DeckDto.cs
 │ │ │ └── Jogador.cs
 │ │ │ └── Partida.cs
 │ │ └── Services
