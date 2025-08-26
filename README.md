@@ -42,25 +42,25 @@ Game/
 │ └── TrucoAPI.sln
 │ └── TrucoAPI
 │ │ └── Controllers
-│ │ │ └── JogoController.cs
+│ │ │ └── GameController.cs
 │ │ └── Models
-│ │ │ └── Card.cs
-│ │ │ └── DeckResponse.cs
-│ │ │ └── Jogador.cs
-│ │ │ └── Partida.cs
+│ │ │ └── CardDto.cs
+│ │ │ └── DeckDto.cs
+│ │ │ └── Player.cs
+│ │ │ └── Game.cs
 │ │ └── Services
 │ │ │ └── DeckService.cs
-│ │ │ └── JogoService.cs
+│ │ │ └── GameService.cs
 │ │ └── Program.cs
 ├──TrucoFrontEnd
 │ └── src
 │ │ └── components
-│ │ │ └── Jogadores.jsx
+│ │ │ └── Players.jsx
 │ │ │ └── Table.jsx
 │ │ └── styles
 │ │ │ └── App.css
 │ │ │ └── Table.css
-│ │ │ └── index.css
+│ │ │ └── Index.css
 │ │ └── App.jsx
 │ │ └── Main.jsx
 └── README.md
