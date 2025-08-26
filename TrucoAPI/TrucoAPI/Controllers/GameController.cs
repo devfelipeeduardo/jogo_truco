@@ -16,17 +16,23 @@ namespace Truco.API.Controllers
         }
 
         //Game
-        [HttpPost("startGame")]
+        [HttpPost("start")]
         public IActionResult StartGame([FromBody] List<string> playerNames)
         {
             _gameService.StartNewGame(playerNames);
             return Ok(new { message = "Jogo iniciado!", game = _gameService.GetCurrentGameState() });
         }
 
-        [HttpGet("gameState")]
+        [HttpGet("State")]
         public IActionResult GetGameState()
         {
             return Ok(new { message = "Estado do Jogo foi retornado", game = _gameService.GetCurrentGameState() });
+        }
+
+        [HttpGet("players")]
+        public IActionResult GetPlayers()
+        {
+            return Ok(new { message = "Jogadores foram retornados", game = _gameService.GetCurrentPlayers() });
         }
 
 
@@ -59,12 +65,10 @@ namespace Truco.API.Controllers
         }
 
         [HttpPost("turn/decide-winner")]
-        public IActionResult DecidePlayerWinner([FromBody] List<string> cardsCode)
+        public IActionResult DecidePlayerWinner([FromBody] List<CardDto> cardsCode)
         {
             _gameService.DecidePlayerWinner(cardsCode);
             return Ok(new { message = "Retornado Jogador Vencedor" });
         }
-        
-
     }
 }

@@ -6,7 +6,11 @@ function Players() {
   const [cardsSelectedByPlayers, setCardsSelectedByPlayers] = useState([null, null, null, null]);
 
   function getPlayer(playerName) {
-    return data.players.find(j => j.name.toLowerCase() === playerName);
+    for (const team of data.game.teams){
+      const player = team.players.find(p => p.name.toLowerCase() === playerName)
+      if (player) return player;
+    }
+    return data.game.teams.find(t => t.players.toLowerCase() === playerName);
   }
 
   function chooseCard(player, card) {
@@ -39,7 +43,7 @@ function Players() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5150/api/jogo/iniciar', {
+    fetch('http://localhost:5150/api/game/start', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -55,7 +59,7 @@ function Players() {
   }, [])
 
   function getWinner() {
-    fetch('http://localhost:5150/api/jogo/decidirVencedor', {
+    fetch('http://localhost:5150/api/turn/decide-winner', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -63,9 +67,9 @@ function Players() {
       body: JSON.stringify(cardsSelectedByPlayers)
     })
       .then(response => response.json())
-      .then(data => {
-        console.log("Resposta:", data);
-        setWinnerData(data);
+      .then(winnerData => {
+        console.log("Resposta:", winnerData);
+        setWinnerData(winnerData);
       })
       .catch(error => console.error("Deu erro:", error));
   };
@@ -107,7 +111,7 @@ function Players() {
         ))}
       </div>
       <div className="trump">
-        <img key={5} src={data.trump.image} alt={`Carta: Manilha`} className="card" />
+        <img key={5} src={data.game.turn.trump.image} alt={`Carta: Manilha`} className="card" />
       </div>
       <div className="teste">
         {winnerData?.playerWithCardWithHighestValue.name}

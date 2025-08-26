@@ -76,7 +76,7 @@ namespace TrucoAPI.Models.Game
                 }
             }
         }
-        public void SetCardHighestValue(List<string> cards)
+        public void SetCardHighestValue(List<CardDto> cards)
         {
             if (cards == null)
                 throw new ArgumentNullException(nameof(cards), "As cartas não foram repassadas");

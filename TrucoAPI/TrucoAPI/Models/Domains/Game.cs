@@ -62,5 +62,7 @@ namespace TrucoAPI.Models.Game
             return _maxRounds;
         }
 
+
+
     }
 }

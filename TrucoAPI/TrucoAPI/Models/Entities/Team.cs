@@ -2,7 +2,7 @@
 {
     public class Team
     {
-        private List<Player> Players { get; set; } = new List<Player>();
+        public List<Player> Players { get; private set; } = new List<Player>();
         public int RoundScore { get; private set; }
         public int TurnScore { get; private set; }
 

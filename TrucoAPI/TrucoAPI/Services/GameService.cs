@@ -27,6 +27,16 @@ namespace TrucoAPI.Services
             _game.ResetTeamsRoundAtributtes();
         }
 
+        public List<Player> GetCurrentPlayers()
+        {
+            if (_game == null)
+                throw new ArgumentNullException("O jogo não foi iniciado!");
+
+            List<Player> players = _game.GetAllPlayers();
+
+            return players;
+        }
+
         //Round
         public Round? GetCurrentRoundState() => _round;
         public void StartRound()
@@ -134,14 +144,21 @@ namespace TrucoAPI.Services
         }
 
         //Tem que ser repassado via API
-        public void DecidePlayerWinner(List<string> cards)
+        public void DecidePlayerWinner(List<CardDto> cards)
         {
             if (_game == null)
                 throw new ArgumentNullException("O jogo não foi iniciado!");
             if (_turn == null)
                 throw new ArgumentNullException("O turno não foi iniciado!");
 
-            _turn.SetCardHighestValue(cards);
+            try
+            {
+                _turn.SetCardHighestValue(cards);
+            }
+            catch (Exception ex) {
+                throw new Exception(ex + "Não foi setado cartas");
+            }
+
             var allPlayers = _game.GetAllPlayers();
 
             var winnerPlayer = allPlayers.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == _turn.HighestValueCard.CardValue))
