@@ -46,8 +46,8 @@ Game/
 │ │ └── Models
 │ │ │ └── CardDto.cs
 │ │ │ └── DeckDto.cs
-│ │ │ └── Jogador.cs
-│ │ │ └── Partida.cs
+│ │ │ └── Player.cs
+│ │ │ └── Game.cs
 │ │ └── Services
 │ │ │ └── DeckService.cs
 │ │ │ └── GameService.cs
@@ -55,12 +55,12 @@ Game/
 ├──TrucoFrontEnd
 │ └── src
 │ │ └── components
-│ │ │ └── Jogadores.jsx
+│ │ │ └── Players.jsx
 │ │ │ └── Table.jsx
 │ │ └── styles
 │ │ │ └── App.css
 │ │ │ └── Table.css
-│ │ │ └── index.css
+│ │ │ └── Index.css
 │ │ └── App.jsx
 │ │ └── Main.jsx
 └── README.md
