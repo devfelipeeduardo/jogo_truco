@@ -13,7 +13,7 @@ You can test the game demo at: Demo: 🚧 Not deployed yet – coming soon!
 
 "Truco" is a traditional card game, played by 2 or 4 people, where players compete to win rounds by comparing cards values and bluffing to increase the current stakes.
 
-### Features - 🚧 OUTDATED
+### Features
 
 
 - **Scoreboard**: It counts the player's score and shows it.
@@ -21,7 +21,7 @@ You can test the game demo at: Demo: 🚧 Not deployed yet – coming soon!
 - **Table**: It shows the deck and trump.
 - **Sound Control**: Mute and unmute the game sounds. [Not Implemented Yet]
 
-### Stacks Used - 🚧 OUTDATED
+### Stacks Used
 
 - **HTML**: Markup language used for structuring the game interface.
 - **CSS**: Styling language used for designing the game interface.
@@ -30,12 +30,11 @@ You can test the game demo at: Demo: 🚧 Not deployed yet – coming soon!
 - **ASP.NET WEBAPI(C#)**: Framework for game logic and requisitons to API DeckOfCards.
 - **API DeckOfCards**: Api used to get cards from decks and shuffle: "https://www.deckofcardsapi.com/".
 
-## Project Structure - 🚧 OUTDATED
+## Project Structure
 
 The project structure is as follows:
 ```
 
-🚧 OUTDATED
 Game/
 ├──TrucoAPI
 │ └──.vs
@@ -44,14 +43,23 @@ Game/
 │ │ └── Controllers
 │ │ │ └── GameController.cs
 │ │ └── Models
-│ │ │ └── CardDto.cs
-│ │ │ └── DeckDto.cs
-│ │ │ └── Player.cs
-│ │ │ └── Game.cs
+│ │ │ └── Domains
+│ │ │ │ └── Game.cs
+│ │ │ │ └── Round.cs
+│ │ │ │ └── Turn.cs
+│ │ │ └── DTOs
+│ │ │ │ └── CardDto.cs
+│ │ │ │ └── DeckDto.cs
+│ │ │ └── Entities
+│ │ │ │ └── Player.cs
+│ │ │ │ └── Team.cs
+│ │ │ └── Enums
+│ │ │ │ └── TurnResult.cs
 │ │ └── Services
 │ │ │ └── DeckService.cs
 │ │ │ └── GameService.cs
 │ │ └── Program.cs
+│ 
 ├──TrucoFrontEnd
 │ └── src
 │ │ └── components
