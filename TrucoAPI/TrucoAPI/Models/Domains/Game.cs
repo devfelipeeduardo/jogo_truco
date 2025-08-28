@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
+using System.Text.Json.Serialization;
 using System.Xml.Linq;
 using TrucoAPI.Models.Entities;
 
@@ -8,6 +9,7 @@ namespace TrucoAPI.Models.Game
     {
         private int _maxRounds = 23;
         public List<Round> Rounds { get; private set; } = new List<Round>();
+        [JsonPropertyName("teams")]
         public List<Team> Teams { get; private set; } = new List<Team>();
 
         public Game() {}

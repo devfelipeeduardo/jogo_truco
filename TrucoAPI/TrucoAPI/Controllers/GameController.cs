@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrucoAPI.Models.DTOs;
+using TrucoAPI.Models.Game;
 using TrucoAPI.Services;
 
 namespace Truco.API.Controllers
@@ -17,22 +18,29 @@ namespace Truco.API.Controllers
 
         //Game
         [HttpPost("start")]
-        public IActionResult StartGame([FromBody] List<string> playerNames)
+        public async Task<IActionResult> StartGame([FromBody] List<string> playerNames)
         {
             _gameService.StartNewGame(playerNames);
-            return Ok(new { message = "Jogo iniciado!", game = _gameService.GetCurrentGameState() });
+            await _gameService.StartTurnAsync();
+
+            var gameState = _gameService.GetCurrentGameState();
+            var turnState = _gameService.GetCurrentTurnState();
+
+            return Ok(new { message = "Jogo iniciado!", gameState, turnState });
         }
 
         [HttpGet("State")]
         public IActionResult GetGameState()
         {
-            return Ok(new { message = "Estado do Jogo foi retornado", game = _gameService.GetCurrentGameState() });
+            var gameState = _gameService.GetCurrentGameState();
+            return Ok(new { message = "Estado do Jogo foi retornado", gameState });
         }
 
         [HttpGet("players")]
         public IActionResult GetPlayers()
         {
-            return Ok(new { message = "Jogadores foram retornados", game = _gameService.GetCurrentPlayers() });
+            var playersState = _gameService.GetCurrentPlayers();
+            return Ok(new { message = "Jogadores foram retornados", playersState});
         }
 
 
@@ -47,21 +55,25 @@ namespace Truco.API.Controllers
         [HttpGet("round/state")]
         public IActionResult GetRoundState()
         {
-            return Ok(new { message = "Estado do Round foi retornado", game = _gameService.GetCurrentRoundState() });
+            var roundState = _gameService.GetCurrentRoundState();
+            return Ok(new { message = "Estado do Round foi retornado", roundState });
         }
 
 
         //Turn
-        [HttpPost("turn/start")]
+        [HttpGet("turn/start")]
         public async Task<IActionResult> StartTurn() {
             await _gameService.StartTurnAsync();
-            return Ok(new { message = "Turno iniciado!" });
+            var turnState = _gameService.GetCurrentTurnState();
+
+            return Ok(new { message = "Turno iniciado!", turnState });
         }
 
         [HttpGet("turn/state")]
         public IActionResult GetTurnState()
         {
-            return Ok(new { message = "Estado do Turno foi retornado", game = _gameService.GetCurrentTurnState() });
+            var turnState = _gameService.GetCurrentTurnState();
+            return Ok(new { message = "Estado do Turno foi retornado", turnState });
         }
 
         [HttpPost("turn/decide-winner")]

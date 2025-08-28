@@ -1,78 +1,79 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Players() {
   const [data, setData] = useState(null);
-  const [winnerData, setWinnerData] = useState(null);
+  const [playerWinnerData, setPlayerWinnerData] = useState(null);
   const [cardsSelectedByPlayers, setCardsSelectedByPlayers] = useState([null, null, null, null]);
 
   function getPlayer(playerName) {
-    for (const team of data.game.teams){
+    for (const team of data.teams) {
       const player = team.players.find(p => p.name.toLowerCase() === playerName)
       if (player) return player;
     }
-    return data.game.teams.find(t => t.players.toLowerCase() === playerName);
+    return null;
   }
 
-  function chooseCard(player, card) {
-    switch (player) {
-      case player1:
-        setCardsSelectedByPlayers(prevLista =>
-          prevLista.map((item, index) =>
-            index === 0 ? card : item)
-        )
-        break;
-      case player2:
-        setCardsSelectedByPlayers(prevLista =>
-          prevLista.map((item, index) =>
-            index === 1 ? card : item)
-        )
-        break;
-      case player3:
-        setCardsSelectedByPlayers(prevLista =>
-          prevLista.map((item, index) =>
-            index === 2 ? card : item)
-        )
-        break;
-      case player4:
-        setCardsSelectedByPlayers(prevLista =>
-          prevLista.map((item, index) =>
-            index === 3 ? card : item)
-        )
-        break;
-    }
+
+  function chooseCard(playerIndex, card) {
+    setCardsSelectedByPlayers(prevLista =>
+      prevLista.map((item, index) => (index === playerIndex ? card : item))
+    );
   }
+
 
   useEffect(() => {
-    fetch('http://localhost:5150/api/game/start', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(["felipe", "pedro", "jonathan", "gabriel"])
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Resposta:", data);
-        setData(data);
-      })
-      .catch(error => console.error("Deu erro:", error));
-  }, [])
+    async function initGame() {
+      try {
+        // 1 - inicia o jogo
+        await fetch('http://localhost:5150/api/game/start', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(["felipe", "pedro", "jonathan", "gabriel"])
+        });
 
-  function getWinner() {
-    fetch('http://localhost:5150/api/turn/decide-winner', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(cardsSelectedByPlayers)
-    })
-      .then(response => response.json())
-      .then(winnerData => {
-        console.log("Resposta:", winnerData);
-        setWinnerData(winnerData);
+        // 2 - inicia o round
+        await fetch('http://localhost:5150/api/game/round/start', {
+          method: 'POST'
+        });
+
+        // 3 - inicia o turno
+        const turnResponse = await fetch('http://localhost:5150/api/game/turn/start', { method: 'GET' });
+        const turnData = await turnResponse.json();
+        console.log("Turno completo:", turnData);
+        const turnState = turnData.turnState; // pega só o estado do turno
+
+
+        // 4 - pega o estado atualizado (com trump e mãos)
+        const stateResponse = await fetch('http://localhost:5150/api/game/state');
+        const stateData = await stateResponse.json();
+        setData({
+          ...stateData.gameState,
+          turn: turnState
+        });
+
+      } catch (error) {
+        console.error("Erro ao iniciar jogo:", error);
+      }
+    }
+    initGame();
+  }, []);
+
+
+  async function getWinner() {
+    try {
+      const playerWinnerResponse = await fetch('http://localhost:5150/api/turn/decide-winner', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cardsSelectedByPlayers)
       })
-      .catch(error => console.error("Deu erro:", error));
-  };
+      const playerWinnerData = await playerWinnerResponse.json();
+      setPlayerWinnerData(playerWinnerData);
+    } catch (error) {
+      console.error("Erro ao definir o vencedor:", error);
+    }
+  }
 
   useEffect(() => {
     const everyCardFilled = cardsSelectedByPlayers.every(pair => pair !== null);
@@ -92,32 +93,59 @@ function Players() {
     <>
       <div className="player1">
         {player1.hand.map((card, index) => (
-          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(player1, card)} />
+          <img
+            key={index}
+            src={card.image}
+            alt={`Carta ${index}`}
+            className="card"
+            onClick={() => chooseCard(0, card)} // índice 0 = player1
+          />
         ))}
       </div>
+
       <div className="player2">
         {player2.hand.map((card, index) => (
-          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(player2, card)} />
+          <img
+            key={index}
+            src={card.image}
+            alt={`Carta ${index}`}
+            className="card"
+            onClick={() => chooseCard(1, card)} // índice 1 = player2
+          />
         ))}
       </div>
+
       <div className="player3">
         {player3.hand.map((card, index) => (
-          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(player3, card)} />
+          <img
+            key={index}
+            src={card.image}
+            alt={`Carta ${index}`}
+            className="card"
+            onClick={() => chooseCard(2, card)} // índice 2 = player3
+          />
         ))}
       </div>
+
       <div className="player4">
         {player4.hand.map((card, index) => (
-          <img key={index} src={card.image} alt={`Carta ${index}`} className="card" onClick={() => chooseCard(player4, card)} />
+          <img
+            key={index}
+            src={card.image}
+            alt={`Carta ${index}`}
+            className="card"
+            onClick={() => chooseCard(3, card)} // índice 3 = player4
+          />
         ))}
       </div>
       <div className="trump">
-        <img key={5} src={data.game.turn.trump.image} alt={`Carta: Manilha`} className="card" />
+        <img key={5} src={data.turn.trump.image} alt={`Carta: Manilha`} className="card" />
       </div>
       <div className="teste">
-        {winnerData?.playerWithCardWithHighestValue.name}
+        {playerWinnerData?.playerWithCardWithHighestValue.name}
       </div>
     </>
   );
-}
+};
 
 export default Players;
