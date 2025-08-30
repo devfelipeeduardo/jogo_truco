@@ -68,7 +68,7 @@ function Players() {
         },
         body: JSON.stringify(cardsSelectedByPlayers)
       })
-      const playerWinnerData = await playerWinnerResponse.json();
+      // const playerWinnerData = await playerWinnerResponse.json();
       setPlayerWinnerData(playerWinnerData);
     } catch (error) {
       console.error("Erro ao definir o vencedor:", error);

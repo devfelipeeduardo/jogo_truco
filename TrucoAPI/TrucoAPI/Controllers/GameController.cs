@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrucoAPI.Models.DTOs;
+using TrucoAPI.Models.Entities;
 using TrucoAPI.Models.Game;
 using TrucoAPI.Services;
 
@@ -80,7 +81,8 @@ namespace Truco.API.Controllers
         public IActionResult DecidePlayerWinner([FromBody] List<CardDto> cardsCode)
         {
             _gameService.DecidePlayerWinner(cardsCode);
-            return Ok(new { message = "Retornado Jogador Vencedor" });
+            Player playerWinner = _gameService.GetCurrentTurnState().GetPlayerWinner();
+            return Ok(new { message = "Retornado Jogador Vencedor", });
         }
     }
 }

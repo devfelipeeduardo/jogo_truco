@@ -110,7 +110,7 @@ namespace TrucoAPI.Services
             }
         }
 
-        public TurnResult GetTurnWinner()
+        public TurnResult CheckTurnWinner()
         {
             if (_game == null)
                 throw new ArgumentNullException("O jogo não foi iniciado!");
@@ -164,7 +164,7 @@ namespace TrucoAPI.Services
             var winnerPlayer = allPlayers.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == _turn.HighestValueCard.CardValue))
                 ?? throw new NullReferenceException("Não foi possível determinar o jogador vencedor do turno.");
 
-            _turn.SetWinnerPlayer(winnerPlayer);
+            _turn.SetPlayerWinner(winnerPlayer);
         }
     }
 }
