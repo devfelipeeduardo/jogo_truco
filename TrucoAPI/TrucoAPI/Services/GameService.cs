@@ -143,8 +143,7 @@ namespace TrucoAPI.Services
             return await _deckService.DrawCardsAsync(deck.DeckId, cardsQuantity);
         }
 
-        //Tem que ser repassado via API
-        public void DecidePlayerWinner(List<CardDto> cards)
+        public void DecidePlayerWinner(List<string> cardsCode)
         {
             if (_game == null)
                 throw new ArgumentNullException("O jogo não foi iniciado!");
@@ -153,7 +152,7 @@ namespace TrucoAPI.Services
 
             try
             {
-                _turn.SetCardHighestValue(cards);
+                _turn.SetCardHighestValue(cardsCode);
             }
             catch (Exception ex) {
                 throw new Exception(ex + "Não foi setado cartas");

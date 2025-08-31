@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function Players() {
   const [data, setData] = useState(null);
@@ -59,28 +59,27 @@ function Players() {
   }, []);
 
 
-  async function getWinner() {
+  const getWinner = useCallback(async () => {
     try {
-      const playerWinnerResponse = await fetch('http://localhost:5150/api/turn/decide-winner', {
+      const response = await fetch('http://localhost:5150/api/game/turn/decide-winner', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(cardsSelectedByPlayers)
-      })
-      // const playerWinnerData = await playerWinnerResponse.json();
-      setPlayerWinnerData(playerWinnerData);
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cardsSelectedByPlayers.map(c => c?.code ))
+      });
+
+      const data = await response.json();
+      setPlayerWinnerData(data);
     } catch (error) {
       console.error("Erro ao definir o vencedor:", error);
     }
-  }
+  }, [cardsSelectedByPlayers]);
 
   useEffect(() => {
     const everyCardFilled = cardsSelectedByPlayers.every(pair => pair !== null);
     if (everyCardFilled) {
       getWinner();
     }
-  }, [cardsSelectedByPlayers]);
+  }, [cardsSelectedByPlayers, getWinner]);
 
   if (!data) return <p>Carregando...</p>;
 
@@ -142,7 +141,7 @@ function Players() {
         <img key={5} src={data.turn.trump.image} alt={`Carta: Manilha`} className="card" />
       </div>
       <div className="teste">
-        {playerWinnerData?.playerWithCardWithHighestValue.name}
+        {playerWinnerData?.playerWinner?.name}
       </div>
     </>
   );

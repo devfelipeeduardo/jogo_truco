@@ -30,7 +30,7 @@ namespace Truco.API.Controllers
             return Ok(new { message = "Jogo iniciado!", gameState, turnState });
         }
 
-        [HttpGet("State")]
+        [HttpGet("state")]
         public IActionResult GetGameState()
         {
             var gameState = _gameService.GetCurrentGameState();
@@ -78,11 +78,15 @@ namespace Truco.API.Controllers
         }
 
         [HttpPost("turn/decide-winner")]
-        public IActionResult DecidePlayerWinner([FromBody] List<CardDto> cardsCode)
+        public IActionResult DecidePlayerWinner([FromBody] List<string> cardsCode)
         {
             _gameService.DecidePlayerWinner(cardsCode);
-            Player playerWinner = _gameService.GetCurrentTurnState().GetPlayerWinner();
-            return Ok(new { message = "Retornado Jogador Vencedor", });
+            var playerWinner = _gameService.GetCurrentTurnState().GetPlayerWinner();
+            return Ok(new
+            {
+                message = "Jogador vencedor definido!",
+                playerWinner
+            });
         }
     }
-}
+} 
