@@ -76,10 +76,10 @@ namespace TrucoAPI.Models.Game
                 }
             }
         }
-        public void SetCardHighestValue(List<string> cardsCode)
+        public void SetCardHighestValue(List<CardDto> cards)
         {
-            if (cardsCode == null)
-                throw new ArgumentNullException(nameof(cardsCode), "As cartas não foram repassadas");
+            if (cards == null)
+                throw new ArgumentNullException(nameof(cards), "As cartas não foram repassadas");
 
             //Preciso pegar cada carta que vir, olhar seus valores e ver se é a maior carta do turno.
 
@@ -87,15 +87,17 @@ namespace TrucoAPI.Models.Game
 
             int HighestValue = 0;
 
-            foreach (var card in cardsCode)
+            foreach (var card in cards)
             {
-                if (CardsValue.TryGetValue(card, out int cardValues))
+                if (CardsValue.TryGetValue(card.Code, out int cardValues))
                 {
                     if (cardValues > HighestValue) { 
                         HighestValue = cardValues;
+                        HighestValueCard = card;
                     }
                 }
             }
+
         }
 
         public void SetPlayerWinner(Player player)

@@ -78,9 +78,9 @@ namespace Truco.API.Controllers
         }
 
         [HttpPost("turn/decide-winner")]
-        public IActionResult DecidePlayerWinner([FromBody] List<string> cardsCode)
+        public IActionResult DecidePlayerWinner([FromBody] List<CardDto> cards)
         {
-            _gameService.DecidePlayerWinner(cardsCode);
+            _gameService.DecidePlayerWinner(cards);
             var playerWinner = _gameService.GetCurrentTurnState().GetPlayerWinner();
             return Ok(new
             {

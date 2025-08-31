@@ -8,4 +8,4 @@ def on_click(x, y, button, pressed):
 
 # Listener do mouse sempre ativo
 with mouse.Listener(on_click=on_click) as listener:
-    listener.join()d
+    listener.join()

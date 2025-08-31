@@ -37,6 +37,34 @@
     transform: rotate(90deg);
 }
 
+.playerWinner {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 125px;
+    font-size: 25px;
+    background: yellow;
+    opacity: 0;
+}
+
+@keyframes changesOpacity {
+    0% {
+        opacity: 0;
+    } 
+    50% {
+        opacity: 1;
+    } 
+    100%{
+        opacity: 0;
+    }
+}
+
+.changesOpacity {
+    animation: changesOpacity 2s ease forwards;
+}
+
 .trump {
     bottom: 450px;
 }

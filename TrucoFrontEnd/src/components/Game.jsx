@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 
-function Players() {
+function Game() {
   const [data, setData] = useState(null);
   const [playerWinnerData, setPlayerWinnerData] = useState(null);
   const [cardsSelectedByPlayers, setCardsSelectedByPlayers] = useState([null, null, null, null]);
+  const [opacityAnimate, setOpacityAnimate] = useState(false);
 
   function getPlayer(playerName) {
     for (const team of data.teams) {
@@ -13,13 +14,11 @@ function Players() {
     return null;
   }
 
-
   function chooseCard(playerIndex, card) {
     setCardsSelectedByPlayers(prevLista =>
       prevLista.map((item, index) => (index === playerIndex ? card : item))
     );
   }
-
 
   useEffect(() => {
     async function initGame() {
@@ -64,7 +63,7 @@ function Players() {
       const response = await fetch('http://localhost:5150/api/game/turn/decide-winner', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(cardsSelectedByPlayers.map(c => c?.code ))
+        body: JSON.stringify(cardsSelectedByPlayers)
       });
 
       const data = await response.json();
@@ -78,15 +77,22 @@ function Players() {
     const everyCardFilled = cardsSelectedByPlayers.every(pair => pair !== null);
     if (everyCardFilled) {
       getWinner();
+      setOpacity();
     }
   }, [cardsSelectedByPlayers, getWinner]);
-
+  
+  function setOpacity() {
+    setOpacityAnimate(false);
+    setTimeout(() => setOpacityAnimate(true), 10);
+  };
+  
   if (!data) return <p>Carregando...</p>;
 
   const player1 = getPlayer("felipe")
   const player2 = getPlayer("pedro")
   const player3 = getPlayer("jonathan")
   const player4 = getPlayer("gabriel")
+
 
   return (
     <>
@@ -97,7 +103,7 @@ function Players() {
             src={card.image}
             alt={`Carta ${index}`}
             className="card"
-            onClick={() => chooseCard(0, card)} // índice 0 = player1
+            onClick={() => chooseCard(0, card)}
           />
         ))}
       </div>
@@ -109,7 +115,7 @@ function Players() {
             src={card.image}
             alt={`Carta ${index}`}
             className="card"
-            onClick={() => chooseCard(1, card)} // índice 1 = player2
+            onClick={() => chooseCard(1, card)}
           />
         ))}
       </div>
@@ -121,7 +127,7 @@ function Players() {
             src={card.image}
             alt={`Carta ${index}`}
             className="card"
-            onClick={() => chooseCard(2, card)} // índice 2 = player3
+            onClick={() => chooseCard(2, card)}
           />
         ))}
       </div>
@@ -133,18 +139,18 @@ function Players() {
             src={card.image}
             alt={`Carta ${index}`}
             className="card"
-            onClick={() => chooseCard(3, card)} // índice 3 = player4
+            onClick={() => chooseCard(3, card)}
           />
         ))}
       </div>
       <div className="trump">
         <img key={5} src={data.turn.trump.image} alt={`Carta: Manilha`} className="card" />
       </div>
-      <div className="teste">
-        {playerWinnerData?.playerWinner?.name}
+      <div className={`playerWinner ${opacityAnimate ? "changesOpacity" : ""}`}>
+        {"O jogador: " + playerWinnerData?.playerWinner?.name + " venceu a rodada!" }
       </div>
     </>
   );
 };
 
-export default Players;
+export default Game;
