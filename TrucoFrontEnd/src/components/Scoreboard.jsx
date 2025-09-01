@@ -4,13 +4,11 @@ function Scoreboard() {
     return (
         <>
             <div className="scoreboard-frame">
-                <div className="player1-scoreboard">Player1: <span id="player1-score">0</span></div>
-                <div className="player2-scoreboard">Player2: <span id="player2-score">0</span></div>
-                <div className="player3-scoreboard">Player3: <span id="player3-score">0</span></div>
-                <div className="player4-scoreboard">Player4: <span id="player4-score">0</span></div>
+                <div className="team1-scoreboard">Team 1: <span id="team1-score">0</span></div>
+                <div className="team2-scoreboard">Team 2: <span id="team2-score">0</span></div>
             </div>
             <div className="play-frame">
-                .
+                
             </div>
         </>
     )

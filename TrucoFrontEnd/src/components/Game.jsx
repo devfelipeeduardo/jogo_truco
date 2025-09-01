@@ -1,3 +1,4 @@
+import mesaTruco from '../assets/imgs/mesa_truco.png';
 import { useCallback, useEffect, useState } from "react";
 
 function Game() {
@@ -80,30 +81,32 @@ function Game() {
       setOpacity();
     }
   }, [cardsSelectedByPlayers, getWinner]);
-  
+
   function setOpacity() {
     setOpacityAnimate(false);
     setTimeout(() => setOpacityAnimate(true), 10);
   };
-  
+
   if (!data) return <p>Carregando...</p>;
 
-  const player1 = getPlayer("felipe")
-  const player2 = getPlayer("pedro")
-  const player3 = getPlayer("jonathan")
-  const player4 = getPlayer("gabriel")
+  const player1 = getPlayer("felipe");
+  const player2 = getPlayer("pedro");
+  const player3 = getPlayer("jonathan");
+  const player4 = getPlayer("gabriel");
 
 
   return (
     <>
-      <div className="player1">
+      <img className="table-img" src={mesaTruco} alt="Mesa do truco" />
+
+      <div className={"player1"}>
         {player1.hand.map((card, index) => (
           <img
             key={index}
             src={card.image}
             alt={`Carta ${index}`}
-            className="card"
-            onClick={() => chooseCard(0, card)}
+            className={`card ${cardsSelectedByPlayers[0] === card ? "cardSelected" : ""}`}
+            onClick={() => { chooseCard(0, card); }}
           />
         ))}
       </div>
@@ -114,7 +117,7 @@ function Game() {
             key={index}
             src={card.image}
             alt={`Carta ${index}`}
-            className="card"
+            className={`card ${cardsSelectedByPlayers[1] === card ? "cardSelected" : ""}`}
             onClick={() => chooseCard(1, card)}
           />
         ))}
@@ -126,7 +129,7 @@ function Game() {
             key={index}
             src={card.image}
             alt={`Carta ${index}`}
-            className="card"
+            className={`card ${cardsSelectedByPlayers[2] === card ? "cardSelected" : ""}`}
             onClick={() => chooseCard(2, card)}
           />
         ))}
@@ -138,7 +141,7 @@ function Game() {
             key={index}
             src={card.image}
             alt={`Carta ${index}`}
-            className="card"
+            className={`card ${cardsSelectedByPlayers[3] === card ? "cardSelected" : ""}`}
             onClick={() => chooseCard(3, card)}
           />
         ))}
@@ -147,7 +150,7 @@ function Game() {
         <img key={5} src={data.turn.trump.image} alt={`Carta: Manilha`} className="card" />
       </div>
       <div className={`playerWinner ${opacityAnimate ? "changesOpacity" : ""}`}>
-        {"O jogador: " + playerWinnerData?.playerWinner?.name + " venceu a rodada!" }
+        {"O jogador: " + playerWinnerData?.playerWinner?.name + " venceu a rodada!"}
       </div>
     </>
   );
