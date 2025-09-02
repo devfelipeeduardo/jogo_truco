@@ -3,8 +3,8 @@
     public class Team
     {
         public List<Player> Players { get; private set; } = new List<Player>();
-        public int RoundScore { get; private set; }
-        public int TurnScore { get; private set; }
+        public int RoundScore { get; private set; } = 0;
+        public int TurnScore { get; private set; } = 0;
 
         public Team(){ }
 

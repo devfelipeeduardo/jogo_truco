@@ -44,23 +44,6 @@ namespace Truco.API.Controllers
             return Ok(new { message = "Jogadores foram retornados", playersState});
         }
 
-
-        //Round
-        [HttpPost("round/start")]
-        public IActionResult StartRound()
-        {
-            _gameService.StartRound();
-            return Ok(new { message = "Round iniciado!" });
-        }
-
-        [HttpGet("round/state")]
-        public IActionResult GetRoundState()
-        {
-            var roundState = _gameService.GetCurrentRoundState();
-            return Ok(new { message = "Estado do Round foi retornado", roundState });
-        }
-
-
         //Turn
         [HttpGet("turn/start")]
         public async Task<IActionResult> StartTurn() {

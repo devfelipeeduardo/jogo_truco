@@ -10,7 +10,6 @@ namespace TrucoAPI.Services
     {
         private readonly DeckService _deckService;
         private Game? _game;
-        private Round? _round;
         private Turn? _turn;
 
         //Game
@@ -24,7 +23,8 @@ namespace TrucoAPI.Services
         {
             _game = new Game();
             _game.SetTeams(playersNames);
-            _game.ResetTeamsRoundAtributtes();
+            _game.ResetTeamsRoundScore();
+            _game.ResetTeamsTurnAtributtes();
         }
 
         public List<Player> GetCurrentPlayers()
@@ -37,14 +37,19 @@ namespace TrucoAPI.Services
             return players;
         }
 
-        //Round
-        public Round? GetCurrentRoundState() => _round;
-        public void StartRound()
+        //Turn
+        public Turn? GetCurrentTurnState() => _turn;
+
+        public async Task StartTurnAsync()
         {
-            _round = new Round();
+            var deck = await _deckService.CreateDeckAsync();
+            _turn = new Turn { DeckId = deck.DeckId };
+
+            await SetTrumpCard(deck);
+            await DistributeCardsByPlayer(deck);
         }
 
-        public TurnResult GetGameWinner()
+        private TurnResult CheckGameWinner()
         {
 
             if (_game == null)
@@ -58,18 +63,6 @@ namespace TrucoAPI.Services
                 }
             }
             return TurnResult.NoWinner;
-        }
-
-        //Turn
-        public Turn? GetCurrentTurnState() => _turn;
-
-        public async Task StartTurnAsync()
-        {
-            var deck = await _deckService.CreateDeckAsync();
-            _turn = new Turn { DeckId = deck.DeckId };
-
-            await SetTrumpCard(deck);
-            await DistributeCardsByPlayer(deck);
         }
 
         private async Task SetTrumpCard(DeckDto deck)
@@ -110,32 +103,36 @@ namespace TrucoAPI.Services
             }
         }
 
-        public TurnResult CheckTurnWinner()
+        public void AddPointsFor1Team()
         {
             if (_game == null)
                 throw new ArgumentNullException("O jogo não foi iniciado!");
             if (_turn == null)
-                return TurnResult.NoWinner;
+                throw new ArgumentNullException("O turno não foi iniciado!");
             if (_turn.PlayerWinner == null)
                 throw new ArgumentNullException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
-
-            Team winnerTeam = _game.Teams.FirstOrDefault(t => t.TurnScore == 2);
-
-            if (winnerTeam != null)
-            {
-                winnerTeam.AddRoundPoint(1);
-                _game.ResetTeamsTurnAtributtes();
-            }
+            if (_game.Teams == null)
+                throw new ArgumentNullException("Não foram setados times!");
 
             foreach (var team in _game.Teams)
             {
                 if (team.GetPlayers().Contains(_turn.PlayerWinner))
                 {
                     team.AddTurnPoint(1);
-                    break;
                 }
             }
-            return TurnResult.NoWinner;
+
+            CheckRoundWinner();
+        }
+
+        public void CheckRoundWinner()
+        {
+            Team winnerTeam = _game.Teams.FirstOrDefault(t => t.TurnScore == 2);
+            if (winnerTeam != null)
+            {
+                winnerTeam.AddRoundPoint(1);
+                _game.ResetTeamsTurnAtributtes();
+            }
         }
 
         private async Task<List<CardDto>> GetAllCardsAsync(DeckDto deck, int cardsQuantity)
@@ -148,6 +145,8 @@ namespace TrucoAPI.Services
             if (_game == null)
                 throw new ArgumentNullException("O jogo não foi iniciado!");
             if (_turn == null)
+                throw new ArgumentNullException("O turno não foi iniciado!");
+            if (_turn.HighestValueCard == null)
                 throw new ArgumentNullException("O turno não foi iniciado!");
 
             try
@@ -164,6 +163,8 @@ namespace TrucoAPI.Services
                 ?? throw new NullReferenceException("Não foi possível determinar o jogador vencedor do turno.");
 
             _turn.SetPlayerWinner(winnerPlayer);
+            AddPointsFor1Team();
+            CheckGameWinner();
         }
     }
 }
