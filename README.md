@@ -45,7 +45,6 @@ Game/
 │ │ └── Models
 │ │ │ └── Domains
 │ │ │ │ └── Game.cs
-│ │ │ │ └── Round.cs
 │ │ │ │ └── Turn.cs
 │ │ │ └── DTOs
 │ │ │ │ └── CardDto.cs
