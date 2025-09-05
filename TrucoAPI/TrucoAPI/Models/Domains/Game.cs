@@ -8,12 +8,14 @@ namespace TrucoAPI.Models.Game
     public class Game
     {
         private int _maxRounds = 23;
-        public int roundsCount { get; private set; }
+        public int RoundsCount { get; private set; }
+
+        public Team GameWinner { get; private set; }
 
         [JsonPropertyName("teams")]
         public List<Team> Teams { get; private set; } = new List<Team>();
 
-        public Game() {}
+        public Game() { }
 
         public void SetTeams(List<string> playersName)
         {
@@ -35,8 +37,8 @@ namespace TrucoAPI.Models.Game
 
         }
 
-        public List<Player> GetAllPlayers(){
-            return Teams.SelectMany(team => team.GetPlayers()).ToList(); 
+        public List<Player> GetAllPlayers() {
+            return Teams.SelectMany(team => team.GetPlayers()).ToList();
         }
 
         public void ResetTeamsTurnAtributtes()
@@ -47,17 +49,27 @@ namespace TrucoAPI.Models.Game
                 team.ResetPlayersHand();
             }
         }
-        public void increaseRoundCount()
+        public void IncreaseRoundCount()
         {
-            roundsCount += 1;
+            RoundsCount += 1;
         }
 
-        public void ResetTeamsRoundScore()
+        public void ResetTeamsRoundAtributtes()
         {
             foreach (var team in Teams)
             {
                 team.ResetRoundScore();
             }
+        }
+
+        public Team GetGameWinner()
+        {
+            return GameWinner;
+        }
+
+        public void SetGameWinner(Team gameWinner)
+        {
+            gameWinner = GameWinner;
         }
     }
 }

@@ -37,6 +37,14 @@ namespace Truco.API.Controllers
             return Ok(new { message = "Estado do Jogo foi retornado", gameState });
         }
 
+        [HttpGet("checkGameWinner")]
+        public IActionResult CheckGameWinner()
+        {
+            var gameState = _gameService.GetCurrentGameState().GetGameWinner();
+            return Ok(new { message = "Estado do Jogo foi retornado", gameState});
+        }
+
+
         [HttpGet("players")]
         public IActionResult GetPlayers()
         {
@@ -67,7 +75,6 @@ namespace Truco.API.Controllers
             var playerWinner = _gameService.GetCurrentTurnState().GetPlayerWinner();
             return Ok(new
             {
-                message = "Jogador vencedor definido!",
                 playerWinner
             });
         }

@@ -3,6 +3,7 @@
     public class Team
     {
         public List<Player> Players { get; private set; } = new List<Player>();
+        public int GameScore { get; private set; } = 0; // Talvez não use isso, apenas se o programa for feito por completo.
         public int RoundScore { get; private set; } = 0;
         public int TurnScore { get; private set; } = 0;
 

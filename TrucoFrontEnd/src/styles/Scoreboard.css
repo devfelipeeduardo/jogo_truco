@@ -1,15 +1,18 @@
 .scoreboard-frame {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex; 
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 600px;
-    bottom: 600px;
-    width: 250;
+    align-items: flex-start;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    width: 250px;
     height: 100px;
-    border: 1px solid black;
+    padding: 20px;
     font-size: 20px;
+    color: white;
+    background: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1000;
 }
-

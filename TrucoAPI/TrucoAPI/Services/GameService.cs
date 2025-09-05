@@ -23,7 +23,7 @@ namespace TrucoAPI.Services
         {
             _game = new Game();
             _game.SetTeams(playersNames);
-            _game.ResetTeamsRoundScore();
+            _game.ResetTeamsRoundAtributtes();
             _game.ResetTeamsTurnAtributtes();
         }
 
@@ -42,6 +42,8 @@ namespace TrucoAPI.Services
 
         public async Task StartTurnAsync()
         {
+            _game.ResetTeamsTurnAtributtes();
+            
             var deck = await _deckService.CreateDeckAsync();
             _turn = new Turn { DeckId = deck.DeckId };
 
@@ -49,9 +51,8 @@ namespace TrucoAPI.Services
             await DistributeCardsByPlayer(deck);
         }
 
-        private TurnResult CheckGameWinner()
+        private void CheckGameWinner()
         {
-
             if (_game == null)
                 throw new ArgumentNullException("O jogo não foi iniciado!");
 
@@ -59,10 +60,9 @@ namespace TrucoAPI.Services
             {
                 if (team.RoundScore == 12)
                 {
-                    return TurnResult.HasWinner;
+                    _game.SetGameWinner(team);
                 }
             }
-            return TurnResult.NoWinner;
         }
 
         private async Task SetTrumpCard(DeckDto deck)
@@ -146,8 +146,6 @@ namespace TrucoAPI.Services
                 throw new ArgumentNullException("O jogo não foi iniciado!");
             if (_turn == null)
                 throw new ArgumentNullException("O turno não foi iniciado!");
-            if (_turn.HighestValueCard == null)
-                throw new ArgumentNullException("O turno não foi iniciado!");
 
             try
             {
@@ -156,6 +154,9 @@ namespace TrucoAPI.Services
             catch (Exception ex) {
                 throw new Exception(ex + "Não foi setado cartas");
             }
+
+            if (_turn.HighestValueCard == null)
+                throw new ArgumentNullException("O turno não foi iniciado!");
 
             var allPlayers = _game.GetAllPlayers();
 

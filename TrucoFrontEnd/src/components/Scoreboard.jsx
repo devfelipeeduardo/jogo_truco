@@ -1,11 +1,11 @@
 import '../styles/Scoreboard.css'
 
-function Scoreboard() {
+function Scoreboard({  team1Score = 0, team2Score = 0}) {
     return (
         <>
             <div className="scoreboard-frame">
-                <div className="team1-scoreboard">Team 1: <span id="team1-score">0</span></div>
-                <div className="team2-scoreboard">Team 2: <span id="team2-score">0</span></div>
+                <div className="team1-scoreboard">Nós: <span id="team1-score">{team1Score}</span></div>
+                <div className="team2-scoreboard">Eles: <span id="team2-score">{team2Score}</span></div>
             </div>
             <div className="play-frame">
                 
