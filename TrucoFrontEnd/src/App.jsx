@@ -21,6 +21,8 @@ function App() {
         });
 
         const turnResponse = await fetch('http://localhost:5150/api/game/turn/start', { method: 'GET' });
+        if (!turnResponse.ok) { throw new Error("Erro na requisição do novo turno" + turnResponse.data); }
+
         const turnData = await turnResponse.json();
         console.log("Turno completo:", turnData);
         const turnState = turnData.turnState;
@@ -38,6 +40,30 @@ function App() {
     }
     initGame();
   }, []);
+
+  async function startNewTurn() {
+    try {
+      const turnResponse = await fetch('http://localhost:5150/api/game/turn/start', { method: 'GET' });
+
+      if (!turnResponse.ok) {
+        throw new Error("Erro na requisição do novo turno" + turnResponse.data);
+      }
+
+      const turnData = await turnResponse.json();
+      console.log("Turno completo:", turnData);
+      const turnState = turnData.turnState;
+
+      const stateResponse = await fetch('http://localhost:5150/api/game/state');
+      const stateData = await stateResponse.json();
+      setData({
+        ...stateData.gameState,
+        turn: turnState
+      });
+
+    } catch (error) {
+      console.error("Erro ao iniciar o novo turno:", error);
+    }
+  }
 
   //Pega o estado dos jogadores baseado na data setada!
   function getPlayer(playerName) {
@@ -84,6 +110,7 @@ function App() {
     const everyCardFilled = cardsSelectedByPlayers.every(pair => pair !== null);
     if (everyCardFilled) {
       getWinner();
+      startNewTurn();
       setOpacity();
     }
   }, [cardsSelectedByPlayers, getWinner]);
@@ -122,4 +149,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

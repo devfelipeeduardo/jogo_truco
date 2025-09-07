@@ -43,7 +43,18 @@ namespace TrucoAPI.Services
         public async Task StartTurnAsync()
         {
             _game.ResetTeamsTurnAtributtes();
-            
+
+            var deck = await _deckService.CreateDeckAsync();
+            _turn = new Turn { DeckId = deck.DeckId };
+
+            await SetTrumpCard(deck);
+            await DistributeCardsByPlayer(deck);
+        }
+
+        public async Task StartNewTurnAsync()
+        {
+            _game.ResetTeamsTurnAtributtes();
+
             var deck = await _deckService.CreateDeckAsync();
             _turn = new Turn { DeckId = deck.DeckId };
 
