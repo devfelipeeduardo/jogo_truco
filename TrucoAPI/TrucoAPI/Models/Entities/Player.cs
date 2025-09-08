@@ -6,7 +6,7 @@ namespace TrucoAPI.Models.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public List<CardDto> Hand { get; private set; } = new List<CardDto>();
+        public List<CardDto> Hand { get; private set; }
 
         public Player(string name) {
             Name = name;
@@ -19,6 +19,7 @@ namespace TrucoAPI.Models.Entities
 
         public void ResetHand()
         {
+            if (Hand == null)  return;
            Hand.Clear();
         }
     }

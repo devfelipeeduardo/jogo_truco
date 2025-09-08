@@ -57,7 +57,7 @@
     transform: rotate(90deg);
 }
 
-.playerWinner {
+.warningsAtCenter {
     position: absolute;
     top: 25%;
     left: 50%;

@@ -7,6 +7,7 @@ import Warnings from "./components/Warnings";
 function App() {
   const [data, setData] = useState(null);
   const [playerWinnerData, setPlayerWinnerData] = useState(null);
+  const [teamGameWinnerData, setTeamGameWinnerData ] = useState(null);
   const [cardsSelectedByPlayers, setCardsSelectedByPlayers] = useState([null, null, null, null]);
   const [opacityAnimate, setOpacityAnimate] = useState(false);
 
@@ -81,6 +82,10 @@ function App() {
     );
   }
 
+  const resetSelectedCardsByPlayer = useCallback(async () => {
+    cardsSelectedByPlayers.fill(null);
+  }, [cardsSelectedByPlayers]);
+
   //Guarda o método de pegar o vencedor, para que só pegue ele quando o useEffect repara que todos os jogadores selecionaram uma carta.
   const getWinner = useCallback(async () => {
     try {
@@ -90,13 +95,12 @@ function App() {
         body: JSON.stringify(cardsSelectedByPlayers)
       });
 
-      const data = await response.json();
-      setPlayerWinnerData(data);
+      const winnerData = await response.json();
+      setPlayerWinnerData(winnerData);
 
     } catch (error) {
       console.error("Erro ao definir o vencedor:", error);
     }
-
   }, [cardsSelectedByPlayers]);
 
   //Funcao de piscar na tela o vencedor. [PRECISA SER AJUSTADA]
@@ -105,23 +109,33 @@ function App() {
     setTimeout(() => setOpacityAnimate(true), 10);
   };
 
+  function checkGameWinner() {
+    if (data.gameWinner != null) {
+      setTeamGameWinnerData(data.gameWinner)
+    }  
+  }
+
   //Função que confere se todos os jogadores selecionaram cartas.
   useEffect(() => {
     const everyCardFilled = cardsSelectedByPlayers.every(pair => pair !== null);
     if (everyCardFilled) {
       getWinner();
+      resetSelectedCardsByPlayer();
+      checkGameWinner();
       startNewTurn();
       setOpacity();
     }
-  }, [cardsSelectedByPlayers, getWinner]);
+  }, [cardsSelectedByPlayers, getWinner, resetSelectedCardsByPlayer]);
 
-  //Limite de código de requests
+
   if (!data) return <p>Carregando...</p>;
 
   const player1 = getPlayer("felipe");
   const player2 = getPlayer("pedro");
   const player3 = getPlayer("jonathan");
   const player4 = getPlayer("gabriel");
+
+  console.log(data)
 
   return (
     <>
@@ -135,11 +149,14 @@ function App() {
         opacityAnimate={opacityAnimate}
         playerWinnerData={playerWinnerData}
         data={data}
+        teamGameWinnerData={teamGameWinnerData}
       />
 
       <Scoreboard
-        team1Score={data.teams[0].score}
-        team2Score={data.teams[1].score}
+        team1TurnScore={data.teams[0].turnScore}
+        team1RoundScore={data.teams[0].roundScore}
+        team2TurnScore={data.teams[1].turnScore}
+        team2RoundScore={data.teams[1].roundScore}
       />
 
       {/* <Warnings

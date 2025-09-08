@@ -81,10 +81,6 @@ namespace TrucoAPI.Models.Game
             if (cards == null)
                 throw new ArgumentNullException(nameof(cards), "As cartas não foram repassadas");
 
-            //Preciso pegar cada carta que vir, olhar seus valores e ver se é a maior carta do turno.
-
-            //HighestValueCard = cardsCode.OrderByDescending(c => c.CardValue).FirstOrDefault();
-
             int HighestValue = 0;
 
             foreach (var card in cards)

@@ -21,10 +21,11 @@ namespace TrucoAPI.Services
 
         public void StartNewGame(List<string> playersNames)
         {
+            //_game.ResetTeamsRoundAtributtes();
+            //_game.ResetTeamsTurnAtributtes();
+
             _game = new Game();
             _game.SetTeams(playersNames);
-            _game.ResetTeamsRoundAtributtes();
-            _game.ResetTeamsTurnAtributtes();
         }
 
         public List<Player> GetCurrentPlayers()
@@ -42,19 +43,6 @@ namespace TrucoAPI.Services
 
         public async Task StartTurnAsync()
         {
-            _game.ResetTeamsTurnAtributtes();
-
-            var deck = await _deckService.CreateDeckAsync();
-            _turn = new Turn { DeckId = deck.DeckId };
-
-            await SetTrumpCard(deck);
-            await DistributeCardsByPlayer(deck);
-        }
-
-        public async Task StartNewTurnAsync()
-        {
-            _game.ResetTeamsTurnAtributtes();
-
             var deck = await _deckService.CreateDeckAsync();
             _turn = new Turn { DeckId = deck.DeckId };
 
@@ -132,7 +120,6 @@ namespace TrucoAPI.Services
                     team.AddTurnPoint(1);
                 }
             }
-
             CheckRoundWinner();
         }
 
@@ -142,7 +129,7 @@ namespace TrucoAPI.Services
             if (winnerTeam != null)
             {
                 winnerTeam.AddRoundPoint(1);
-                _game.ResetTeamsTurnAtributtes();
+                _game.ResetTeamsTurnScore();
             }
         }
 

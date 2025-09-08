@@ -41,12 +41,11 @@ namespace TrucoAPI.Models.Game
             return Teams.SelectMany(team => team.GetPlayers()).ToList();
         }
 
-        public void ResetTeamsTurnAtributtes()
+        public void ResetTeamsTurnScore()
         {
             foreach (var team in Teams)
             {
                 team.ResetTurnScore();
-                team.ResetPlayersHand();
             }
         }
         public void IncreaseRoundCount()
@@ -69,7 +68,7 @@ namespace TrucoAPI.Models.Game
 
         public void SetGameWinner(Team gameWinner)
         {
-            gameWinner = GameWinner;
+            GameWinner = gameWinner;
         }
     }
 }

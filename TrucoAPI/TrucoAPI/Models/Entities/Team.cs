@@ -19,14 +19,6 @@
             return Players;
         }
 
-        public void ResetPlayersHand()
-        {
-            foreach (var player in Players)
-            {
-                player.ResetHand();
-            }
-        }
-
         public void AddRoundPoint(int pontuation)
         {
             RoundScore += pontuation;
