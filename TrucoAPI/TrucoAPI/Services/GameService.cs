@@ -158,6 +158,8 @@ namespace TrucoAPI.Services
 
             var allPlayers = _game.GetAllPlayers();
 
+            var maxCardValue = allPlayers.Max(p => p.Hand.Any(c => c.CardValue == _turn.HighestValueCard.CardValue));
+
             var winnerPlayer = allPlayers.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == _turn.HighestValueCard.CardValue))
                 ?? throw new NullReferenceException("Não foi possível determinar o jogador vencedor do turno.");
 
