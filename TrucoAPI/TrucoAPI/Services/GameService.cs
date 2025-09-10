@@ -43,6 +43,9 @@ namespace TrucoAPI.Services
 
         public async Task StartTurnAsync()
         {
+            if (_game == null)
+                throw new ArgumentNullException("O jogo não foi iniciado!");
+
             var deck = await _deckService.CreateDeckAsync();
             _turn = new Turn { DeckId = deck.DeckId };
 
@@ -52,8 +55,7 @@ namespace TrucoAPI.Services
 
         private void CheckGameWinner()
         {
-            if (_game == null)
-                throw new ArgumentNullException("O jogo não foi iniciado!");
+            ValidateGameAndTurn();
 
             foreach (var team in _game.Teams)
             {
@@ -66,8 +68,7 @@ namespace TrucoAPI.Services
 
         private async Task SetTrumpCard(DeckDto deck)
         {
-            if (_turn == null)
-                throw new ArgumentNullException(nameof(deck), "O turno não foi iniciado!");
+            ValidateGameAndTurn();
 
             List<CardDto> trumpCards = await _deckService.DrawCardsAsync(deck.DeckId, 1);
             var trump = trumpCards.FirstOrDefault()
@@ -79,10 +80,7 @@ namespace TrucoAPI.Services
 
         private async Task DistributeCardsByPlayer(DeckDto deck)
         {
-            if (_game == null)
-                throw new ArgumentNullException(nameof(deck), "O jogo não foi iniciado!");
-            if (_turn == null)
-                throw new ArgumentNullException(nameof(deck), "O turno não foi iniciado!");
+            ValidateGameAndTurn();
             if (_game.Teams == null)
                 throw new ArgumentNullException(nameof(deck), "Os times não foram definidos não foi iniciado!");
 
@@ -102,12 +100,9 @@ namespace TrucoAPI.Services
             }
         }
 
-        public void AddPointsFor1Team()
+        public void AddPointsForATeam()
         {
-            if (_game == null)
-                throw new ArgumentNullException("O jogo não foi iniciado!");
-            if (_turn == null)
-                throw new ArgumentNullException("O turno não foi iniciado!");
+            ValidateGameAndTurn();
             if (_turn.PlayerWinner == null)
                 throw new ArgumentNullException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
             if (_game.Teams == null)
@@ -123,8 +118,24 @@ namespace TrucoAPI.Services
             CheckRoundWinner();
         }
 
-        public void CheckRoundWinner()
+        private void AddPointsForEachTeam()
         {
+            ValidateGameAndTurn();
+            if (_turn.PlayerWinner == null)
+                throw new ArgumentNullException("Turn não iniciado ou vencedor não definido. Chame DecideWinner() antes");
+            if (_game.Teams == null)
+                throw new ArgumentNullException("Não foram setados times!");
+
+            foreach (var team in _game.Teams)
+            {
+                    team.AddTurnPoint(1);
+            }
+            CheckRoundWinner();
+        }
+
+        private void CheckRoundWinner()
+        {
+            ValidateGameAndTurn();
             Team winnerTeam = _game.Teams.FirstOrDefault(t => t.TurnScore == 2);
             if (winnerTeam != null)
             {
@@ -140,32 +151,43 @@ namespace TrucoAPI.Services
 
         public void DecidePlayerWinner(List<CardDto> cards)
         {
-            if (_game == null)
-                throw new ArgumentNullException("O jogo não foi iniciado!");
-            if (_turn == null)
-                throw new ArgumentNullException("O turno não foi iniciado!");
-
+            ValidateGameAndTurn();
             try
             {
                 _turn.SetCardHighestValue(cards);
             }
             catch (Exception ex) {
-                throw new Exception(ex + "Não foi setado cartas");
+                throw new Exception("Não foi setado cartas: ", ex);
             }
 
             if (_turn.HighestValueCard == null)
                 throw new ArgumentNullException("O turno não foi iniciado!");
 
+            List<CardDto> cardsEqualHighestCardValue = cards.Where(c => c.CardValue == _turn.HighestValueCard.CardValue).ToList();
+
             var allPlayers = _game.GetAllPlayers();
 
-            var maxCardValue = allPlayers.Max(p => p.Hand.Any(c => c.CardValue == _turn.HighestValueCard.CardValue));
+            if (cardsEqualHighestCardValue.Count >= 2)
+            {
+                AddPointsForEachTeam();
+            }
+            else if (cardsEqualHighestCardValue.Count < 2)
+            {
+                var winnerPlayer = allPlayers.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == _turn.HighestValueCard.CardValue))
+                    ?? throw new NullReferenceException("Não foi possível determinar o jogador vencedor do turno.");
 
-            var winnerPlayer = allPlayers.FirstOrDefault(p => p.Hand.Any(c => c.CardValue == _turn.HighestValueCard.CardValue))
-                ?? throw new NullReferenceException("Não foi possível determinar o jogador vencedor do turno.");
-
-            _turn.SetPlayerWinner(winnerPlayer);
-            AddPointsFor1Team();
+                _turn.SetPlayerWinner(winnerPlayer);
+                AddPointsForATeam();
+            }
             CheckGameWinner();
+        }
+
+        private void ValidateGameAndTurn()
+        {
+            if (_game == null)
+                throw new ArgumentNullException("O jogo não foi iniciado!");
+            if (_turn == null)
+                throw new ArgumentNullException("O turno não foi iniciado!");
         }
     }
 }
