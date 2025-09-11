@@ -21,7 +21,7 @@ function App() {
           body: JSON.stringify(["felipe", "pedro", "jonathan", "gabriel"])
         });
 
-        const turnResponse = await fetch('http://localhost:5150/api/game/turn/start', { method: 'GET' });
+        const turnResponse = await fetch('http://localhost:5150/api/game/turn/state', { method: 'GET' });
         if (!turnResponse.ok) { throw new Error("Erro na requisição do novo turno" + turnResponse.data); }
 
         const turnData = await turnResponse.json();
@@ -42,9 +42,9 @@ function App() {
     initGame();
   }, []);
 
-  async function startNewTurn() {
+  async function setNewData() {
     try {
-      const turnResponse = await fetch('http://localhost:5150/api/game/turn/start', { method: 'GET' });
+      const turnResponse = await fetch('http://localhost:5150/api/game/turn/state', { method: 'GET' });
 
       if (!turnResponse.ok) {
         throw new Error("Erro na requisição do novo turno" + turnResponse.data);
@@ -109,11 +109,12 @@ function App() {
     setTimeout(() => setOpacityAnimate(true), 10);
   };
 
-  function checkGameWinner() {
+  
+  const checkGameWinner = useCallback(async () => {
     if (data.gameWinner != null) {
       setTeamGameWinnerData(data.gameWinner)
     }  
-  }
+  }, [data]);
 
   //Função que confere se todos os jogadores selecionaram cartas.
   useEffect(() => {
@@ -122,15 +123,16 @@ function App() {
       getWinner();
       resetSelectedCardsByPlayer();
       checkGameWinner();
-      startNewTurn();
+      setNewData();
       setOpacity();
     }
-  }, [cardsSelectedByPlayers, getWinner, resetSelectedCardsByPlayer]);
+  }, [cardsSelectedByPlayers, getWinner, resetSelectedCardsByPlayer, checkGameWinner]);
 
 
   if (!data) return <p>Carregando...</p>;
 
   const player1 = getPlayer("felipe");
+  console.log("AQUI PORRA" + player1);
   const player2 = getPlayer("pedro");
   const player3 = getPlayer("jonathan");
   const player4 = getPlayer("gabriel");

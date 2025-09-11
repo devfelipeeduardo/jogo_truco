@@ -22,7 +22,6 @@ namespace Truco.API.Controllers
         public async Task<IActionResult> StartGame([FromBody] List<string> playerNames)
         {
             _gameService.StartNewGame(playerNames);
-            await _gameService.StartTurnAsync();
 
             var gameState = _gameService.GetCurrentGameState();
             var turnState = _gameService.GetCurrentTurnState();
@@ -50,15 +49,6 @@ namespace Truco.API.Controllers
         {
             var playersState = _gameService.GetCurrentPlayers();
             return Ok(new { message = "Jogadores foram retornados", playersState});
-        }
-
-        //Turn
-        [HttpGet("turn/start")]
-        public async Task<IActionResult> StartTurn() {
-            await _gameService.StartTurnAsync();
-            var turnState = _gameService.GetCurrentTurnState();
-
-            return Ok(new { message = "Turno iniciado!", turnState });
         }
 
         [HttpGet("turn/state")]

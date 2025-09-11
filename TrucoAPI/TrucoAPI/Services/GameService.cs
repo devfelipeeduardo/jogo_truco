@@ -11,21 +11,26 @@ namespace TrucoAPI.Services
         private readonly DeckService _deckService;
         private Game? _game;
         private Turn? _turn;
+        public bool IsGameInitialized = false;
 
         //Game
         public Game? GetCurrentGameState() => _game;
+
+        private GameService() { }
+
         public GameService(DeckService deckService)
         {
             _deckService = deckService;
         }
 
-        public void StartNewGame(List<string> playersNames)
+        public async Task StartNewGame(List<string> playersNames)
         {
-            //_game.ResetTeamsRoundAtributtes();
-            //_game.ResetTeamsTurnAtributtes();
+            if (IsGameInitialized) return;
 
             _game = new Game();
             _game.SetTeams(playersNames);
+            IsGameInitialized = true;
+            await StartTurnAsync();
         }
 
         public List<Player> GetCurrentPlayers()
@@ -141,6 +146,7 @@ namespace TrucoAPI.Services
             {
                 winnerTeam.AddRoundPoint(1);
                 _game.ResetTeamsTurnScore();
+                StartTurnAsync();
             }
         }
 
@@ -159,9 +165,6 @@ namespace TrucoAPI.Services
             catch (Exception ex) {
                 throw new Exception("Não foi setado cartas: ", ex);
             }
-
-            if (_turn.HighestValueCard == null)
-                throw new ArgumentNullException("O turno não foi iniciado!");
 
             List<CardDto> cardsEqualHighestCardValue = cards.Where(c => c.CardValue == _turn.HighestValueCard.CardValue).ToList();
 
