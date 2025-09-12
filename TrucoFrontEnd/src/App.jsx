@@ -132,12 +132,9 @@ function App() {
   if (!data) return <p>Carregando...</p>;
 
   const player1 = getPlayer("felipe");
-  console.log("AQUI PORRA" + player1);
   const player2 = getPlayer("pedro");
   const player3 = getPlayer("jonathan");
   const player4 = getPlayer("gabriel");
-
-  console.log(data)
 
   return (
     <>

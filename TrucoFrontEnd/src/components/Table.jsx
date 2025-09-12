@@ -4,9 +4,10 @@ import '../styles/Table.css'
 function Table({
     player1, player2, player3, player4,
     cardsSelectedByPlayers, chooseCard,
-    opacityAnimate, playerWinnerData, data,
-    teamGameWinnerData
+    opacityAnimate, playerWinnerData, data
+    // teamGameWinnerData
 }) {
+
     return (
         <div className="table">
             <img className="table-img" src={mesaTruco} alt="Mesa do truco" />
@@ -64,9 +65,9 @@ function Table({
                 {"O jogador: " + playerWinnerData?.playerWinner?.name + " venceu a rodada!"}
             </div>
 
-            <div className={`warningsAtCenter ${opacityAnimate ? "changesOpacity" : ""}`}>
+            {/* <div className={`warningsAtCenter ${opacityAnimate ? "changesOpacity" : ""}`}>
                 {"O time: " + teamGameWinnerData?.teamGameWinner?.name + " venceu o jogo!"}
-            </div>
+            </div> */}
         </div>
     )
 }

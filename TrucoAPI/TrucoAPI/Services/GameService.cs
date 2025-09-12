@@ -16,8 +16,6 @@ namespace TrucoAPI.Services
         //Game
         public Game? GetCurrentGameState() => _game;
 
-        private GameService() { }
-
         public GameService(DeckService deckService)
         {
             _deckService = deckService;
@@ -25,7 +23,7 @@ namespace TrucoAPI.Services
 
         public async Task StartNewGame(List<string> playersNames)
         {
-            if (IsGameInitialized) return;
+            //if (IsGameInitialized) return;
 
             _game = new Game();
             _game.SetTeams(playersNames);

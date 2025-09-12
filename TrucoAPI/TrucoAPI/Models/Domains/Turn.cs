@@ -8,7 +8,7 @@ namespace TrucoAPI.Models.Game
     public class Turn
     {
         public string? DeckId { get; set; }
-        public CardDto? Trump { get; private set; }
+        public CardDto? Trump { get; private set; } = new CardDto();
         public CardDto? HighestValueCard { get; private set; }
         public Player? PlayerWinner { get; private set; } = null;
 
