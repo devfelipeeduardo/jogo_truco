@@ -5,9 +5,10 @@ import './styles/App.css'
 import Warnings from "./components/Warnings";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [gameStateData, setGameStateData] = useState(null);
+  const [turnStateData, setTurnStateData] = useState(null);
   const [playerWinnerData, setPlayerWinnerData] = useState(null);
-  const [teamGameWinnerData, setTeamGameWinnerData ] = useState(null);
+  const [teamGameWinnerData, setTeamGameWinnerData] = useState(null);
   const [cardsSelectedByPlayers, setCardsSelectedByPlayers] = useState([null, null, null, null]);
   const [opacityAnimate, setOpacityAnimate] = useState(false);
 
@@ -21,19 +22,11 @@ function App() {
           body: JSON.stringify(["felipe", "pedro", "jonathan", "gabriel"])
         });
 
-        const turnResponse = await fetch('http://localhost:5150/api/game/turn/state', { method: 'GET' });
-        if (!turnResponse.ok) { throw new Error("Erro na requisição do novo turno" + turnResponse.data); }
+        const gameStateResponse = await fetch('http://localhost:5150/api/game/state');
+        const gameStateData = await gameStateResponse.json();
+        setGameStateData(gameStateData.gameState);
 
-        const turnData = await turnResponse.json();
-        console.log("Turno completo:", turnData);
-        const turnState = turnData.turnState;
-
-        const stateResponse = await fetch('http://localhost:5150/api/game/state');
-        const stateData = await stateResponse.json();
-        setData({
-          ...stateData.gameState,
-          turn: turnState
-        });
+        console.log("Jogo completo:" + JSON.stringify(gameStateData, null, 2));
 
       } catch (error) {
         console.error("Erro ao iniciar jogo:", error);
@@ -42,33 +35,43 @@ function App() {
     initGame();
   }, []);
 
-  async function setNewData() {
+  async function updateGameState() {
     try {
-      const turnResponse = await fetch('http://localhost:5150/api/game/turn/state', { method: 'GET' });
-
-      if (!turnResponse.ok) {
-        throw new Error("Erro na requisição do novo turno" + turnResponse.data);
-      }
-
-      const turnData = await turnResponse.json();
-      console.log("Turno completo:", turnData);
-      const turnState = turnData.turnState;
-
       const stateResponse = await fetch('http://localhost:5150/api/game/state');
       const stateData = await stateResponse.json();
-      setData({
-        ...stateData.gameState,
-        turn: turnState
+
+      // Utilize o "..." quando você quiser atualizar atributos de uma determinada classe, antes de setar no state
+      // Descobrir isso é muito bom kkkkkk
+      setGameStateData({
+        ...stateData.gameState
       });
 
+      console.log("Jogo completo:", stateData);
+
     } catch (error) {
-      console.error("Erro ao iniciar o novo turno:", error);
+      console.error("Erro ao iniciar jogo:", error);
+    }
+  }
+
+    async function updateTurnState() {
+    try {
+      const turnStateResponse = await fetch('http://localhost:5150/api/game/turn/state');
+      const turnstateData = await turnStateResponse.json();
+
+      setTurnStateData({
+        ...turnstateData.gameState
+      });
+
+      console.log("Turno completoooooooooooooooooooo:", turnstateData);
+
+    } catch (error) {
+      console.error("Erro ao iniciar jogo:", error);
     }
   }
 
   //Pega o estado dos jogadores baseado na data setada!
   function getPlayer(playerName) {
-    for (const team of data.teams) {
+    for (const team of gameStateData.teams) {
       const player = team.players.find(p => p.name.toLowerCase() === playerName)
       if (player) return player;
     }
@@ -109,12 +112,12 @@ function App() {
     setTimeout(() => setOpacityAnimate(true), 10);
   };
 
-  
+
   const checkGameWinner = useCallback(async () => {
-    if (data.gameWinner != null) {
-      setTeamGameWinnerData(data.gameWinner)
-    }  
-  }, [data]);
+    if (gameStateData.gameWinner != null) {
+      setTeamGameWinnerData(gameStateData.gameWinner)
+    }
+  }, [gameStateData]);
 
   //Função que confere se todos os jogadores selecionaram cartas.
   useEffect(() => {
@@ -123,13 +126,14 @@ function App() {
       getWinner();
       resetSelectedCardsByPlayer();
       checkGameWinner();
-      setNewData();
+      updateGameState();
+      updateTurnState();
       setOpacity();
     }
   }, [cardsSelectedByPlayers, getWinner, resetSelectedCardsByPlayer, checkGameWinner]);
 
 
-  if (!data) return <p>Carregando...</p>;
+  if (!gameStateData) return <p>Carregando...</p>;
 
   const player1 = getPlayer("felipe");
   const player2 = getPlayer("pedro");
@@ -147,15 +151,15 @@ function App() {
         chooseCard={chooseCard}
         opacityAnimate={opacityAnimate}
         playerWinnerData={playerWinnerData}
-        data={data}
+        turnStateData={turnStateData}
         teamGameWinnerData={teamGameWinnerData}
       />
 
       <Scoreboard
-        team1TurnScore={data.teams[0].turnScore}
-        team1RoundScore={data.teams[0].roundScore}
-        team2TurnScore={data.teams[1].turnScore}
-        team2RoundScore={data.teams[1].roundScore}
+        team1TurnScore={gameStateData.teams[0].turnScore}
+        team1RoundScore={gameStateData.teams[0].roundScore}
+        team2TurnScore={gameStateData.teams[1].turnScore}
+        team2RoundScore={gameStateData.teams[1].roundScore}
       />
 
       {/* <Warnings

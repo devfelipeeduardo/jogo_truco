@@ -4,8 +4,7 @@ import '../styles/Table.css'
 function Table({
     player1, player2, player3, player4,
     cardsSelectedByPlayers, chooseCard,
-    opacityAnimate, playerWinnerData, data
-    // teamGameWinnerData
+    opacityAnimate, playerWinnerData, turnStateData
 }) {
 
     return (
@@ -59,7 +58,7 @@ function Table({
                 ))}
             </div>
             <div className="trump">
-                <img key={5} src={data.turn.trump.image} alt={`Carta: Manilha`} className="card" />
+                <img key={5} src={turnStateData.trump.image} alt={`Carta: Manilha`} className="card" />
             </div>
             <div className={`warningsAtCenter ${opacityAnimate ? "changesOpacity" : ""}`}>
                 {"O jogador: " + playerWinnerData?.playerWinner?.name + " venceu a rodada!"}

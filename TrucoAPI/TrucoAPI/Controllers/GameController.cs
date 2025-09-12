@@ -24,9 +24,8 @@ namespace Truco.API.Controllers
             _gameService.StartNewGame(playerNames);
 
             var gameState = _gameService.GetCurrentGameState();
-            var turnState = _gameService.GetCurrentTurnState();
 
-            return Ok(new { message = "Jogo iniciado!", gameState, turnState });
+            return Ok(new { message = "Jogo iniciado!", gameState});
         }
 
         [HttpGet("state")]
