@@ -64,6 +64,7 @@ Game/
 │ │ └── components
 │ │ │ └── Players.jsx
 │ │ │ └── Table.jsx
+│ │ │ └── Scoreboard.jsx
 │ │ └── styles
 │ │ │ └── App.css
 │ │ │ └── Table.css
