@@ -103,7 +103,7 @@ namespace TrucoAPI.Services
             }
         }
 
-        public void AddPointsForATeam()
+        public async Task AddPointsForATeam()
         {
             ValidateGameAndTurn();
             if (_turn.PlayerWinner == null)
@@ -118,10 +118,10 @@ namespace TrucoAPI.Services
                     team.AddTurnPoint(1);
                 }
             }
-            CheckRoundWinner();
+            await CheckRoundWinner();
         }
 
-        private void AddPointsForEachTeam()
+        private async Task AddPointsForEachTeam()
         {
             ValidateGameAndTurn();
             if (_turn.PlayerWinner == null)
@@ -133,10 +133,10 @@ namespace TrucoAPI.Services
             {
                     team.AddTurnPoint(1);
             }
-            CheckRoundWinner();
+            await CheckRoundWinner();
         }
 
-        private void CheckRoundWinner()
+        private async Task CheckRoundWinner()
         {
             ValidateGameAndTurn();
             Team winnerTeam = _game.Teams.FirstOrDefault(t => t.TurnScore == 2);
@@ -144,7 +144,7 @@ namespace TrucoAPI.Services
             {
                 winnerTeam.AddRoundPoint(1);
                 _game.ResetTeamsTurnScore();
-                StartTurnAsync();
+                await StartTurnAsync();
             }
         }
 
@@ -153,7 +153,7 @@ namespace TrucoAPI.Services
             return await _deckService.DrawCardsAsync(deck.DeckId, cardsQuantity);
         }
 
-        public void DecidePlayerWinner(List<CardDto> cards)
+        public async Task DecidePlayerWinner(List<CardDto> cards)
         {
             ValidateGameAndTurn();
             try
@@ -170,7 +170,7 @@ namespace TrucoAPI.Services
 
             if (cardsEqualHighestCardValue.Count >= 2)
             {
-                AddPointsForEachTeam();
+                await AddPointsForEachTeam();
             }
             else if (cardsEqualHighestCardValue.Count < 2)
             {
@@ -178,7 +178,7 @@ namespace TrucoAPI.Services
                     ?? throw new NullReferenceException("Não foi possível determinar o jogador vencedor do turno.");
 
                 _turn.SetPlayerWinner(winnerPlayer);
-                AddPointsForATeam();
+                await AddPointsForATeam();
             }
             CheckGameWinner();
         }

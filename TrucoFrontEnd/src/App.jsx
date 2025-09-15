@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import Scoreboard from './components/Scoreboard';
 import Table from './components/Table';
 import './styles/App.css'
-import Warnings from "./components/Warnings";
+// import Warnings from "./components/Warnings";
 
 function App() {
   const [gameStateData, setGameStateData] = useState(null);
@@ -25,8 +25,7 @@ function App() {
         const gameStateResponse = await fetch('http://localhost:5150/api/game/state');
         const gameStateData = await gameStateResponse.json();
         setGameStateData(gameStateData.gameState);
-
-        console.log("Jogo completo:" + JSON.stringify(gameStateData, null, 2));
+        updateTurnState();
 
       } catch (error) {
         console.error("Erro ao iniciar jogo:", error);
@@ -37,32 +36,31 @@ function App() {
 
   async function updateGameState() {
     try {
-      const stateResponse = await fetch('http://localhost:5150/api/game/state');
-      const stateData = await stateResponse.json();
+      const gameStateResponse = await fetch('http://localhost:5150/api/game/state');
+      const gameStateData = await gameStateResponse.json();
 
       // Utilize o "..." quando você quiser atualizar atributos de uma determinada classe, antes de setar no state
       // Descobrir isso é muito bom kkkkkk
       setGameStateData({
-        ...stateData.gameState
+        ...gameStateData.gameState
       });
 
-      console.log("Jogo completo:", stateData);
+      console.log("Jogo completo:", gameStateData);
 
     } catch (error) {
       console.error("Erro ao iniciar jogo:", error);
     }
   }
 
-    async function updateTurnState() {
+  async function updateTurnState() {
     try {
       const turnStateResponse = await fetch('http://localhost:5150/api/game/turn/state');
-      const turnstateData = await turnStateResponse.json();
+      const turnStateData = await turnStateResponse.json();
 
-      setTurnStateData({
-        ...turnstateData.gameState
-      });
+      setTurnStateData(turnStateData);
 
-      console.log("Turno completoooooooooooooooooooo:", turnstateData);
+      console.log("Turno Completo:" + JSON.stringify(turnStateData, null, 2));
+      console.log("Manilha: " + JSON.stringify(turnStateData.turnState.trump.image, null, 2));
 
     } catch (error) {
       console.error("Erro ao iniciar jogo:", error);
@@ -133,7 +131,7 @@ function App() {
   }, [cardsSelectedByPlayers, getWinner, resetSelectedCardsByPlayer, checkGameWinner]);
 
 
-  if (!gameStateData) return <p>Carregando...</p>;
+  if (!gameStateData || !turnStateData) return <p>Carregando...</p>;
 
   const player1 = getPlayer("felipe");
   const player2 = getPlayer("pedro");

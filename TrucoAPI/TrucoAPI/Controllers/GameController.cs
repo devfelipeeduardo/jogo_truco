@@ -21,7 +21,7 @@ namespace Truco.API.Controllers
         [HttpPost("start")]
         public async Task<IActionResult> StartGame([FromBody] List<string> playerNames)
         {
-            _gameService.StartNewGame(playerNames);
+            await _gameService.StartNewGame(playerNames);
 
             var gameState = _gameService.GetCurrentGameState();
 
